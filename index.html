@@ -3,85 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Asser Abdelgawad — Embedded • DSP • FPGA</title>
-  <meta name="description" content="Dark-mode, techy portfolio for Asser Abdelgawad: embedded systems, DSP, FPGA, test automation." />
+  <title>Asser Abdelgawad</title>
+  <meta name="description" content="Portfolio" />
   <style>
     :root{
-      --bg:#070A12;
-      --bg2:#0B1020;
-      --card:rgba(255,255,255,.05);
-      --card2:rgba(255,255,255,.08);
+      --bg:#0b0f14;
+      --panel:#0f1620;
       --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.68);
+      --muted:rgba(255,255,255,.62);
       --line:rgba(255,255,255,.10);
-      --glow:rgba(80,220,255,.22);
-      --accent:#50dcff;
-      --accent2:#9b7bff;
-      --good:#6dff9b;
-      --warn:#ffcc66;
-      --shadow: 0 16px 48px rgba(0,0,0,.55);
-      --radius: 18px;
+      --accent:#7dd3fc; /* subtle cyan */
+      --accent2:#a78bfa; /* subtle violet */
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(80,220,255,.14), transparent 55%),
-        radial-gradient(900px 600px at 90% 10%, rgba(155,123,255,.12), transparent 50%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
+        radial-gradient(900px 520px at 15% 0%, rgba(125,211,252,.10), transparent 55%),
+        radial-gradient(900px 520px at 85% 0%, rgba(167,139,250,.10), transparent 55%),
+        linear-gradient(180deg, #06080c, var(--bg));
     }
-
-    /* subtle grid */
-    body:before{
-      content:"";
-      position:fixed; inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: 44px 44px;
-      opacity:.10;
-      pointer-events:none;
-      mask-image: radial-gradient(900px 600px at 50% 0%, black 20%, transparent 70%);
-      z-index:-1;
-    }
-
     a{color:inherit}
-    .wrap{max-width:1100px; margin:0 auto; padding:24px}
-    .topbar{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter: blur(14px);
-      background: rgba(7,10,18,.55);
-      border-bottom: 1px solid var(--line);
+    .wrap{max-width:980px; margin:0 auto; padding:28px}
+    header{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+      padding: 18px 0 22px;
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px;
-      max-width:1100px; margin:0 auto; padding:14px 24px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      text-decoration:none;
-    }
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(80,220,255,.9), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(155,123,255,.8), transparent 55%),
-        rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow: 0 0 0 6px rgba(80,220,255,.07);
-    }
-    .brand b{letter-spacing:.2px}
-    .brand span{color:var(--muted); font-size:12px; display:block; margin-top:2px}
-
-    .navlinks{
-      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:flex-end;
-    }
+    .id h1{margin:0; font-size:28px; letter-spacing:-.4px}
+    .id p{margin:8px 0 0; color:var(--muted); line-height:1.55; max-width:65ch; font-size:14px}
+    .links{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
@@ -91,484 +46,273 @@
       text-decoration:none;
       font-size:13px;
     }
-    .pill:hover{border-color: rgba(80,220,255,.45); box-shadow: 0 0 0 6px rgba(80,220,255,.08)}
-    .pill.primary{
-      border-color: rgba(80,220,255,.55);
-      background: linear-gradient(180deg, rgba(80,220,255,.16), rgba(255,255,255,.03));
+    .pill:hover{border-color: rgba(125,211,252,.40); box-shadow: 0 0 0 6px rgba(125,211,252,.08)}
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 22px;
     }
-
-    .hero{
-      padding:46px 0 10px;
+    .section-title{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+      margin: 24px 0 12px;
+    }
+    .section-title h2{margin:0; font-size:14px; letter-spacing:.22px; text-transform:uppercase; color:rgba(255,255,255,.82)}
+    .section-title small{color:var(--muted); font-size:12.5px}
+    .grid{
       display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:22px;
-      align-items:start;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; padding-top:26px}
-    }
-    .hcard{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hcard:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(600px 220px at 10% 0%, rgba(80,220,255,.20), transparent 60%),
-                  radial-gradient(520px 240px at 95% 10%, rgba(155,123,255,.18), transparent 60%);
-      pointer-events:none;
-      filter: blur(0px);
-    }
-    .hinner{position:relative; padding:26px}
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing:.35px;
-      text-transform: uppercase;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: var(--good);
-      box-shadow: 0 0 16px rgba(109,255,155,.45);
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(34px, 5vw, 54px);
-      line-height:1.02;
-      letter-spacing:-.8px;
-    }
-    .subtitle{
-      color: var(--muted);
-      font-size: 16px;
-      line-height:1.6;
-      max-width: 62ch;
-    }
-    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
-    .chip{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      font-size: 12.5px;
-      color: rgba(255,255,255,.82);
-    }
-    .chip strong{color:var(--accent)}
-    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:11px 14px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      text-decoration:none;
-      background: rgba(255,255,255,.03);
-      font-size: 14px;
-    }
-    .btn:hover{border-color: rgba(80,220,255,.5); box-shadow: 0 0 0 6px rgba(80,220,255,.08)}
-    .btn.primary{
-      border-color: rgba(80,220,255,.60);
-      background: linear-gradient(180deg, rgba(80,220,255,.18), rgba(255,255,255,.03));
-    }
-
-    .side{
-      display:grid; gap:14px;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
     }
     .card{
+      grid-column: span 6;
       border:1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255,255,255,.03);
-      padding:18px;
+      padding:14px;
+      box-shadow: var(--shadow);
+      display:flex; gap:12px; align-items:flex-start;
+      transition: transform .18s ease, border-color .18s ease;
+      position:relative;
+      overflow:hidden;
     }
-    .card h3{margin:0 0 10px; font-size:14px; color: rgba(255,255,255,.85); letter-spacing:.2px}
-    .card p{margin:0; color: var(--muted); font-size:13.5px; line-height:1.55}
-    .kv{display:grid; gap:8px; margin-top:12px}
-    .kv div{display:flex; justify-content:space-between; gap:10px; font-size:13px; color:rgba(255,255,255,.84)}
-    .kv span{color:var(--muted)}
-    .hr{height:1px; background:var(--line); margin:16px 0}
+    .card:hover{transform: translateY(-2px); border-color: rgba(125,211,252,.33)}
+    @media (max-width: 860px){ .card{grid-column: span 12;} }
 
-    section{padding:24px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin: 10px 0 14px;
+    .icon{
+      width:38px; height:38px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+      position:relative;
     }
-    .section-title h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.25px;
+    .icon:after{
+      content:"";
+      position:absolute; inset:-14px;
+      background: radial-gradient(circle, rgba(125,211,252,.18), transparent 60%);
+      opacity:0;
+      transition: opacity .18s ease;
+      pointer-events:none;
     }
-    .section-title small{color:var(--muted); font-size:12.5px}
+    .card:hover .icon:after{opacity:1}
+    .icon svg{width:20px; height:20px; opacity:.9}
+    .content{min-width:0}
+    .topline{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .title{margin:8px 0 6px; font-size:15px; letter-spacing:-.2px}
+    .role{margin:0 0 8px; color:rgba(255,255,255,.76); font-size:13.5px}
+    ul{margin:0; padding-left:16px; color:var(--muted); font-size:13px; line-height:1.55}
+    li{margin: 4px 0}
 
-    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:14px}
-    .col6{grid-column: span 6}
-    .col4{grid-column: span 4}
-    .col8{grid-column: span 8}
-    .col12{grid-column: span 12}
-    @media (max-width: 900px){
-      .col6,.col4,.col8{grid-column: span 12}
-    }
-    .tile{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
-      padding:16px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.25);
-    }
-    .tile:hover{border-color: rgba(80,220,255,.35)}
-    .tile .meta{display:flex; justify-content:space-between; gap:10px; align-items:center; color:var(--muted); font-size:12.5px}
-    .tile h3{margin:10px 0 8px; font-size:16px}
-    .tile ul{margin:10px 0 0 18px; color:var(--muted); font-size:13.5px; line-height:1.55}
-    .badge{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(80,220,255,.38);
-      color: rgba(255,255,255,.86);
-      background: rgba(80,220,255,.10);
-    }
-    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-    .tag{
-      font-size:12px; color:rgba(255,255,255,.82);
-      border:1px solid var(--line);
-      padding:6px 9px; border-radius:999px;
-      background: rgba(255,255,255,.02);
+    /* tiny, tasteful motion */
+    @media (prefers-reduced-motion: no-preference){
+      .float{
+        animation: float 6.5s ease-in-out infinite;
+      }
+      .pulse{
+        animation: pulse 4.5s ease-in-out infinite;
+      }
+      @keyframes float{
+        0%,100%{transform: translateY(0)}
+        50%{transform: translateY(-2px)}
+      }
+      @keyframes pulse{
+        0%,100%{filter: drop-shadow(0 0 0 rgba(125,211,252,0))}
+        50%{filter: drop-shadow(0 0 10px rgba(125,211,252,.18))}
+      }
     }
 
     footer{
-      padding:36px 0 30px;
+      margin-top: 34px;
+      padding-top: 18px;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size:13px;
+      font-size: 12.5px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
-    .footgrid{display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center}
-    .footlinks{display:flex; gap:12px; flex-wrap:wrap}
-    .footlinks a{color: rgba(255,255,255,.78); text-decoration:none}
-    .footlinks a:hover{color: var(--accent)}
-
-    /* little reveal */
-    .reveal{opacity:0; transform: translateY(10px); transition: all .6s ease}
-    .reveal.on{opacity:1; transform:none}
-
-    /* skip link */
-    .skip{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
-    .skip:focus{left:18px; top:18px; width:auto; height:auto; padding:10px 12px; border-radius:10px; background:#111827; border:1px solid var(--line); z-index:999}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
   </style>
 </head>
 <body>
-  <a class="skip" href="#content">Skip to content</a>
-
-  <div class="topbar">
-    <div class="nav">
-      <a class="brand" href="#top" aria-label="Home">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <b>Asser Abdelgawad</b>
-          <span>Embedded • DSP • FPGA • Test Automation</span>
-        </div>
-      </a>
-
-      <div class="navlinks">
-        <a class="pill" href="#experience">Experience</a>
-        <a class="pill" href="#projects">Projects</a>
-        <a class="pill" href="#skills">Skills</a>
-        <a class="pill" href="#education">Education</a>
-        <a class="pill primary" href="contact.html">Contact</a>
+  <div class="wrap">
+    <header>
+      <div class="id">
+        <h1>Asser Abdelgawad</h1>
+        <p>
+          Embedded systems
+        </p>
       </div>
-    </div>
-  </div>
-
-  <main id="content" class="wrap">
-    <div id="top" class="hero">
-      <div class="hcard reveal">
-        <div class="hinner">
-          <div class="kicker"><span class="dot"></span> Available for internships • Building robust systems</div>
-          <h1>Ship-ready firmware, test automation, and signal-processing systems.</h1>
-          <p class="subtitle">
-            Engineering Science (ECE) at the University of Toronto. Previously at Tesla (Low Voltage Test & Automation + Electronics Design),
-            with experience spanning CAN/CAN-FD tooling, driver development, high-speed Ethernet testing, HIL/SIL validation, and embedded DSP.
-          </p>
-
-          <div class="chips">
-            <div class="chip"><strong>Focus:</strong> Embedded C/C++</div>
-            <div class="chip"><strong>Focus:</strong> CAN/CAN-FD • SPI • Ethernet</div>
-            <div class="chip"><strong>Focus:</strong> FreeRTOS • FPGA (Verilog)</div>
-            <div class="chip"><strong>Tools:</strong> Python • CMake • GTest</div>
-          </div>
-
-          <div class="actions">
-            <a class="btn primary" href="#projects">View projects</a>
-            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download resume (PDF)</a>
-            <a class="btn" href="https://github.com/asso-the-coder" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn" href="#" id="linkedinLink" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-
-          <div class="hr"></div>
-          <p class="subtitle" style="margin:0">
-            Tip: If you landed here from a resume link, the fastest overview is <a href="#experience" style="color:var(--accent)">Experience</a> → <a href="#projects" style="color:var(--accent)">Projects</a>.
-          </p>
-        </div>
+      <div class="links">
+        <a class="pill" href="https://github.com/asso-the-coder" target="_blank" rel="noopener">GitHub</a>
+        <a class="pill" href="https://www.linkedin.com/in/asser-abdelgawad-928359229/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
+    </header>
 
-      <aside class="side">
-        <div class="card reveal">
-          <h3>Quick highlights</h3>
-          <p>Hands-on with production test, embedded drivers, board bring-up, and data pipelines. Comfortable jumping between hardware and software.</p>
-          <div class="kv">
-            <div><b>Location</b><span>Toronto, Canada</span></div>
-            <div><b>Core</b><span>Embedded • Automation • DSP</span></div>
-            <div><b>Favorite stack</b><span>C/C++ + Python + CI tests</span></div>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <h3>Contact</h3>
-          <p>Use the contact form page (recommended), or email directly.</p>
-          <div class="kv">
-            <div><b>Email</b><span><a href="mailto:asso.abdelgawad@gmail.com" style="color:var(--accent)">asso.abdelgawad@gmail.com</a></span></div>
-            <div><b>Form</b><span><a href="contact.html" style="color:var(--accent)">contact.html</a></span></div>
-          </div>
-        </div>
-      </aside>
-    </div>
+    <nav>
+      <a class="pill" href="#experience">Experience</a>
+      <a class="pill" href="#projects">Projects</a>
+    </nav>
 
     <section id="experience">
       <div class="section-title">
         <h2>Experience</h2>
-        <small>Selected impact from internships</small>
+        <small>Internships</small>
       </div>
 
       <div class="grid">
-        <div class="tile col6 reveal">
-          <div class="meta"><span><span class="badge">Tesla</span> Low Voltage Test & Automation Intern</span><span>Sep 2024 – Dec 2024</span></div>
-          <ul>
-            <li>Built C drivers for port-mapped I/O devices using bit manipulation, wrapped as shared objects for Python integration.</li>
-            <li>Implemented a brake releaser mechanism using a PCAN-Pro dongle + UDS APIs for CAN-FD routines.</li>
-            <li>Trained a ResNet/OpenCV-based CNN to detect vehicle features (99.01% accuracy) for production-line vision checks.</li>
-            <li>Brought up an analog front-end + high-side drive PCBA and wrote a Python library using NI-DAQmx gRPC.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">C</span><span class="tag">Python</span><span class="tag">CAN-FD</span><span class="tag">UDS</span><span class="tag">OpenCV</span><span class="tag">gRPC</span>
+        <article class="card">
+          <div class="icon pulse" aria-hidden="true">
+            <!-- lightning -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           </div>
-        </div>
+          <div class="content">
+            <div class="topline"><span class="mono">Tesla</span><span>Sep 2024 — Dec 2024</span></div>
+            <div class="title">Low Voltage Test & Automation Intern</div>
+            <ul>
+              <li>Trained a ResNet/OpenCV model to detect vehicle features (99.01% accuracy) for production checks.</li>
+            </ul>
+          </div>
+        </article>
 
-        <div class="tile col6 reveal">
-          <div class="meta"><span><span class="badge">Tesla</span> Electronics Design Engineering Intern</span><span>May 2024 – Aug 2024</span></div>
-          <ul>
-            <li>Owned MCU signal-flow architecture for a next-gen, high-volume Supercharger main controller PCB.</li>
-            <li>Designed logic-gate circuits in Altium and a high-voltage interrupt loop with timing analysis.</li>
-            <li>Performed signal-integrity testing on 1000BASE‑T1 PAM3 Ethernet by quantifying packet error rates on Linux SoC.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">Altium</span><span class="tag">Ethernet</span><span class="tag">Linux</span><span class="tag">Timing</span><span class="tag">PCB</span>
+        <article class="card">
+          <div class="icon float" aria-hidden="true">
+            <!-- circuit -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.6"/><path d="M7 12H3m18 0h-4M12 7V3m0 18v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </div>
-        </div>
+          <div class="content">
+            <div class="topline"><span class="mono">Tesla</span><span>May 2024 — Aug 2024</span></div>
+            <div class="title">Electronics Design Engineering Intern</div>
+            <ul>
+              <li>Owned MCU signal‑flow architecture for a next‑gen high‑volume Supercharger main controller PCB.</li>
+              <li>Designed logic circuits in Altium and a high‑voltage interrupt loop with timing analysis.</li>
+              <li>Ran signal‑integrity tests on 1000BASE‑T1 PAM3 Ethernet by measuring packet error rates on Linux SoC.</li>
+            </ul>
+          </div>
+        </article>
 
-        <div class="tile col6 reveal">
-          <div class="meta"><span><span class="badge">Kepler</span> Power Systems Engineering Intern</span><span>Sep 2023 – Apr 2024</span></div>
-          <ul>
-            <li>Verified BMS safety logic, control loops, UART buses, and cell monitoring using a HIL suite on TI MSP430.</li>
-            <li>Built a framework to save genealogy data to FRAM/EEPROM in safety-critical systems.</li>
-            <li>Improved solar panel efficiency by 5% by optimizing MPPT scan rate; used multithreading for telemetry + safety controls.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">HIL</span><span class="tag">MSP430</span><span class="tag">UART</span><span class="tag">FRAM</span><span class="tag">Multithreading</span>
+        <article class="card">
+          <div class="icon float" aria-hidden="true">
+            <!-- satellite -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 10 4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M14 10l3-6 3 3-6 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 18l-2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </div>
-        </div>
+          <div class="content">
+            <div class="topline"><span class="mono">Kepler Communications</span><span>Sep 2023 — Apr 2024</span></div>
+            <div class="title">Power Systems Engineering Intern</div>
+            <ul>
+              <li>Verified BMS safety logic, control loops, UART buses, and cell monitoring in a HIL suite (TI MSP430).</li>
+            </ul>
+          </div>
+        </article>
 
-        <div class="tile col6 reveal">
-          <div class="meta"><span><span class="badge">Pulsenics</span> Firmware QA Intern</span><span>Jun 2023 – Sep 2023</span></div>
-          <ul>
-            <li>Developed a PID controller in C for a PFC/DAB power system using TI tools and ARM Cortex‑M MCUs.</li>
-            <li>Verified data acquisition by writing ISRs in C for sensor qualification and ADC configuration.</li>
-            <li>Designed a PoE switch for 1000BASE‑T Ethernet packet communications.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">C</span><span class="tag">ISR</span><span class="tag">ADC</span><span class="tag">Cortex‑M</span><span class="tag">Ethernet</span>
+        <article class="card">
+          <div class="icon pulse" aria-hidden="true">
+            <!-- waveform -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-6 4 12 2-6h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-        </div>
+          <div class="content">
+            <div class="topline"><span class="mono">Pulsenics</span><span>Jun 2023 — Sep 2023</span></div>
+            <div class="title">Firmware QA Intern</div>
+            <ul>
+              <li>Verified data acquisition by writing ISRs in C for sensor qualification and ADC configuration.</li>
+              <li>Designed a PoE switch for 1000BASE‑T Ethernet packet communications.</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 
     <section id="projects">
       <div class="section-title">
         <h2>Projects</h2>
-        <small>Systems-first projects with testing + rigor</small>
       </div>
 
       <div class="grid">
-        <div class="tile col4 reveal">
-          <div class="meta"><span class="badge">SIL</span><span>Mar 2025</span></div>
-          <h3>Custom Software‑In‑The‑Loop Environment</h3>
-          <ul>
-            <li>Built a SIL app simulating signals to/from a temperature sensor over SPI for a bare‑metal ARM target.</li>
-            <li>Created a GTest suite covering graceful exits, bus failures, and noise filtering behavior.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">SPI</span><span class="tag">ARM</span><span class="tag">GTest</span><span class="tag">C</span>
+        <article class="card">
+          <div class="icon pulse" aria-hidden="true">
+            <!-- chip -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 8h8v8H8V8Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </div>
-        </div>
-
-        <div class="tile col4 reveal">
-          <div class="meta"><span class="badge">FreeRTOS</span><span>Jan–Feb 2025</span></div>
-          <h3>Smart Home Security System</h3>
-          <ul>
-            <li>Processed Doppler + ultrasonic radar sensors using FreeRTOS tasks and queues for inter-task comms.</li>
-            <li>Ran on a custom hardware platform designed in Vivado for a Xilinx SoC.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">FreeRTOS</span><span class="tag">Vivado</span><span class="tag">Xilinx SoC</span><span class="tag">Queues</span>
+          <div class="content">
+            <div class="topline"><span class="mono">Software‑In‑The‑Loop</span><span>Mar 2025</span></div>
+            <div class="title">Custom SIL Environment</div>
+            <ul>
+              <li>Simulated signals to/from an automotive sensor over SPI for a bare‑metal ARM system.</li>
+              <li>Tested with GTest (graceful exits, bus failures, noise filtering).</li>
+            </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="tile col4 reveal">
-          <div class="meta"><span class="badge">Research</span><span>May–Aug 2022</span></div>
-          <h3>Biomedical Imaging Software</h3>
-          <ul>
-            <li>Implemented signal processing algorithms to deconvolve thermal images.</li>
-            <li>Work published in a journal (impact factor 14.7 noted in resume).</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">Signal Processing</span><span class="tag">Imaging</span><span class="tag">Algorithms</span>
+        <article class="card">
+          <div class="icon float" aria-hidden="true">
+            <!-- shield -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 20 6v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           </div>
-        </div>
-
-        <div class="tile col6 reveal">
-          <div class="meta"><span class="badge">ML</span><span>Jan 2022</span></div>
-          <h3>Amazon Customer Review Analyzer (Daisy Hackathon Finalist)</h3>
-          <ul>
-            <li>Used Word2Vec to analyze Amazon customer reviews for product performance signals.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">Word2Vec</span><span class="tag">NLP</span><span class="tag">Python</span>
+          <div class="content">
+            <div class="topline"><span class="mono">Embedded / RTOS</span><span>Jan–Feb 2025</span></div>
+            <div class="title">Smart Home Security System</div>
+            <ul>
+              <li>Processed Doppler + ultrasonic radar sensor inputs using FreeRTOS tasks/queues.</li>
+              <li>Layered atop a custom Vivado hardware platform for a Xilinx SoC.</li>
+            </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="tile col6 reveal">
-          <div class="meta"><span class="badge">C++</span><span>Nov 2019 – Jan 2020</span></div>
-          <h3>Plastania Video Game</h3>
-          <ul>
-            <li>Built an Angry Birds‑style game in C++ using the Allegro graphics package and OOP.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">C++</span><span class="tag">Allegro</span><span class="tag">OOP</span>
+        <article class="card">
+          <div class="icon float" aria-hidden="true">
+            <!-- thermal / imaging -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v10a4 4 0 1 0 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 21h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </div>
-        </div>
-      </div>
-    </section>
+          <div class="content">
+            <div class="topline"><span class="mono">Signal Processing</span><span>May–Aug 2022</span></div>
+            <div class="title">Biomedical Imaging Software Research</div>
+            <ul>
+              <li>Implemented algorithms to deconvolve thermal images; published in a journal (impact factor 14.7).</li>
+            </ul>
+          </div>
+        </article>
 
-    <section id="skills">
-      <div class="section-title">
-        <h2>Technical skills</h2>
-        <small>Grouped for scanning</small>
-      </div>
+        <article class="card">
+          <div class="icon pulse" aria-hidden="true">
+            <!-- chat bubble -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H7l-3 3V5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 9h10M7 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <div class="content">
+            <div class="topline"><span class="mono">NLP / ML</span><span>Jan 2022</span></div>
+            <div class="title">Amazon Customer Review Analyzer (Hackathon Finalist)</div>
+            <ul>
+              <li>Used Word2Vec to analyze reviews for product performance signals.</li>
+            </ul>
+          </div>
+        </article>
 
-      <div class="grid">
-        <div class="tile col4 reveal">
-          <div class="meta"><span class="badge">Languages</span><span></span></div>
-          <ul>
-            <li>C, C++, Assembly, Verilog, Python</li>
-            <li>MATLAB</li>
-          </ul>
-        </div>
-
-        <div class="tile col4 reveal">
-          <div class="meta"><span class="badge">Protocols</span><span></span></div>
-          <ul>
-            <li>CAN, CAN‑FD, Quad SPI, I2C, UART</li>
-            <li>Ethernet, RS‑422/485, BLE/UWB</li>
-            <li>gRPC, TCP/IP, UDP, SCPI</li>
-          </ul>
-        </div>
-
-        <div class="tile col4 reveal">
-          <div class="meta"><span class="badge">Tools & Tech</span><span></span></div>
-          <ul>
-            <li>FreeRTOS, OpenCV, GTest, Qt, PyTest</li>
-            <li>CMake, Altium, Code Composer Studio</li>
-            <li>Electronic loads, oscilloscopes, spectrum analyzers</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="section-title">
-        <h2>Education</h2>
-        <small>Current</small>
-      </div>
-
-      <div class="grid">
-        <div class="tile col12 reveal">
-          <div class="meta"><span class="badge">University of Toronto</span><span>Grad: Apr 2027</span></div>
-          <h3>B.A.Sc. Engineering Science — Electrical & Computer Engineering</h3>
-          <p style="color:var(--muted); margin:10px 0 0; font-size:13.5px; line-height:1.55">
-            Focused on embedded systems, digital design, and signal processing. Portfolio is intentionally optimized for fast recruiter scanning.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="next">
-      <div class="section-title">
-        <h2>Next upgrades</h2>
-        <small>When you’re ready to level it up</small>
-      </div>
-      <div class="grid">
-        <div class="tile col6 reveal">
-          <h3>Project deep-dives</h3>
-          <ul>
-            <li>Add screenshots, diagrams, and short writeups (“problem → constraints → approach → results”).</li>
-            <li>Link each project tile to a dedicated page or repo.</li>
-          </ul>
-        </div>
-        <div class="tile col6 reveal">
-          <h3>Move off GitHub Pages (optional)</h3>
-          <ul>
-            <li>Keep the same domain; just switch DNS to Vercel/Netlify or your own server later.</li>
-            <li>Add a blog or case-study section for long-form engineering writeups.</li>
-          </ul>
-        </div>
+        <article class="card">
+          <div class="icon float" aria-hidden="true">
+            <!-- gamepad -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 12h10l2 4a3 3 0 0 1-2.7 4H7.7A3 3 0 0 1 5 16l2-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13v2M8 14h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15.5 14h.01M17 13.5h.01" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          </div>
+          <div class="content">
+            <div class="topline"><span class="mono">C++</span><span>Nov 2019 — Jan 2020</span></div>
+            <div class="title">Plastania Video Game</div>
+            <ul>
+              <li>Built an Angry Birds‑style game in C++ using Allegro and OOP.</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 
     <footer>
-      <div class="footgrid">
-        <div>© <span id="year"></span> Asser Abdelgawad • Built for fast recruiter scanning</div>
-        <div class="footlinks">
-          <a href="#top">Top</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
+      <div>© <span id="y"></span> Asser Abdelgawad</div>
     </footer>
-  </main>
+  </div>
 
   <script>
-    // Fill year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // LinkedIn placeholder safety: keep it inert until you set it.
-    // Replace the href below with your real LinkedIn URL.
-    const linkedin = document.getElementById('linkedinLink');
-    linkedin.addEventListener('click', (e) => {
-      if (linkedin.getAttribute('href') === '#') {
-        e.preventDefault();
-        alert('Set your LinkedIn URL: edit index.html and replace the LinkedIn link near the top.');
-      }
-    });
-
-    // Reveal on scroll
-    const items = Array.from(document.querySelectorAll('.reveal'));
-    const io = new IntersectionObserver((entries) => {
-      for (const ent of entries) {
-        if (ent.isIntersecting) ent.target.classList.add('on');
-      }
-    }, { threshold: 0.12 });
-    items.forEach(el => io.observe(el));
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
