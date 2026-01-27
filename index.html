@@ -3,316 +3,899 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Asser Abdelgawad</title>
-  <meta name="description" content="Portfolio" />
+  <title>Asser Abdelgawad • Embedded Systems</title>
+  <meta name="description" content="Embedded systems portfolio • projects, experience, and contact" />
+
   <style>
     :root{
-      --bg:#0b0f14;
-      --panel:#0f1620;
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.62);
-      --line:rgba(255,255,255,.10);
-      --accent:#7dd3fc; /* subtle cyan */
-      --accent2:#a78bfa; /* subtle violet */
-      --radius:16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --bg:#070a0f;
+      --panel: rgba(255,255,255,.035);
+      --panel2: rgba(255,255,255,.02);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.42);
+      --radius: 18px;
+
+      --a1:#7dd3fc; /* cyan */
+      --a2:#a78bfa; /* violet */
+      --a3:#34d399; /* green */
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 520px at 15% 0%, rgba(125,211,252,.10), transparent 55%),
-        radial-gradient(900px 520px at 85% 0%, rgba(167,139,250,.10), transparent 55%),
-        linear-gradient(180deg, #06080c, var(--bg));
+        radial-gradient(1100px 520px at 12% 0%, rgba(125,211,252,.12), transparent 55%),
+        radial-gradient(900px 520px at 86% 8%, rgba(167,139,250,.12), transparent 55%),
+        radial-gradient(900px 520px at 60% 110%, rgba(52,211,153,.10), transparent 60%),
+        linear-gradient(180deg, #05070b, var(--bg));
     }
-    a{color:inherit}
-    .wrap{max-width:980px; margin:0 auto; padding:28px}
-    header{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
-      padding: 18px 0 22px;
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding: 26px; }
+
+    /* NAV */
+    .nav{
+      position: sticky; top: 0;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(7,10,15,.85), rgba(7,10,15,.55));
+      border-bottom: 1px solid var(--line);
+      z-index: 20;
     }
-    .id h1{margin:0; font-size:28px; letter-spacing:-.4px}
-    .id p{margin:8px 0 0; color:var(--muted); line-height:1.55; max-width:65ch; font-size:14px}
-    .links{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+    .navin{
+      max-width:1100px; margin:0 auto; padding: 14px 26px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width: 0;
+    }
+    .dot{
+      width:11px; height:11px; border-radius:999px;
+      background: linear-gradient(135deg, var(--a1), var(--a2));
+      box-shadow: 0 0 0 6px rgba(125,211,252,.08);
+      flex: 0 0 auto;
+    }
+    .brand strong{ letter-spacing:-.35px; }
+    .brand span{ color:var(--muted); font-size:12.5px; margin-left:8px; }
+
+    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
-      text-decoration:none;
-      font-size:13px;
+      font-size: 13px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
-    .pill:hover{border-color: rgba(125,211,252,.40); box-shadow: 0 0 0 6px rgba(125,211,252,.08)}
-    nav{
-      display:flex; gap:10px; flex-wrap:wrap;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 22px;
+    .pill:hover{ transform: translateY(-1px); border-color: rgba(125,211,252,.38); box-shadow: 0 0 0 6px rgba(125,211,252,.08); }
+    .pill.primary{
+      border-color: rgba(125,211,252,.40);
+      background: linear-gradient(135deg, rgba(125,211,252,.15), rgba(167,139,250,.10));
     }
+
+    /* HERO */
+    .hero{
+      padding: 34px 0 10px;
+      display:grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap:16px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){ .hero{ grid-template-columns: 1fr; } }
+
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-main{ padding: 22px; }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background: rgba(255,255,255,.02);
+      color: rgba(255,255,255,.80);
+      font-size: 12.5px;
+    }
+    .kicker i{
+      width: 8px; height: 8px; border-radius:999px;
+      background: var(--a3);
+      box-shadow: 0 0 0 6px rgba(52,211,153,.10);
+      display:inline-block;
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: 42px;
+      letter-spacing: -1.05px;
+      line-height: 1.06;
+    }
+    .grad{
+      background: linear-gradient(135deg, var(--a1), var(--a2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .subtitle{
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 70ch;
+      font-size: 14.5px;
+    }
+    .cta{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top: 10px; }
+    .cta .pill{ padding: 10px 13px; }
+
+    .chips{
+      margin-top: 14px;
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .chip{
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 999px;
+      background: rgba(255,255,255,.02);
+      color: rgba(255,255,255,.72);
+      font-size: 12.5px;
+    }
+
+    .hero-side{
+      padding: 18px;
+      display:flex;
+      flex-direction: column;
+      gap:12px;
+      justify-content: space-between;
+      background:
+        radial-gradient(520px 220px at 70% 10%, rgba(125,211,252,.12), transparent 55%),
+        radial-gradient(520px 220px at 20% 70%, rgba(167,139,250,.12), transparent 55%),
+        var(--panel2);
+    }
+    .profile{
+      display:flex; gap:12px; align-items:center;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(0,0,0,.14);
+    }
+    .avatar{
+      width: 54px; height: 54px; border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(125,211,252,.20), rgba(167,139,250,.16));
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; }
+    .profile b{ display:block; letter-spacing:-.3px; }
+    .profile small{ color: var(--muted); }
+
+    .mini-grid{
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .mini{
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+      padding: 12px;
+    }
+    .mini .t{ color: rgba(255,255,255,.80); font-size: 12.5px; }
+    .mini .v{ margin-top: 7px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+    /* SECTIONS */
+    section{ margin-top: 26px; }
     .section-title{
-      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
-      margin: 24px 0 12px;
+      display:flex; align-items: baseline; justify-content: space-between;
+      gap: 12px;
+      margin: 22px 0 12px;
     }
-    .section-title h2{margin:0; font-size:14px; letter-spacing:.22px; text-transform:uppercase; color:rgba(255,255,255,.82)}
-    .section-title small{color:var(--muted); font-size:12.5px}
+    .section-title h2{
+      margin:0;
+      font-size: 13px;
+      letter-spacing: .22px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.82);
+    }
+    .section-title small{ color: var(--muted); font-size: 12.5px; }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:12px;
+      gap: 12px;
     }
-    .card{
+
+    /* ABOUT */
+    .about{ grid-column: span 7; padding: 16px; }
+    .about p{ margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+    .stats{ grid-column: span 5; padding: 16px; }
+    @media (max-width: 920px){ .about, .stats{ grid-column: span 12; } }
+
+    .statgrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .stat{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      padding: 12px;
+    }
+    .stat b{ display:block; font-size: 12.5px; color: rgba(255,255,255,.85); }
+    .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+    /* PROJECTS */
+    .proj-feature{ grid-column: span 12; }
+    .proj-wrap{ padding: 14px; }
+    .proj-toolbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .search{
+      flex: 1 1 240px;
+      display:flex; align-items:center; gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.86);
+    }
+    .search input{
+      width:100%;
+      border:0; outline:0;
+      background: transparent;
+      color: inherit;
+      font-size: 13px;
+    }
+    .filters{ display:flex; gap:8px; flex-wrap:wrap; }
+    .filter{
+      cursor:pointer;
+      user-select:none;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      font-size: 12.5px;
+      color: rgba(255,255,255,.75);
+    }
+    .filter.active{
+      border-color: rgba(125,211,252,.40);
+      background: linear-gradient(135deg, rgba(125,211,252,.12), rgba(167,139,250,.08));
+      color: rgba(255,255,255,.88);
+    }
+
+    .proj-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    .proj{
       grid-column: span 6;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
       background: rgba(255,255,255,.03);
-      padding:14px;
+      overflow:hidden;
       box-shadow: var(--shadow);
-      display:flex; gap:12px; align-items:flex-start;
       transition: transform .18s ease, border-color .18s ease;
+      position:relative;
+    }
+    .proj:hover{ transform: translateY(-2px); border-color: rgba(125,211,252,.30); }
+    @media (max-width: 920px){ .proj{ grid-column: span 12; } }
+
+    .proj-media{
+      height: 170px;
+      background:
+        radial-gradient(520px 260px at 30% 30%, rgba(125,211,252,.16), transparent 55%),
+        radial-gradient(520px 260px at 80% 40%, rgba(167,139,250,.14), transparent 60%),
+        rgba(255,255,255,.02);
+      border-bottom: 1px solid rgba(255,255,255,.08);
       position:relative;
       overflow:hidden;
     }
-    .card:hover{transform: translateY(-2px); border-color: rgba(125,211,252,.33)}
-    @media (max-width: 860px){ .card{grid-column: span 12;} }
-
-    .icon{
-      width:38px; height:38px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      display:grid; place-items:center;
-      flex: 0 0 auto;
-      position:relative;
+    .proj-media img{
+      width:100%; height:100%; object-fit:cover;
+      opacity: .92;
     }
-    .icon:after{
-      content:"";
-      position:absolute; inset:-14px;
-      background: radial-gradient(circle, rgba(125,211,252,.18), transparent 60%);
-      opacity:0;
-      transition: opacity .18s ease;
-      pointer-events:none;
-    }
-    .card:hover .icon:after{opacity:1}
-    .icon svg{width:20px; height:20px; opacity:.9}
-    .content{min-width:0}
-    .topline{
+    .proj-body{ padding: 14px; }
+    .proj-top{
       display:flex; align-items:center; justify-content:space-between; gap:10px;
-      color:var(--muted);
-      font-size:12.5px;
+      color: var(--muted); font-size: 12.5px;
     }
-    .title{margin:8px 0 6px; font-size:15px; letter-spacing:-.2px}
-    .role{margin:0 0 8px; color:rgba(255,255,255,.76); font-size:13.5px}
-    ul{margin:0; padding-left:16px; color:var(--muted); font-size:13px; line-height:1.55}
-    li{margin: 4px 0}
+    .proj h3{ margin: 8px 0 6px; font-size: 16px; letter-spacing:-.25px; }
+    .proj p{ margin: 0 0 10px; color: rgba(255,255,255,.74); font-size: 13.5px; line-height: 1.5; }
+    .tags{ display:flex; gap:7px; flex-wrap:wrap; }
+    .tag{
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.15);
+      padding: 6px 8px;
+      border-radius: 999px;
+    }
+    .proj-actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .ghost{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      font-size: 12.5px;
+      color: rgba(255,255,255,.82);
+    }
+    .ghost:hover{ border-color: rgba(125,211,252,.35); box-shadow: 0 0 0 6px rgba(125,211,252,.08); }
 
-    /* tiny, tasteful motion */
-    @media (prefers-reduced-motion: no-preference){
-      .float{
-        animation: float 6.5s ease-in-out infinite;
-      }
-      .pulse{
-        animation: pulse 4.5s ease-in-out infinite;
-      }
-      @keyframes float{
-        0%,100%{transform: translateY(0)}
-        50%{transform: translateY(-2px)}
-      }
-      @keyframes pulse{
-        0%,100%{filter: drop-shadow(0 0 0 rgba(125,211,252,0))}
-        50%{filter: drop-shadow(0 0 10px rgba(125,211,252,.18))}
-      }
+    /* EXPERIENCE */
+    .timeline{ grid-column: span 12; padding: 14px; }
+    .tl{
+      display:grid; gap:10px;
     }
+    .item{
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+    }
+    .item .head{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .item b{ color: rgba(255,255,255,.90); font-size: 14px; letter-spacing:-.2px; }
+    .item .role{ margin-top: 6px; color: rgba(255,255,255,.80); font-size: 13.5px; }
+    .item ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .item li{ margin: 4px 0; }
+
+    /* SKILLS + CONTACT */
+    .skills{ grid-column: span 7; padding: 14px; }
+    .contact{ grid-column: span 5; padding: 14px; }
+    @media (max-width: 920px){ .skills, .contact{ grid-column: span 12; } }
+
+    .skillgrid{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .skill{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      color: rgba(255,255,255,.75);
+      font-size: 12.5px;
+    }
+
+    .contactbox{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .row{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color: var(--muted); font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .row:last-child{ border-bottom:0; }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
 
     footer{
-      margin-top: 34px;
-      padding-top: 18px;
+      margin-top: 30px;
+      padding: 18px 0;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 12.5px;
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
+
+    /* subtle reveal */
+    .reveal{ opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s ease; }
+    .reveal.on{ opacity: 1; transform: translateY(0); }
+
+    /* small icons */
+    .ico{ width: 16px; height: 16px; opacity: .9; display:inline-block; vertical-align:-3px; }
   </style>
 </head>
+
 <body>
+  <div class="nav">
+    <div class="navin">
+      <div class="brand">
+        <span class="dot"></span>
+        <div style="min-width:0">
+          <strong>Asser Abdelgawad</strong>
+          <span class="mono">Embedded • Test Automation • DSP-ish</span>
+        </div>
+      </div>
+      <div class="navlinks">
+        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#contact">Contact</a>
+        <a class="pill primary" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap">
-    <header>
-      <div class="id">
-        <h1>Asser Abdelgawad</h1>
-        <p>
-          Embedded systems
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card hero-main reveal">
+        <div class="kicker"><i></i> Available for internships / research • Toronto</div>
+        <h1>Building <span class="grad">robust embedded systems</span>—from low-level drivers to test automation.</h1>
+        <p class="subtitle">
+          I’m an Electrical & Computer Engineering student focused on embedded software, hardware bring-up, and production-grade test systems.
+          I like projects where signals meet software: DMA, sensors, RTOS, comms, and real debugging.
         </p>
-      </div>
-      <div class="links">
-        <a class="pill" href="https://github.com/asso-the-coder" target="_blank" rel="noopener">GitHub</a>
-        <a class="pill" href="https://www.linkedin.com/in/asser-abdelgawad-928359229/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </header>
 
-    <nav>
-      <a class="pill" href="#experience">Experience</a>
-      <a class="pill" href="#projects">Projects</a>
-    </nav>
+        <div class="cta">
+          <a class="pill primary" href="#projects">See projects</a>
+          <a class="pill" href="https://github.com/asso-the-coder" target="_blank" rel="noopener">GitHub</a>
+          <a class="pill" href="https://www.linkedin.com/in/asser-abdelgawad-928359229/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Download resume</a>
+        </div>
 
-    <section id="experience">
+        <div class="chips" aria-label="Focus areas">
+          <span class="chip">C/C++</span>
+          <span class="chip">Embedded Linux</span>
+          <span class="chip">CAN / SPI / I2C / Ethernet</span>
+          <span class="chip">FreeRTOS</span>
+          <span class="chip">Python Automation</span>
+          <span class="chip">HIL/SIL Testing</span>
+        </div>
+      </div>
+
+      <div class="card hero-side reveal">
+        <div class="profile">
+          <div class="avatar" title="Add your photo at assets/profile.jpg">
+            <!-- Optional: add assets/profile.jpg -->
+            <img src="assets/profile.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div>
+            <b>Asser Abdelgawad</b>
+            <small class="mono">B.A.Sc. EngSci ECE • UofT</small>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini">
+            <div class="t mono">Current focus</div>
+            <div class="v">Test automation, embedded drivers, signal integrity / comms.</div>
+          </div>
+          <div class="mini">
+            <div class="t mono">I enjoy</div>
+            <div class="v">Bring-up, debugging, and turning “it works” into “it ships.”</div>
+          </div>
+          <div class="mini">
+            <div class="t mono">Portfolio style</div>
+            <div class="v">Projects with visuals + measurable outcomes.</div>
+          </div>
+          <div class="mini">
+            <div class="t mono">Open to</div>
+            <div class="v">Embedded / DSP / robotics internships.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="pill" href="#contact">Copy email</a>
+          <a class="pill" href="#projects">Featured work</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
       <div class="section-title">
-        <h2>Experience</h2>
-        <small>Internships</small>
+        <h2>About</h2>
+        <small>Quick story + what I’m optimizing for</small>
       </div>
 
       <div class="grid">
-        <article class="card">
-          <div class="icon pulse" aria-hidden="true">
-            <!-- lightning -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <div class="card about reveal">
+          <p>
+            I’m an Engineering Science (ECE) student who likes working close to the metal—drivers, timing, buses, and systems that
+            have to behave in the real world. I’ve done embedded + test work across automotive and space power systems,
+            and I’m always chasing higher signal-to-noise in both software and measurements.
+          </p>
+          <div class="chips" style="margin-top:12px">
+            <span class="chip">Systems thinking</span>
+            <span class="chip">Measurement-first debugging</span>
+            <span class="chip">Code that’s testable</span>
+            <span class="chip">Documentation that’s usable</span>
           </div>
-          <div class="content">
-            <div class="topline"><span class="mono">Tesla</span><span>Sep 2024 — Dec 2024</span></div>
-            <div class="title">Low Voltage Test & Automation Intern</div>
-            <ul>
-              <li>Trained a ResNet/OpenCV model to detect vehicle features (99.01% accuracy) for production checks.</li>
-            </ul>
-          </div>
-        </article>
+        </div>
 
-        <article class="card">
-          <div class="icon float" aria-hidden="true">
-            <!-- circuit -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.6"/><path d="M7 12H3m18 0h-4M12 7V3m0 18v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div class="card stats reveal">
+          <div class="mono" style="color:rgba(255,255,255,.82); font-size:13px;">At-a-glance</div>
+          <div class="statgrid">
+            <div class="stat">
+              <b>Strength</b>
+              <span>Hardware + software integration (drivers ⇄ sensors ⇄ automation).</span>
+            </div>
+            <div class="stat">
+              <b>Best projects</b>
+              <span>When there’s a tight loop: measure → fix → validate → ship.</span>
+            </div>
+            <div class="stat">
+              <b>What I’m building</b>
+              <span>RTOS sensor pipelines, SIL tooling, and portfolio-ready demos.</span>
+            </div>
+            <div class="stat">
+              <b>What I want</b>
+              <span>Embedded roles with real ownership and a high bar for quality.</span>
+            </div>
           </div>
-          <div class="content">
-            <div class="topline"><span class="mono">Tesla</span><span>May 2024 — Aug 2024</span></div>
-            <div class="title">Electronics Design Engineering Intern</div>
-            <ul>
-              <li>Owned MCU signal‑flow architecture for a next‑gen high‑volume Supercharger main controller PCB.</li>
-              <li>Designed logic circuits in Altium and a high‑voltage interrupt loop with timing analysis.</li>
-              <li>Ran signal‑integrity tests on 1000BASE‑T1 PAM3 Ethernet by measuring packet error rates on Linux SoC.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="icon float" aria-hidden="true">
-            <!-- satellite -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M14 10 4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M14 10l3-6 3 3-6 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 18l-2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </div>
-          <div class="content">
-            <div class="topline"><span class="mono">Kepler Communications</span><span>Sep 2023 — Apr 2024</span></div>
-            <div class="title">Power Systems Engineering Intern</div>
-            <ul>
-              <li>Verified BMS safety logic, control loops, UART buses, and cell monitoring in a HIL suite (TI MSP430).</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="icon pulse" aria-hidden="true">
-            <!-- waveform -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-6 4 12 2-6h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="content">
-            <div class="topline"><span class="mono">Pulsenics</span><span>Jun 2023 — Sep 2023</span></div>
-            <div class="title">Firmware QA Intern</div>
-            <ul>
-              <li>Verified data acquisition by writing ISRs in C for sensor qualification and ADC configuration.</li>
-              <li>Designed a PoE switch for 1000BASE‑T Ethernet packet communications.</li>
-            </ul>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects">
       <div class="section-title">
         <h2>Projects</h2>
+        <small>Each card has an image slot + links (GitHub / demo)</small>
       </div>
 
       <div class="grid">
-        <article class="card">
-          <div class="icon pulse" aria-hidden="true">
-            <!-- chip -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M8 8h8v8H8V8Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </div>
-          <div class="content">
-            <div class="topline"><span class="mono">Software‑In‑The‑Loop</span><span>Mar 2025</span></div>
-            <div class="title">Custom SIL Environment</div>
-            <ul>
-              <li>Simulated signals to/from an automotive sensor over SPI for a bare‑metal ARM system.</li>
-              <li>Tested with GTest (graceful exits, bus failures, noise filtering).</li>
-            </ul>
-          </div>
-        </article>
+        <div class="card proj-feature reveal">
+          <div class="proj-wrap">
+            <div class="proj-toolbar">
+              <div class="search" role="search">
+                <span class="mono" style="opacity:.8">⌕</span>
+                <input id="q" type="search" placeholder="Search projects (e.g., RTOS, SPI, ML, C++)…" />
+              </div>
+              <div class="filters" id="filters"></div>
+            </div>
 
-        <article class="card">
-          <div class="icon float" aria-hidden="true">
-            <!-- shield -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 20 6v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="content">
-            <div class="topline"><span class="mono">Embedded / RTOS</span><span>Jan–Feb 2025</span></div>
-            <div class="title">Smart Home Security System</div>
-            <ul>
-              <li>Processed Doppler + ultrasonic radar sensor inputs using FreeRTOS tasks/queues.</li>
-              <li>Layered atop a custom Vivado hardware platform for a Xilinx SoC.</li>
-            </ul>
-          </div>
-        </article>
+            <div class="proj-grid" id="projGrid"></div>
 
-        <article class="card">
-          <div class="icon float" aria-hidden="true">
-            <!-- thermal / imaging -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v10a4 4 0 1 0 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 21h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div style="margin-top:12px; color:var(--muted); font-size:12.5px;">
+              Tip: add images under <span class="mono">assets/projects/</span> and update the <span class="mono">projects</span> array in the script.
+            </div>
           </div>
-          <div class="content">
-            <div class="topline"><span class="mono">Signal Processing</span><span>May–Aug 2022</span></div>
-            <div class="title">Biomedical Imaging Software Research</div>
-            <ul>
-              <li>Implemented algorithms to deconvolve thermal images; published in a journal (impact factor 14.7).</li>
-            </ul>
-          </div>
-        </article>
+        </div>
+      </div>
+    </section>
 
-        <article class="card">
-          <div class="icon pulse" aria-hidden="true">
-            <!-- chat bubble -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H7l-3 3V5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 9h10M7 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </div>
-          <div class="content">
-            <div class="topline"><span class="mono">NLP / ML</span><span>Jan 2022</span></div>
-            <div class="title">Amazon Customer Review Analyzer (Hackathon Finalist)</div>
-            <ul>
-              <li>Used Word2Vec to analyze reviews for product performance signals.</li>
-            </ul>
-          </div>
-        </article>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <small>Internships & engineering roles</small>
+      </div>
 
-        <article class="card">
-          <div class="icon float" aria-hidden="true">
-            <!-- gamepad -->
-            <svg viewBox="0 0 24 24" fill="none"><path d="M7 12h10l2 4a3 3 0 0 1-2.7 4H7.7A3 3 0 0 1 5 16l2-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13v2M8 14h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15.5 14h.01M17 13.5h.01" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+      <div class="grid">
+        <div class="card timeline reveal">
+          <div class="tl" id="timeline"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS + CONTACT -->
+    <section id="skills">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <small>Tools I use to ship</small>
+      </div>
+
+      <div class="grid">
+        <div class="card skills reveal">
+          <div class="mono" style="color:rgba(255,255,255,.82); font-size:13px;">Core</div>
+          <div class="skillgrid" id="skillgrid"></div>
+
+          <div style="margin-top:12px" class="mono">Notes</div>
+          <div style="color:var(--muted); font-size:13px; line-height:1.55; margin-top:8px">
+            I like measurable work: throughput, error rates, timing margins, test coverage, and debugging velocity.
           </div>
-          <div class="content">
-            <div class="topline"><span class="mono">C++</span><span>Nov 2019 — Jan 2020</span></div>
-            <div class="title">Plastania Video Game</div>
-            <ul>
-              <li>Built an Angry Birds‑style game in C++ using Allegro and OOP.</li>
-            </ul>
+        </div>
+
+        <div class="card contact reveal" id="contact">
+          <div class="mono" style="color:rgba(255,255,255,.82); font-size:13px;">Contact</div>
+          <div class="contactbox">
+            <div class="row"><span>Email</span><span class="mono" id="email">asser.abdelgawad@mail.utoronto.ca</span></div>
+            <div class="row"><span>GitHub</span><span class="mono">asso-the-coder</span></div>
+            <div class="row"><span>LinkedIn</span><span class="mono">/in/asser-abdelgawad-928359229</span></div>
+
+            <div class="btnrow">
+              <button class="pill primary" id="copyEmail" type="button">Copy email</button>
+              <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Open resume</a>
+              <a class="pill" href="mailto:asser.abdelgawad@mail.utoronto.ca">Email me</a>
+            </div>
+
+            <div style="margin-top:10px; color:var(--muted); font-size:12.5px;">
+              Want a quick intro line? “Hey Asser — saw your work on ___, would love to chat about ___.”
+            </div>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="y"></span> Asser Abdelgawad</div>
+      <div>© <span id="y"></span> <span class="mono">Asser Abdelgawad</span></div>
+      <div class="mono">Built as a single static HTML file • easy GitHub Pages / Netlify deploy</div>
     </footer>
   </div>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // ====== EDIT HERE (Projects + links + image slots) ======
+    // Put images under: assets/projects/<image>
+    // Each project card links to github (and optional demo).
+    const projects = [
+      {
+        title: "Custom Software-In-The-Loop (SIL) Environment",
+        when: "Mar 2025",
+        blurb: "SIL app simulating SPI temperature sensor I/O for a bare-metal ARM system; tested with GTest for failures, noise, and graceful exits.",
+        tags: ["C++", "SIL", "SPI", "GTest", "Embedded"],
+        image: "assets/projects/sil.jpg",
+        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo
+        demo: ""
+      },
+      {
+        title: "Smart Home Security System (RTOS + Sensors)",
+        when: "Jan–Feb 2025",
+        blurb: "FreeRTOS tasks/queues processing doppler + ultrasonic radar inputs, layered on a custom Vivado platform for a Xilinx SoC.",
+        tags: ["C/C++", "FreeRTOS", "Vivado", "FPGA", "Sensors"],
+        image: "assets/projects/smart-home.jpg",
+        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo
+        demo: ""
+      },
+      {
+        title: "Biomedical Imaging Software Research",
+        when: "May–Aug 2022",
+        blurb: "Signal processing algorithms to deconvolve thermal images; research outcome published (add citation/link on your site if you want).",
+        tags: ["Signal Processing", "Python", "Research"],
+        image: "assets/projects/biomedical.jpg",
+        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo (or leave)
+        demo: ""
+      },
+      {
+        title: "Amazon Customer Review Analyzer (Hackathon Finalist)",
+        when: "Jan 2022",
+        blurb: "Word2Vec-based NLP pipeline to extract product performance signals from reviews.",
+        tags: ["ML", "NLP", "Word2Vec", "Python"],
+        image: "assets/projects/review-analyzer.jpg",
+        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo
+        demo: ""
+      },
+      {
+        title: "Plastania Video Game (C++ / Allegro)",
+        when: "Nov 2019 – Jan 2020",
+        blurb: "Angry Birds-style game built in C++ using Allegro and OOP; packaged with DLLs and assets for portability.",
+        tags: ["C++", "Game Dev", "Allegro", "OOP"],
+        image: "assets/projects/plastania.jpg",
+        github: "https://github.com/asso-the-coder/plastania-video-game",
+        demo: ""
+      },
+    ];
+
+    const experience = [
+      {
+        org: "Tesla",
+        date: "Sep 2024 — Dec 2024",
+        role: "Low Voltage Test & Automation Intern",
+        bullets: [
+          "Created C drivers for port-mapped I/O devices and integrated into a Python app via shared objects.",
+          "Built CAN-FD routines using PCAN-Pro and UDS APIs; designed and brought up AFE + high-side drive PCBA with NI DAQs.",
+          "Built a ResNet/OpenCV model to detect vehicle features (99.01% accuracy) for production line checks."
+        ]
+      },
+      {
+        org: "Tesla",
+        date: "May 2024 — Aug 2024",
+        role: "Electronics Design Engineering Intern",
+        bullets: [
+          "Owned MCU signal flow architecture for a next-gen Supercharger main controller PCB.",
+          "Designed logic in Altium and a high-voltage interrupt loop with timing analysis.",
+          "Ran 1000BASE-T1 PAM3 Ethernet signal integrity tests by quantifying packet error rates on a Linux SoC."
+        ]
+      },
+      {
+        org: "Kepler Communications",
+        date: "Sep 2023 — Apr 2024",
+        role: "Power Systems Engineering Intern",
+        bullets: [
+          "Verified BMS safety logic, control loops, UART buses, and cell monitoring in a HIL suite (TI MSP430).",
+          "Built FRAM/EEPROM genealogy data saving framework for safety-critical systems.",
+          "Improved solar panel efficiency by optimizing MPPT scan rate; multithreading telemetry + safety controls."
+        ]
+      },
+      {
+        org: "Pulsenics",
+        date: "Jun 2023 — Sep 2023",
+        role: "Firmware QA Intern",
+        bullets: [
+          "Developed a PID controller in C for a PFC/DAB power system using TI tooling and Cortex-M MCUs.",
+          "Wrote ISRs in C for sensor qualification and ADC configuration.",
+          "Designed a PoE switch for 1000BASE-T Ethernet communications."
+        ]
+      }
+    ];
+
+    const skills = [
+      "C", "C++", "Python", "Verilog", "Assembly",
+      "FreeRTOS", "GTest", "OpenCV", "PyTorch", "ROS2",
+      "CAN / CAN-FD", "SPI / Quad SPI", "I2C / SMBus", "UART", "Ethernet",
+      "Linux", "CMake", "Git", "Altium", "MATLAB"
+    ];
+    // ========================================================
+
+    // Render projects
+    const grid = document.getElementById("projGrid");
+
+    function projectCard(p){
+      const tech = p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+      const demoBtn = p.demo ? `<a class="ghost" href="${p.demo}" target="_blank" rel="noopener">Visit</a>` : "";
+      const ghBtn = p.github ? `<a class="ghost" href="${p.github}" target="_blank" rel="noopener">GitHub</a>` : "";
+
+      return `
+        <article class="proj" data-tags="${p.tags.join(",").toLowerCase()}" data-title="${p.title.toLowerCase()}">
+          <a href="${p.github || '#'}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)}">
+            <div class="proj-media">
+              <img src="${p.image}" alt="" onerror="this.style.display='none'">
+            </div>
+          </a>
+          <div class="proj-body">
+            <div class="proj-top"><span class="mono">${escapeHtml(p.when || "")}</span><span>${escapeHtml((p.tags[0]||"").toString())}</span></div>
+            <h3>${escapeHtml(p.title)}</h3>
+            <p>${escapeHtml(p.blurb)}</p>
+            <div class="tags">${tech}</div>
+            <div class="proj-actions">
+              ${ghBtn}
+              ${demoBtn}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderProjects(list){
+      grid.innerHTML = list.map(projectCard).join("");
+    }
+
+    // Filters
+    const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort((a,b)=>a.localeCompare(b));
+    const filtersEl = document.getElementById("filters");
+    const filterState = new Set();
+    function renderFilters(){
+      filtersEl.innerHTML = [
+        `<span class="filter active" data-tag="__all">All</span>`,
+        ...allTags.map(t => `<span class="filter" data-tag="${escapeAttr(t)}">${escapeHtml(t)}</span>`)
+      ].join("");
+    }
+
+    function applyFilters(){
+      const q = (document.getElementById("q").value || "").trim().toLowerCase();
+      const active = Array.from(filterState);
+
+      let filtered = projects.filter(p => {
+        const matchesQuery =
+          !q ||
+          p.title.toLowerCase().includes(q) ||
+          p.blurb.toLowerCase().includes(q) ||
+          p.tags.join(" ").toLowerCase().includes(q);
+
+        const matchesTags =
+          active.length === 0 ||
+          active.every(tag => p.tags.map(x=>x.toLowerCase()).includes(tag.toLowerCase()));
+
+        return matchesQuery && matchesTags;
+      });
+
+      renderProjects(filtered);
+    }
+
+    filtersEl.addEventListener("click", (e) => {
+      const el = e.target.closest(".filter");
+      if(!el) return;
+      const tag = el.getAttribute("data-tag");
+      const all = filtersEl.querySelector('[data-tag="__all"]');
+
+      if(tag === "__all"){
+        filterState.clear();
+        filtersEl.querySelectorAll(".filter").forEach(x => x.classList.remove("active"));
+        all.classList.add("active");
+        applyFilters();
+        return;
+      }
+
+      all.classList.remove("active");
+
+      if(filterState.has(tag)){
+        filterState.delete(tag);
+        el.classList.remove("active");
+      } else {
+        filterState.add(tag);
+        el.classList.add("active");
+      }
+
+      if(filterState.size === 0){
+        all.classList.add("active");
+      }
+
+      applyFilters();
+    });
+
+    document.getElementById("q").addEventListener("input", applyFilters);
+
+    // Experience timeline
+    const tl = document.getElementById("timeline");
+    tl.innerHTML = experience.map(x => `
+      <div class="item">
+        <div class="head"><b>${escapeHtml(x.org)}</b><span class="mono">${escapeHtml(x.date)}</span></div>
+        <div class="role">${escapeHtml(x.role)}</div>
+        <ul>${x.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}</ul>
+      </div>
+    `).join("");
+
+    // Skills
+    const sg = document.getElementById("skillgrid");
+    sg.innerHTML = skills.map(s => `<span class="skill">${escapeHtml(s)}</span>`).join("");
+
+    // Copy email
+    document.getElementById("copyEmail").addEventListener("click", async () => {
+      const email = document.getElementById("email").textContent.trim();
+      try{
+        await navigator.clipboard.writeText(email);
+        toast("Copied email ✔");
+      } catch {
+        toast("Copy failed — you can select it manually.");
+      }
+    });
+
+    // Footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("on"); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+
+    // Initial render
+    renderFilters();
+    renderProjects(projects);
+
+    // Tiny toast
+    function toast(msg){
+      const t = document.createElement("div");
+      t.textContent = msg;
+      t.style.position = "fixed";
+      t.style.left = "50%";
+      t.style.bottom = "18px";
+      t.style.transform = "translateX(-50%)";
+      t.style.padding = "10px 12px";
+      t.style.borderRadius = "999px";
+      t.style.border = "1px solid rgba(255,255,255,.12)";
+      t.style.background = "rgba(0,0,0,.60)";
+      t.style.backdropFilter = "blur(10px)";
+      t.style.color = "rgba(255,255,255,.90)";
+      t.style.fontSize = "13px";
+      t.style.zIndex = "999";
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(), 1600);
+    }
+
+    function escapeHtml(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+    function escapeAttr(s){ return escapeHtml(s); }
   </script>
 </body>
 </html>
