@@ -8,18 +8,20 @@
 
   <style>
     :root{
-      --bg:#070a0f;
-      --panel: rgba(255,255,255,.035);
-      --panel2: rgba(255,255,255,.02);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.62);
-      --line: rgba(255,255,255,.10);
-      --shadow: 0 18px 50px rgba(0,0,0,.42);
+      --bg:#07070f;
+      --panel: rgba(255,255,255,.045);
+      --panel2: rgba(255,255,255,.028);
+      --text: rgba(255,255,255,.94);
+      --muted: rgba(255,255,255,.66);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
       --radius: 18px;
 
-      --a1:#7dd3fc; /* cyan */
+      /* more color */
+      --a1:#22d3ee; /* cyan */
       --a2:#a78bfa; /* violet */
       --a3:#34d399; /* green */
+      --a4:#fb7185; /* pink/red accent */
     }
 
     *{ box-sizing:border-box; }
@@ -29,36 +31,35 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(1100px 520px at 12% 0%, rgba(125,211,252,.12), transparent 55%),
-        radial-gradient(900px 520px at 86% 8%, rgba(167,139,250,.12), transparent 55%),
-        radial-gradient(900px 520px at 60% 110%, rgba(52,211,153,.10), transparent 60%),
-        linear-gradient(180deg, #05070b, var(--bg));
+        radial-gradient(950px 520px at 12% 0%, rgba(34,211,238,.18), transparent 56%),
+        radial-gradient(950px 520px at 88% 6%, rgba(167,139,250,.18), transparent 56%),
+        radial-gradient(1050px 560px at 60% 110%, rgba(52,211,153,.14), transparent 60%),
+        radial-gradient(900px 520px at 12% 120%, rgba(251,113,133,.12), transparent 60%),
+        linear-gradient(180deg, #05060b, var(--bg));
     }
 
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
 
-    .wrap{ max-width:1100px; margin:0 auto; padding: 26px; }
+    .wrap{ max-width:1100px; margin:0 auto; padding: 22px; }
 
     /* NAV */
     .nav{
       position: sticky; top: 0;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(180deg, rgba(7,10,15,.85), rgba(7,10,15,.55));
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7,7,15,.88), rgba(7,7,15,.55));
       border-bottom: 1px solid var(--line);
       z-index: 20;
     }
     .navin{
-      max-width:1100px; margin:0 auto; padding: 14px 26px;
+      max-width:1100px; margin:0 auto; padding: 14px 22px;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px; min-width: 0;
-    }
+    .brand{ display:flex; align-items:center; gap:10px; min-width:0; }
     .dot{
       width:11px; height:11px; border-radius:999px;
-      background: linear-gradient(135deg, var(--a1), var(--a2));
-      box-shadow: 0 0 0 6px rgba(125,211,252,.08);
+      background: linear-gradient(135deg, var(--a1), var(--a2), var(--a4));
+      box-shadow: 0 0 0 8px rgba(34,211,238,.10);
       flex: 0 0 auto;
     }
     .brand strong{ letter-spacing:-.35px; }
@@ -74,22 +75,17 @@
       font-size: 13px;
       transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
-    .pill:hover{ transform: translateY(-1px); border-color: rgba(125,211,252,.38); box-shadow: 0 0 0 6px rgba(125,211,252,.08); }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(34,211,238,.45);
+      box-shadow: 0 0 0 7px rgba(34,211,238,.10);
+    }
     .pill.primary{
-      border-color: rgba(125,211,252,.40);
-      background: linear-gradient(135deg, rgba(125,211,252,.15), rgba(167,139,250,.10));
+      border-color: rgba(34,211,238,.50);
+      background: linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.12), rgba(251,113,133,.10));
     }
 
-    /* HERO */
-    .hero{
-      padding: 34px 0 10px;
-      display:grid;
-      grid-template-columns: 1.4fr .9fr;
-      gap:16px;
-      align-items: stretch;
-    }
-    @media (max-width: 920px){ .hero{ grid-template-columns: 1fr; } }
-
+    /* CARDS / SECTIONS */
     .card{
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -99,101 +95,7 @@
       position:relative;
     }
 
-    .hero-main{ padding: 22px; }
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius:999px;
-      background: rgba(255,255,255,.02);
-      color: rgba(255,255,255,.80);
-      font-size: 12.5px;
-    }
-    .kicker i{
-      width: 8px; height: 8px; border-radius:999px;
-      background: var(--a3);
-      box-shadow: 0 0 0 6px rgba(52,211,153,.10);
-      display:inline-block;
-    }
-    h1{
-      margin: 14px 0 10px;
-      font-size: 42px;
-      letter-spacing: -1.05px;
-      line-height: 1.06;
-    }
-    .grad{
-      background: linear-gradient(135deg, var(--a1), var(--a2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .subtitle{
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.55;
-      max-width: 70ch;
-      font-size: 14.5px;
-    }
-    .cta{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top: 10px; }
-    .cta .pill{ padding: 10px 13px; }
-
-    .chips{
-      margin-top: 14px;
-      display:flex; flex-wrap:wrap; gap:8px;
-    }
-    .chip{
-      padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 999px;
-      background: rgba(255,255,255,.02);
-      color: rgba(255,255,255,.72);
-      font-size: 12.5px;
-    }
-
-    .hero-side{
-      padding: 18px;
-      display:flex;
-      flex-direction: column;
-      gap:12px;
-      justify-content: space-between;
-      background:
-        radial-gradient(520px 220px at 70% 10%, rgba(125,211,252,.12), transparent 55%),
-        radial-gradient(520px 220px at 20% 70%, rgba(167,139,250,.12), transparent 55%),
-        var(--panel2);
-    }
-    .profile{
-      display:flex; gap:12px; align-items:center;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(0,0,0,.14);
-    }
-    .avatar{
-      width: 54px; height: 54px; border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(135deg, rgba(125,211,252,.20), rgba(167,139,250,.16));
-      overflow:hidden;
-      flex: 0 0 auto;
-    }
-    .avatar img{ width:100%; height:100%; object-fit:cover; }
-    .profile b{ display:block; letter-spacing:-.3px; }
-    .profile small{ color: var(--muted); }
-
-    .mini-grid{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .mini{
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      background: rgba(255,255,255,.02);
-      padding: 12px;
-    }
-    .mini .t{ color: rgba(255,255,255,.80); font-size: 12.5px; }
-    .mini .v{ margin-top: 7px; color: var(--muted); font-size: 13px; line-height: 1.4; }
-
-    /* SECTIONS */
-    section{ margin-top: 26px; }
+    section{ margin-top: 18px; }
     .section-title{
       display:flex; align-items: baseline; justify-content: space-between;
       gap: 12px;
@@ -204,7 +106,7 @@
       font-size: 13px;
       letter-spacing: .22px;
       text-transform: uppercase;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.86);
     }
     .section-title small{ color: var(--muted); font-size: 12.5px; }
 
@@ -216,60 +118,46 @@
 
     /* ABOUT */
     .about{ grid-column: span 7; padding: 16px; }
-    .about p{ margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+    .about p{ margin: 0; color: var(--muted); line-height: 1.65; font-size: 14.5px; }
     .stats{ grid-column: span 5; padding: 16px; }
     @media (max-width: 920px){ .about, .stats{ grid-column: span 12; } }
+
+    .chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:8px; }
+    .chip{
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(0,0,0,.12);
+      color: rgba(255,255,255,.75);
+      font-size: 12.5px;
+    }
+    .chip.c1{ border-color: rgba(34,211,238,.30); }
+    .chip.c2{ border-color: rgba(167,139,250,.30); }
+    .chip.c3{ border-color: rgba(52,211,153,.30); }
+    .chip.c4{ border-color: rgba(251,113,133,.30); }
 
     .statgrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     .stat{
       border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.025);
       padding: 12px;
+      position:relative;
+      overflow:hidden;
     }
-    .stat b{ display:block; font-size: 12.5px; color: rgba(255,255,255,.85); }
-    .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+    .stat:before{
+      content:"";
+      position:absolute; inset:-40px;
+      background: radial-gradient(circle, rgba(34,211,238,.20), transparent 55%);
+      opacity:.35;
+      pointer-events:none;
+    }
+    .stat b{ display:block; font-size: 12.5px; color: rgba(255,255,255,.88); position:relative; }
+    .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; position:relative; }
 
     /* PROJECTS */
     .proj-feature{ grid-column: span 12; }
     .proj-wrap{ padding: 14px; }
-    .proj-toolbar{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-    .search{
-      flex: 1 1 240px;
-      display:flex; align-items:center; gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.86);
-    }
-    .search input{
-      width:100%;
-      border:0; outline:0;
-      background: transparent;
-      color: inherit;
-      font-size: 13px;
-    }
-    .filters{ display:flex; gap:8px; flex-wrap:wrap; }
-    .filter{
-      cursor:pointer;
-      user-select:none;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
-      font-size: 12.5px;
-      color: rgba(255,255,255,.75);
-    }
-    .filter.active{
-      border-color: rgba(125,211,252,.40);
-      background: linear-gradient(135deg, rgba(125,211,252,.12), rgba(167,139,250,.08));
-      color: rgba(255,255,255,.88);
-    }
 
     .proj-grid{
       display:grid;
@@ -279,82 +167,103 @@
 
     .proj{
       grid-column: span 6;
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 18px;
       background: rgba(255,255,255,.03);
       overflow:hidden;
       box-shadow: var(--shadow);
-      transition: transform .18s ease, border-color .18s ease;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
       position:relative;
+      cursor:pointer;
     }
-    .proj:hover{ transform: translateY(-2px); border-color: rgba(125,211,252,.30); }
+    .proj:hover{
+      transform: translateY(-3px);
+      border-color: rgba(34,211,238,.40);
+      box-shadow: 0 22px 60px rgba(0,0,0,.55);
+    }
     @media (max-width: 920px){ .proj{ grid-column: span 12; } }
 
     .proj-media{
-      height: 170px;
-      background:
-        radial-gradient(520px 260px at 30% 30%, rgba(125,211,252,.16), transparent 55%),
-        radial-gradient(520px 260px at 80% 40%, rgba(167,139,250,.14), transparent 60%),
-        rgba(255,255,255,.02);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      height: 180px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
       position:relative;
       overflow:hidden;
+      background:
+        radial-gradient(520px 260px at 30% 30%, rgba(34,211,238,.22), transparent 58%),
+        radial-gradient(520px 260px at 80% 40%, rgba(167,139,250,.18), transparent 62%),
+        radial-gradient(520px 260px at 30% 80%, rgba(251,113,133,.14), transparent 65%),
+        rgba(255,255,255,.02);
     }
     .proj-media img{
       width:100%; height:100%; object-fit:cover;
-      opacity: .92;
+      opacity: .93;
+      transform: scale(1.02);
+      transition: transform .25s ease, opacity .25s ease;
     }
+    .proj:hover .proj-media img{ transform: scale(1.06); opacity: .98; }
+
     .proj-body{ padding: 14px; }
-    .proj-top{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      color: var(--muted); font-size: 12.5px;
-    }
-    .proj h3{ margin: 8px 0 6px; font-size: 16px; letter-spacing:-.25px; }
+    .proj h3{ margin: 0 0 8px; font-size: 16px; letter-spacing:-.25px; }
     .proj p{ margin: 0 0 10px; color: rgba(255,255,255,.74); font-size: 13.5px; line-height: 1.5; }
+
     .tags{ display:flex; gap:7px; flex-wrap:wrap; }
     .tag{
       font-size: 12px;
-      color: rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.15);
+      color: rgba(255,255,255,.74);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
       padding: 6px 8px;
       border-radius: 999px;
     }
-    .proj-actions{
-      display:flex; gap:10px; flex-wrap:wrap;
+    .proj-links{
       margin-top: 10px;
+      display:flex; gap:10px; flex-wrap:wrap;
     }
     .ghost{
       display:inline-flex; align-items:center; gap:8px;
       padding: 9px 11px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
       font-size: 12.5px;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.86);
     }
-    .ghost:hover{ border-color: rgba(125,211,252,.35); box-shadow: 0 0 0 6px rgba(125,211,252,.08); }
+    .ghost:hover{ border-color: rgba(251,113,133,.42); box-shadow: 0 0 0 7px rgba(251,113,133,.10); }
 
     /* EXPERIENCE */
     .timeline{ grid-column: span 12; padding: 14px; }
-    .tl{
-      display:grid; gap:10px;
-    }
+    .tl{ display:grid; gap:10px; }
     .item{
       padding: 14px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
+      position:relative;
+      overflow:hidden;
+    }
+    .item:before{
+      content:"";
+      position:absolute; inset:-55px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(167,139,250,.16), transparent 56%),
+        radial-gradient(circle at 80% 20%, rgba(34,211,238,.14), transparent 56%);
+      opacity:.35;
+      pointer-events:none;
     }
     .item .head{
       display:flex; align-items:baseline; justify-content:space-between; gap:12px;
       flex-wrap:wrap;
       color: var(--muted);
       font-size: 12.5px;
+      position:relative;
     }
-    .item b{ color: rgba(255,255,255,.90); font-size: 14px; letter-spacing:-.2px; }
-    .item .role{ margin-top: 6px; color: rgba(255,255,255,.80); font-size: 13.5px; }
-    .item ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .item b{ color: rgba(255,255,255,.92); font-size: 14px; letter-spacing:-.2px; }
+    .item .role{ margin-top: 6px; color: rgba(255,255,255,.82); font-size: 13.5px; position:relative; }
+    .item ul{
+      margin: 10px 0 0; padding-left: 18px;
+      color: var(--muted); font-size: 13px; line-height: 1.55;
+      position:relative;
+    }
     .item li{ margin: 4px 0; }
 
     /* SKILLS + CONTACT */
@@ -362,31 +271,45 @@
     .contact{ grid-column: span 5; padding: 14px; }
     @media (max-width: 920px){ .skills, .contact{ grid-column: span 12; } }
 
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
     .skillgrid{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
     .skill{
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
-      color: rgba(255,255,255,.75);
+      color: rgba(255,255,255,.78);
       font-size: 12.5px;
     }
 
     .contactbox{
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
       padding: 14px;
       margin-top: 10px;
+      position:relative;
+      overflow:hidden;
     }
+    .contactbox:before{
+      content:"";
+      position:absolute; inset:-60px;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(circle at 70% 40%, rgba(251,113,133,.14), transparent 55%);
+      opacity:.40;
+      pointer-events:none;
+    }
+
     .row{
       display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
       color: var(--muted); font-size: 13px;
       padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      position:relative;
     }
     .row:last-child{ border-bottom:0; }
-    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; position:relative; }
 
     footer{
       margin-top: 30px;
@@ -396,14 +319,10 @@
       font-size: 12.5px;
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
-    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
 
     /* subtle reveal */
-    .reveal{ opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s ease; }
+    .reveal{ opacity: 0; transform: translateY(10px); transition: opacity .50s ease, transform .50s ease; }
     .reveal.on{ opacity: 1; transform: translateY(0); }
-
-    /* small icons */
-    .ico{ width: 16px; height: 16px; opacity: .9; display:inline-block; vertical-align:-3px; }
   </style>
 </head>
 
@@ -414,7 +333,7 @@
         <span class="dot"></span>
         <div style="min-width:0">
           <strong>Asser Abdelgawad</strong>
-          <span class="mono">Embedded • Test Automation • DSP-ish</span>
+          <span class="mono">Embedded • Test Automation • ECE</span>
         </div>
       </div>
       <div class="navlinks">
@@ -430,111 +349,46 @@
 
   <div class="wrap">
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="card hero-main reveal">
-        <div class="kicker"><i></i> Available for internships / research • Toronto</div>
-        <h1>Building <span class="grad">robust embedded systems</span>—from low-level drivers to test automation.</h1>
-        <p class="subtitle">
-          I’m an Electrical & Computer Engineering student focused on embedded software, hardware bring-up, and production-grade test systems.
-          I like projects where signals meet software: DMA, sensors, RTOS, comms, and real debugging.
-        </p>
-
-        <div class="cta">
-          <a class="pill primary" href="#projects">See projects</a>
-          <a class="pill" href="https://github.com/asso-the-coder" target="_blank" rel="noopener">GitHub</a>
-          <a class="pill" href="https://www.linkedin.com/in/asser-abdelgawad-928359229/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Download resume</a>
-        </div>
-
-        <div class="chips" aria-label="Focus areas">
-          <span class="chip">C/C++</span>
-          <span class="chip">Embedded Linux</span>
-          <span class="chip">CAN / SPI / I2C / Ethernet</span>
-          <span class="chip">FreeRTOS</span>
-          <span class="chip">Python Automation</span>
-          <span class="chip">HIL/SIL Testing</span>
-        </div>
-      </div>
-
-      <div class="card hero-side reveal">
-        <div class="profile">
-          <div class="avatar" title="Add your photo at assets/profile.jpg">
-            <!-- Optional: add assets/profile.jpg -->
-            <img src="assets/profile.jpg" alt="" onerror="this.style.display='none'">
-          </div>
-          <div>
-            <b>Asser Abdelgawad</b>
-            <small class="mono">B.A.Sc. EngSci ECE • UofT</small>
-          </div>
-        </div>
-
-        <div class="mini-grid">
-          <div class="mini">
-            <div class="t mono">Current focus</div>
-            <div class="v">Test automation, embedded drivers, signal integrity / comms.</div>
-          </div>
-          <div class="mini">
-            <div class="t mono">I enjoy</div>
-            <div class="v">Bring-up, debugging, and turning “it works” into “it ships.”</div>
-          </div>
-          <div class="mini">
-            <div class="t mono">Portfolio style</div>
-            <div class="v">Projects with visuals + measurable outcomes.</div>
-          </div>
-          <div class="mini">
-            <div class="t mono">Open to</div>
-            <div class="v">Embedded / DSP / robotics internships.</div>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="pill" href="#contact">Copy email</a>
-          <a class="pill" href="#projects">Featured work</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ABOUT -->
+    <!-- ABOUT (start here) -->
     <section id="about">
       <div class="section-title">
         <h2>About</h2>
-        <small>Quick story + what I’m optimizing for</small>
+        <small>What I do + what I’m optimizing for</small>
       </div>
 
       <div class="grid">
         <div class="card about reveal">
           <p>
-            I’m an Engineering Science (ECE) student who likes working close to the metal—drivers, timing, buses, and systems that
-            have to behave in the real world. I’ve done embedded + test work across automotive and space power systems,
-            and I’m always chasing higher signal-to-noise in both software and measurements.
+            I’m an Engineering Science (ECE) student who likes working close to the metal—drivers, timing, buses,
+            and systems that have to behave in the real world. I’ve done embedded + test work across automotive
+            and space power systems, and I’m always chasing higher signal-to-noise in both code and measurements.
           </p>
-          <div class="chips" style="margin-top:12px">
-            <span class="chip">Systems thinking</span>
-            <span class="chip">Measurement-first debugging</span>
-            <span class="chip">Code that’s testable</span>
-            <span class="chip">Documentation that’s usable</span>
+          <div class="chips">
+            <span class="chip c1">Measurement-first debugging</span>
+            <span class="chip c2">Hardware ⇄ software integration</span>
+            <span class="chip c3">Testability & coverage</span>
+            <span class="chip c4">Clean documentation</span>
           </div>
         </div>
 
         <div class="card stats reveal">
-          <div class="mono" style="color:rgba(255,255,255,.82); font-size:13px;">At-a-glance</div>
+          <div class="mono" style="color:rgba(255,255,255,.88); font-size:13px;">At-a-glance</div>
           <div class="statgrid">
             <div class="stat">
-              <b>Strength</b>
-              <span>Hardware + software integration (drivers ⇄ sensors ⇄ automation).</span>
+              <b>Focus</b>
+              <span>Embedded drivers, RTOS pipelines, and production-grade test automation.</span>
             </div>
             <div class="stat">
-              <b>Best projects</b>
-              <span>When there’s a tight loop: measure → fix → validate → ship.</span>
+              <b>Favorite work</b>
+              <span>When signals meet software: comms, timing, sensor validation, and bring-up.</span>
             </div>
             <div class="stat">
-              <b>What I’m building</b>
-              <span>RTOS sensor pipelines, SIL tooling, and portfolio-ready demos.</span>
+              <b>Style</b>
+              <span>Build small, validate fast, then harden the system.</span>
             </div>
             <div class="stat">
-              <b>What I want</b>
-              <span>Embedded roles with real ownership and a high bar for quality.</span>
+              <b>Open to</b>
+              <span>Embedded / DSP / robotics internships & research roles.</span>
             </div>
           </div>
         </div>
@@ -545,24 +399,15 @@
     <section id="projects">
       <div class="section-title">
         <h2>Projects</h2>
-        <small>Each card has an image slot + links (GitHub / demo)</small>
+        <small>Static grid • click any card to open GitHub</small>
       </div>
 
       <div class="grid">
         <div class="card proj-feature reveal">
           <div class="proj-wrap">
-            <div class="proj-toolbar">
-              <div class="search" role="search">
-                <span class="mono" style="opacity:.8">⌕</span>
-                <input id="q" type="search" placeholder="Search projects (e.g., RTOS, SPI, ML, C++)…" />
-              </div>
-              <div class="filters" id="filters"></div>
-            </div>
-
             <div class="proj-grid" id="projGrid"></div>
-
             <div style="margin-top:12px; color:var(--muted); font-size:12.5px;">
-              Tip: add images under <span class="mono">assets/projects/</span> and update the <span class="mono">projects</span> array in the script.
+              Add images under <span class="mono">assets/projects/</span> and update the <span class="mono">projects</span> list in the script.
             </div>
           </div>
         </div>
@@ -592,17 +437,17 @@
 
       <div class="grid">
         <div class="card skills reveal">
-          <div class="mono" style="color:rgba(255,255,255,.82); font-size:13px;">Core</div>
+          <div class="mono" style="color:rgba(255,255,255,.88); font-size:13px;">Core stack</div>
           <div class="skillgrid" id="skillgrid"></div>
 
           <div style="margin-top:12px" class="mono">Notes</div>
-          <div style="color:var(--muted); font-size:13px; line-height:1.55; margin-top:8px">
+          <div style="color:var(--muted); font-size:13px; line-height:1.6; margin-top:8px">
             I like measurable work: throughput, error rates, timing margins, test coverage, and debugging velocity.
           </div>
         </div>
 
         <div class="card contact reveal" id="contact">
-          <div class="mono" style="color:rgba(255,255,255,.82); font-size:13px;">Contact</div>
+          <div class="mono" style="color:rgba(255,255,255,.88); font-size:13px;">Contact</div>
           <div class="contactbox">
             <div class="row"><span>Email</span><span class="mono" id="email">asser.abdelgawad@mail.utoronto.ca</span></div>
             <div class="row"><span>GitHub</span><span class="mono">asso-the-coder</span></div>
@@ -610,11 +455,13 @@
 
             <div class="btnrow">
               <button class="pill primary" id="copyEmail" type="button">Copy email</button>
-              <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Open resume</a>
+              <a class="pill" href="https://github.com/asso-the-coder" target="_blank" rel="noopener">GitHub</a>
+              <a class="pill" href="https://www.linkedin.com/in/asser-abdelgawad-928359229/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
               <a class="pill" href="mailto:asser.abdelgawad@mail.utoronto.ca">Email me</a>
             </div>
 
-            <div style="margin-top:10px; color:var(--muted); font-size:12.5px;">
+            <div style="margin-top:10px; color:var(--muted); font-size:12.5px; position:relative;">
               Want a quick intro line? “Hey Asser — saw your work on ___, would love to chat about ___.”
             </div>
           </div>
@@ -624,60 +471,50 @@
 
     <footer>
       <div>© <span id="y"></span> <span class="mono">Asser Abdelgawad</span></div>
-      <div class="mono">Built as a single static HTML file • easy GitHub Pages / Netlify deploy</div>
+      <div class="mono">Single-file static site • GitHub Pages / Netlify friendly</div>
     </footer>
   </div>
 
   <script>
-    // ====== EDIT HERE (Projects + links + image slots) ======
+    // ====== EDIT HERE: Projects (image slots + GitHub links) ======
     // Put images under: assets/projects/<image>
-    // Each project card links to github (and optional demo).
+    // Entire card clicks through to `github`.
     const projects = [
       {
         title: "Custom Software-In-The-Loop (SIL) Environment",
-        when: "Mar 2025",
         blurb: "SIL app simulating SPI temperature sensor I/O for a bare-metal ARM system; tested with GTest for failures, noise, and graceful exits.",
         tags: ["C++", "SIL", "SPI", "GTest", "Embedded"],
         image: "assets/projects/sil.jpg",
-        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo
-        demo: ""
+        github: "https://github.com/asso-the-coder"     // replace with actual repo
       },
       {
         title: "Smart Home Security System (RTOS + Sensors)",
-        when: "Jan–Feb 2025",
         blurb: "FreeRTOS tasks/queues processing doppler + ultrasonic radar inputs, layered on a custom Vivado platform for a Xilinx SoC.",
         tags: ["C/C++", "FreeRTOS", "Vivado", "FPGA", "Sensors"],
         image: "assets/projects/smart-home.jpg",
-        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo
-        demo: ""
+        github: "https://github.com/asso-the-coder"     // replace with actual repo
       },
       {
         title: "Biomedical Imaging Software Research",
-        when: "May–Aug 2022",
-        blurb: "Signal processing algorithms to deconvolve thermal images; research outcome published (add citation/link on your site if you want).",
+        blurb: "Signal processing algorithms to deconvolve thermal images; research outcome published (add link if you want).",
         tags: ["Signal Processing", "Python", "Research"],
         image: "assets/projects/biomedical.jpg",
-        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo (or leave)
-        demo: ""
+        github: "https://github.com/asso-the-coder"
       },
       {
         title: "Amazon Customer Review Analyzer (Hackathon Finalist)",
-        when: "Jan 2022",
         blurb: "Word2Vec-based NLP pipeline to extract product performance signals from reviews.",
         tags: ["ML", "NLP", "Word2Vec", "Python"],
         image: "assets/projects/review-analyzer.jpg",
-        github: "https://github.com/asso-the-coder",     // <-- replace with actual repo
-        demo: ""
+        github: "https://github.com/asso-the-coder"
       },
       {
         title: "Plastania Video Game (C++ / Allegro)",
-        when: "Nov 2019 – Jan 2020",
         blurb: "Angry Birds-style game built in C++ using Allegro and OOP; packaged with DLLs and assets for portability.",
         tags: ["C++", "Game Dev", "Allegro", "OOP"],
         image: "assets/projects/plastania.jpg",
-        github: "https://github.com/asso-the-coder/plastania-video-game",
-        demo: ""
-      },
+        github: "https://github.com/asso-the-coder/plastania-video-game"
+      }
     ];
 
     const experience = [
@@ -729,107 +566,39 @@
       "CAN / CAN-FD", "SPI / Quad SPI", "I2C / SMBus", "UART", "Ethernet",
       "Linux", "CMake", "Git", "Altium", "MATLAB"
     ];
-    // ========================================================
+    // ==========================================================
 
-    // Render projects
     const grid = document.getElementById("projGrid");
+    function escapeHtml(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
 
     function projectCard(p){
       const tech = p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
-      const demoBtn = p.demo ? `<a class="ghost" href="${p.demo}" target="_blank" rel="noopener">Visit</a>` : "";
-      const ghBtn = p.github ? `<a class="ghost" href="${p.github}" target="_blank" rel="noopener">GitHub</a>` : "";
-
       return `
-        <article class="proj" data-tags="${p.tags.join(",").toLowerCase()}" data-title="${p.title.toLowerCase()}">
-          <a href="${p.github || '#'}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)}">
-            <div class="proj-media">
-              <img src="${p.image}" alt="" onerror="this.style.display='none'">
-            </div>
-          </a>
+        <a class="proj" href="${p.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)} on GitHub">
+          <div class="proj-media">
+            <img src="${p.image}" alt="" onerror="this.style.display='none'">
+          </div>
           <div class="proj-body">
-            <div class="proj-top"><span class="mono">${escapeHtml(p.when || "")}</span><span>${escapeHtml((p.tags[0]||"").toString())}</span></div>
             <h3>${escapeHtml(p.title)}</h3>
             <p>${escapeHtml(p.blurb)}</p>
             <div class="tags">${tech}</div>
-            <div class="proj-actions">
-              ${ghBtn}
-              ${demoBtn}
+            <div class="proj-links">
+              <span class="ghost">Open on GitHub →</span>
             </div>
           </div>
-        </article>
+        </a>
       `;
     }
 
-    function renderProjects(list){
-      grid.innerHTML = list.map(projectCard).join("");
-    }
+    grid.innerHTML = projects.map(projectCard).join("");
 
-    // Filters
-    const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort((a,b)=>a.localeCompare(b));
-    const filtersEl = document.getElementById("filters");
-    const filterState = new Set();
-    function renderFilters(){
-      filtersEl.innerHTML = [
-        `<span class="filter active" data-tag="__all">All</span>`,
-        ...allTags.map(t => `<span class="filter" data-tag="${escapeAttr(t)}">${escapeHtml(t)}</span>`)
-      ].join("");
-    }
-
-    function applyFilters(){
-      const q = (document.getElementById("q").value || "").trim().toLowerCase();
-      const active = Array.from(filterState);
-
-      let filtered = projects.filter(p => {
-        const matchesQuery =
-          !q ||
-          p.title.toLowerCase().includes(q) ||
-          p.blurb.toLowerCase().includes(q) ||
-          p.tags.join(" ").toLowerCase().includes(q);
-
-        const matchesTags =
-          active.length === 0 ||
-          active.every(tag => p.tags.map(x=>x.toLowerCase()).includes(tag.toLowerCase()));
-
-        return matchesQuery && matchesTags;
-      });
-
-      renderProjects(filtered);
-    }
-
-    filtersEl.addEventListener("click", (e) => {
-      const el = e.target.closest(".filter");
-      if(!el) return;
-      const tag = el.getAttribute("data-tag");
-      const all = filtersEl.querySelector('[data-tag="__all"]');
-
-      if(tag === "__all"){
-        filterState.clear();
-        filtersEl.querySelectorAll(".filter").forEach(x => x.classList.remove("active"));
-        all.classList.add("active");
-        applyFilters();
-        return;
-      }
-
-      all.classList.remove("active");
-
-      if(filterState.has(tag)){
-        filterState.delete(tag);
-        el.classList.remove("active");
-      } else {
-        filterState.add(tag);
-        el.classList.add("active");
-      }
-
-      if(filterState.size === 0){
-        all.classList.add("active");
-      }
-
-      applyFilters();
-    });
-
-    document.getElementById("q").addEventListener("input", applyFilters);
-
-    // Experience timeline
     const tl = document.getElementById("timeline");
     tl.innerHTML = experience.map(x => `
       <div class="item">
@@ -839,11 +608,11 @@
       </div>
     `).join("");
 
-    // Skills
     const sg = document.getElementById("skillgrid");
     sg.innerHTML = skills.map(s => `<span class="skill">${escapeHtml(s)}</span>`).join("");
 
-    // Copy email
+    document.getElementById("y").textContent = new Date().getFullYear();
+
     document.getElementById("copyEmail").addEventListener("click", async () => {
       const email = document.getElementById("email").textContent.trim();
       try{
@@ -854,20 +623,11 @@
       }
     });
 
-    // Footer year
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    // Reveal on scroll
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("on"); });
     }, { threshold: 0.12 });
     document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 
-    // Initial render
-    renderFilters();
-    renderProjects(projects);
-
-    // Tiny toast
     function toast(msg){
       const t = document.createElement("div");
       t.textContent = msg;
@@ -877,25 +637,15 @@
       t.style.transform = "translateX(-50%)";
       t.style.padding = "10px 12px";
       t.style.borderRadius = "999px";
-      t.style.border = "1px solid rgba(255,255,255,.12)";
-      t.style.background = "rgba(0,0,0,.60)";
+      t.style.border = "1px solid rgba(255,255,255,.14)";
+      t.style.background = "rgba(0,0,0,.62)";
       t.style.backdropFilter = "blur(10px)";
-      t.style.color = "rgba(255,255,255,.90)";
+      t.style.color = "rgba(255,255,255,.92)";
       t.style.fontSize = "13px";
       t.style.zIndex = "999";
       document.body.appendChild(t);
       setTimeout(()=>t.remove(), 1600);
     }
-
-    function escapeHtml(s){
-      return String(s)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-    function escapeAttr(s){ return escapeHtml(s); }
   </script>
 </body>
 </html>
