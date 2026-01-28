@@ -331,6 +331,20 @@
       margin-bottom: 12px;
     }
 
+    .about-layout {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -366,18 +380,20 @@
 
       <div class="grid">
         <div class="card about reveal">
-          <img src="assets/profile.jpg" alt="Asser Abdelgawad" class="profile-pic">
-          <ul>
-            <li>Engineering Science student at University of Toronto, majoring in Electrical and Computer Engineering</li>
-            <li>Likes basketball</li>
-            <li>Loves software that makes hardware (visibly) do stuff</li>
-            <li>Likes cats</li>
-            <li>Interested in embedded systems and machine learning</li>
-            <li>Previously @ Figure AI, Tesla, Kepler Communications, Pulsenics, CADIPT, uOttawa Heart Institute</li>
-          </ul>
+          <div class="about-layout">
+            <img src="assets/projects/profile.jpg" alt="Asser Abdelgawad" class="profile-pic">
+
+            <ul>
+              <li>Engineering Science student at University of Toronto, majoring in Electrical and Computer Engineering</li>
+              <li>Likes basketball</li>
+              <li>Loves software that makes hardware (visibly) do stuff</li>
+              <li>Likes cats</li>
+              <li>Interested in embedded systems and machine learning</li>
+              <li>Previously @ Tesla, Kepler Communications, Pulsenics, CADIPT, uOttawa Heart Institute</li>
+            </ul>
+          </div>
         </div>
 
-      </div>
     </section>
 
     <!-- PROJECTS -->
