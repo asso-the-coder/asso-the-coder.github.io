@@ -405,26 +405,7 @@
       <div class="grid">
         <div class="card proj-feature reveal">
           <div class="proj-wrap">
-            <div class="proj-grid" id="projGrid">
-  <a href="project1.html" class="proj">
-    <div class="proj-media">
-      <img src="assets/projects/project1.png" alt="Project 1">
-    </div>
-    <div class="proj-body">
-      <h3>Project 1</h3>
-      <p>Description of Project 1.</p>
-    </div>
-  </a>
-  <a href="project2.html" class="proj">
-    <div class="proj-media">
-      <img src="assets/projects/project2.png" alt="Project 2">
-    </div>
-    <div class="proj-body">
-      <h3>Project 2</h3>
-      <p>Description of Project 2.</p>
-    </div>
-  </a>
-</div>
+            <div class="proj-grid" id="projGrid"></div>
             <div style="margin-top:12px; color:var(--muted); font-size:12.5px;">
               Add images under <span class="mono">assets/projects/</span> and update the <span class="mono">projects</span> list in the script.
             </div>
@@ -500,39 +481,39 @@
     // Entire card clicks through to `github`.
     const projects = [
       {
-        title: "Custom Software-In-The-Loop (SIL) Environment",
-        blurb: "SIL app simulating SPI temperature sensor I/O for a bare-metal ARM system; tested with GTest for failures, noise, and graceful exits.",
-        tags: ["C++", "SIL", "SPI", "GTest", "Embedded"],
-        image: "assets/projects/sil.jpg",
-        github: "https://github.com/asso-the-coder"     // replace with actual repo
+        title: "Plastania Video Game",
+        blurb: "Beta release of my original single-player video game built using custom graphics!",
+        tags: ["C++", "Allegro"],
+        image: "assets/projects/plastania.jpg",
+        github: "https://github.com/asso-the-coder/plastania-video-game"
       },
       {
-        title: "Smart Home Security System (RTOS + Sensors)",
+        title: "Custom Software-In-The-Loop (SIL) Environment",
+        blurb: "SIL app simulating SPI temperature sensor I/O for a bare-metal ARM system; tested with GTest for failures, noise, and graceful exits.",
+        tags: ["C", "GTest", "CMake", "SPI"],
+        image: "assets/projects/sil.jpg",
+        github: "https://github.com/asso-the-coder/SIL-environment"     // replace with actual repo
+      },
+      {
+        title: "Smart Home Security System",
         blurb: "FreeRTOS tasks/queues processing doppler + ultrasonic radar inputs, layered on a custom Vivado platform for a Xilinx SoC.",
-        tags: ["C/C++", "FreeRTOS", "Vivado", "FPGA", "Sensors"],
-        image: "assets/projects/smart-home.jpg",
-        github: "https://github.com/asso-the-coder"     // replace with actual repo
+        tags: ["C", "FreeRTOS", "Verilog", "TCL", "SPI", "CMake"],
+        image: "assets/projects/pynq.jpg",
+        github: "https://github.com/asso-the-coder/home-security-system-pynq-z2"     // replace with actual repo
       },
       {
         title: "Biomedical Imaging Software Research",
-        blurb: "Signal processing algorithms to deconvolve thermal images; research outcome published (add link if you want).",
-        tags: ["Signal Processing", "Python", "Research"],
-        image: "assets/projects/biomedical.jpg",
-        github: "https://github.com/asso-the-coder"
+        blurb: "Published research on signal processing algorithms to deconvolve thermal images",
+        tags: ["MATLAB"],
+        image: "assets/projects/imaging.jpg",
+        github: "https://www.science.org/doi/10.1126/sciadv.adi1899"
       },
       {
-        title: "Amazon Customer Review Analyzer (Hackathon Finalist)",
-        blurb: "Word2Vec-based NLP pipeline to extract product performance signals from reviews.",
+        title: "Amazon Customer Review Analyzer Hackathon Project",
+        blurb: "Reached Daisy Hackathon using this Word2Vec-based pipeline to extract product satisfaction info from Amazon reviews.",
         tags: ["ML", "NLP", "Word2Vec", "Python"],
-        image: "assets/projects/review-analyzer.jpg",
-        github: "https://github.com/asso-the-coder"
-      },
-      {
-        title: "Plastania Video Game (C++ / Allegro)",
-        blurb: "Angry Birds-style game built in C++ using Allegro and OOP; packaged with DLLs and assets for portability.",
-        tags: ["C++", "Game Dev", "Allegro", "OOP"],
-        image: "assets/projects/plastania.jpg",
-        github: "https://github.com/asso-the-coder/plastania-video-game"
+        image: "assets/projects/reviews.jpg",
+        github: "https://github.com/asso-the-coder/synonyms-finder"
       }
     ];
 
