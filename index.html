@@ -155,6 +155,23 @@
     .stat b{ display:block; font-size: 12.5px; color: rgba(255,255,255,.88); position:relative; }
     .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; position:relative; }
 
+    .about-wrap{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+    }
+
+    .profile-pic{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 0 0 6px rgba(34,211,238,.10);
+      flex:0 0 auto;
+    }
+
+    
     /* PROJECTS */
     .proj-feature{ grid-column: span 12; }
     .proj-wrap{ padding: 14px; }
@@ -358,12 +375,22 @@
 
       <div class="grid">
         <div class="card about reveal">
-          <p>
-            I’m an Engineering Science (ECE) student who likes working close to the metal—drivers, timing, buses,
-            and systems that have to behave in the real world. I’ve done embedded + test work across automotive
-            and space power systems, and I’m always chasing higher signal-to-noise in both code and measurements.
-          </p>
-          <div class="chips">
+          <div class="about-wrap">
+            <img
+              src="assets/projects/profile.jpg"
+              alt="Asser Abdelgawad"
+              class="profile-pic"
+            />
+
+            <div>
+              <p>
+                I’m an Engineering Science (ECE) student who likes working close to the metal—drivers, timing, buses,
+                and systems that have to behave in the real world. I’ve done embedded + test work across automotive
+                and space power systems, and I’m always chasing higher signal-to-noise in both code and measurements.
+              </p>
+
+              <div class="chips">
+
             <span class="chip c1">Measurement-first debugging</span>
             <span class="chip c2">Hardware ⇄ software integration</span>
             <span class="chip c3">Testability & coverage</span>
@@ -505,7 +532,7 @@
         github: "https://www.science.org/doi/10.1126/sciadv.adi1899"
       },
       {
-        title: "Circuits and firmware for an Electric Racecar",
+        title: "Electric Racecar Circuits",
         blurb: "Designed, physically built, and tested several critical PCBs end-to-end for my university's EV racing team.",
         tags: ["Altium", "C++", "SPICE", "Teensy MCUs", "I2C", "UART", "CAN", "E-loads", "Oscilloscopes"],
         image: "assets/projects/RC.jpg",
