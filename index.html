@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Asser Abdelgawad • Embedded Systems</title>
+  <title>Asser Abdelgawad</title>
   <meta name="description" content="Embedded systems portfolio • projects, experience, and contact" />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -405,9 +405,9 @@
               </li>
 
               <li>Likes basketball</li>
-              <li>Loves software that makes hardware (visibly) do stuff</li>
+              <li>Loves hardware and chip design</li>
               <li>Likes cats</li>
-              <li>Interested in embedded systems and machine learning</li>
+              <li>Interested in embedded systems and machine learning applications</li>
               <li>Previously @ Figure AI, Tesla, Kepler Communications, Pulsenics, CADIPT, uOttawa Heart Institute</li>
             </ul>
           </div>
@@ -462,7 +462,7 @@
 
           <div style="margin-top:12px" class="mono">Notes</div>
           <div style="color:var(--muted); font-size:13px; line-height:1.6; margin-top:8px">
-            I program in C/C++ for most applications. For machine learning and scripting, I use Python. 
+            Very well-versed in Altium, less so Eagle and KiCad. In terms of coding, I program in C/C++ for most applications. For machine learning and scripting, I use Python. 
           </div>
         </div>
 
@@ -497,18 +497,26 @@
     // Entire card clicks through to `github`.
     const projects = [
       {
+        title: "Electric Racecar Circuits",
+        blurb: "Designed, physically built, and tested several critical PCBs end-to-end for my university's EV racing team.",
+        tags: ["Altium", "C++", "SPICE", "Teensy MCUs", "I2C", "UART", "CAN", "E-loads", "Oscilloscopes"],
+        image: "assets/projects/RC.jpg",
+        github: "https://drive.google.com/drive/folders/1Gp0THWEDytKAZaY5z9e0QTf7O2gkgbx3"
+      },
+      {
+        title: "Assembly Games",
+        blurb: "Designed several games in RISC-V Assembly for university course using low-level computing concepts, tested on Altera DE1-SoC.",
+        tags: ["RISC-V Assembly", "C"],
+        image: "assets/projects/simon.jpg",
+        github: "https://github.com/asso-the-coder/memory-game",
+        github: "https://github.com/asso-the-coder/space-invaders"
+      },
+      {
         title: "Plastania Video Game",
         blurb: "Beta release of my original single-player video game built with custom graphics!",
         tags: ["C++", "Allegro"],
         image: "assets/projects/plastania.jpg",
         github: "https://github.com/asso-the-coder/plastania-video-game"
-      },
-      {
-        title: "Custom Software-In-The-Loop (SIL) Environment",
-        blurb: "General-purpose SIL enviroment for automotive sensor validation; tested by simuating a SPI temperature sensor for a bare-metal ARM system.",
-        tags: ["C", "GTest", "CMake", "SPI"],
-        image: "assets/projects/sil.jpg",
-        github: "https://github.com/asso-the-coder/SIL-environment"     // replace with actual repo
       },
       {
         title: "Smart Home Security System",
@@ -518,6 +526,13 @@
         github: "https://github.com/asso-the-coder/home-security-system-pynq-z2"     // replace with actual repo
       },
       {
+        title: "Custom Software-In-The-Loop (SIL) Environment",
+        blurb: "General-purpose SIL enviroment for automotive sensor validation; tested by simuating a SPI temperature sensor for a bare-metal ARM system.",
+        tags: ["C", "GTest", "CMake", "SPI"],
+        image: "assets/projects/sil.jpg",
+        github: "https://github.com/asso-the-coder/SIL-environment"     // replace with actual repo
+      },
+      {
         title: "Biomedical Imaging Software Research",
         blurb: "Published research on signal processing algorithms to deconvolve thermal images alongside CADIPT team.",
         tags: ["MATLAB"],
@@ -525,26 +540,11 @@
         github: "https://www.science.org/doi/10.1126/sciadv.adi1899"
       },
       {
-        title: "Electric Racecar Circuits",
-        blurb: "Designed, physically built, and tested several critical PCBs end-to-end for my university's EV racing team.",
-        tags: ["Altium", "C++", "SPICE", "Teensy MCUs", "I2C", "UART", "CAN", "E-loads", "Oscilloscopes"],
-        image: "assets/projects/RC.jpg",
-        github: "https://drive.google.com/drive/folders/1Gp0THWEDytKAZaY5z9e0QTf7O2gkgbx3"
-      },
-      {
         title: "Amazon Customer Review Analyzer Hackathon Project",
         blurb: "Reached Daisy Hackathon finals using this Word2Vec-based pipeline to extract product satisfaction info from Amazon reviews. Created with two friends.",
         tags: ["ML", "NLP", "Word2Vec", "Python"],
         image: "assets/projects/reviews.jpg",
         github: "https://github.com/asso-the-coder/synonyms-finder"
-      },
-      {
-        title: "Assembly Games",
-        blurb: "Designed several games in RISC-V Assembly for university course using low-level computing concepts, tested on Altera DE1-SoC.",
-        tags: ["RISC-V Assembly", "C"],
-        image: "assets/projects/simon.jpg",
-        github: "https://github.com/asso-the-coder/memory-game",
-        github: "https://github.com/asso-the-coder/space-invaders"
       },
       {
         title: "Gomuku Bot",
