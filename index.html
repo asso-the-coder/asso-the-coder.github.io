@@ -188,7 +188,6 @@
       transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
       position:relative;
       cursor:pointer;
-      scroll-margin-top: 90px;
     }
     .proj:hover{
       transform: translateY(-3px);
@@ -422,7 +421,7 @@
     <section id="projects">
       <div class="section-title">
         <h2>Projects</h2>
-        <small>Click a project to view its source or direct link.</small>
+        <small>Click any project to check out the source files!</small>
       </div>
 
       <div class="grid">
@@ -496,15 +495,8 @@
   <script>
     // ====== EDIT HERE: Projects (image slots + GitHub links) ======
     // Put images under: assets/projects/<image>
-    // Cards without a `github` URL link to their own permanent page anchor.
+    // Entire card clicks through to `github`.
     const projects = [
-      {
-        id: "humanoid-robot-conversational-interaction-improvement",
-        title: "Humanoid Robot Conversational Interaction Improvement",
-        blurb: "Improving conversational interactions with the Geminoid HI-6 humanoid robot using retrieval-augmented generation and lifelike voice synthesis.",
-        tags: ["RAG", "C#", "ElevenLabs"],
-        image: "assets/projects/ishiguro.jpg"
-      },
       {
         title: "Plastania Video Game",
         blurb: "Beta release of my original single-player video game built with custom graphics!",
@@ -671,14 +663,8 @@
 
     function projectCard(p){
       const tech = p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
-      const isExternal = Boolean(p.github);
-      const href = isExternal ? p.github : `#${p.id}`;
-      const id = p.id ? ` id="${escapeHtml(p.id)}"` : "";
-      const externalAttrs = isExternal ? ` target="_blank" rel="noopener"` : "";
-      const ariaLabel = isExternal ? `Open ${p.title} on GitHub` : `Direct link to ${p.title}`;
-      const linkLabel = isExternal ? "Open on GitHub →" : "Direct link →";
       return `
-        <a class="proj"${id} href="${escapeHtml(href)}"${externalAttrs} aria-label="${escapeHtml(ariaLabel)}">
+        <a class="proj" href="${p.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)} on GitHub">
           <div class="proj-media">
             <img src="${p.image}" alt="" onerror="this.style.display='none'">
           </div>
@@ -687,7 +673,7 @@
             <p>${escapeHtml(p.blurb)}</p>
             <div class="tags">${tech}</div>
             <div class="proj-links">
-              <span class="ghost">${linkLabel}</span>
+              <span class="ghost">Open on GitHub →</span>
             </div>
           </div>
         </a>
