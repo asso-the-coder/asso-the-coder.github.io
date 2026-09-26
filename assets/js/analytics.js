@@ -22,7 +22,7 @@
 // network's point of view. Review the sheet periodically; nothing client-
 // side can fully replace that.
 (function () {
-  const SHEET_ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+  const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbyRlbNFCjq891nkjg_G-KmozVU4gv9zgu6Kwbx5Z4m59KwzRyMzRX8vjkqJg2mS53zghw/exec";
 
   if (!SHEET_ENDPOINT || SHEET_ENDPOINT.indexOf("PASTE_YOUR") === 0) return;
 
