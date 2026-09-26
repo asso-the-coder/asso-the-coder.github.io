@@ -251,6 +251,32 @@
     }
     .proj:hover .proj-media img{ transform: scale(1.05); opacity: .98; }
 
+    .proj-media-video{ height:auto; display:flex; flex-direction:column; }
+    .video-tabs{ display:flex; }
+    .video-tab{
+      flex:1;
+      padding:8px;
+      border:0;
+      border-bottom:2px solid var(--bg-wood-light);
+      background: var(--bg-wood-mid);
+      color: var(--muted);
+      font-family: inherit;
+      font-size:12.5px;
+      cursor:pointer;
+    }
+    .video-tab.active{
+      background: var(--a4);
+      color: var(--bg-wood-dark);
+      font-weight:bold;
+      border-bottom-color: var(--a4);
+    }
+    .proj-video{
+      width:100%;
+      height:220px;
+      border:0;
+      display:block;
+    }
+
     .proj-body{ padding: 14px; }
     .proj h3{ margin: 0 0 8px; font-size: 15px; letter-spacing:-.1px; color: var(--text); }
     .proj p{ margin: 0 0 10px; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
@@ -544,23 +570,54 @@
 
     function projectCard(p){
       const tech = p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+      const body = `
+        <div class="proj-body">
+          <h3>${escapeHtml(p.title)}</h3>
+          <p>${escapeHtml(p.blurb)}</p>
+          <div class="tags">${tech}</div>
+          <div class="proj-links">
+            <span class="ghost">Open on GitHub →</span>
+          </div>
+        </div>
+      `;
+
+      if (p.beforeVideo && p.afterVideo) {
+        // Buttons + iframe live outside the link so they stay independently
+        // clickable (an <a> can't validly wrap interactive controls).
+        return `
+          <div class="proj proj-has-video">
+            <div class="proj-media proj-media-video">
+              <div class="video-tabs">
+                <button class="video-tab active" type="button" data-video="${escapeHtml(p.beforeVideo)}">Before</button>
+                <button class="video-tab" type="button" data-video="${escapeHtml(p.afterVideo)}">After</button>
+              </div>
+              <iframe class="proj-video" src="${p.beforeVideo}" title="${escapeHtml(p.title)} before/after demo" loading="lazy" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <a href="${p.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)} details">${body}</a>
+          </div>
+        `;
+      }
+
       return `
         <a class="proj" href="${p.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)} on GitHub">
           <div class="proj-media">
             <img src="/${p.image}" alt="" onerror="this.style.display='none'">
           </div>
-          <div class="proj-body">
-            <h3>${escapeHtml(p.title)}</h3>
-            <p>${escapeHtml(p.blurb)}</p>
-            <div class="tags">${tech}</div>
-            <div class="proj-links">
-              <span class="ghost">Open on GitHub →</span>
-            </div>
-          </div>
+          ${body}
         </a>
       `;
     }
     document.getElementById("projGrid").innerHTML = SITE_CONTENT.projects.map(projectCard).join("");
+
+    document.getElementById("projGrid").addEventListener("click", (e) => {
+      const tab = e.target.closest(".video-tab");
+      if (!tab) return;
+      e.preventDefault();
+      const wrap = tab.closest(".proj-media-video");
+      wrap.querySelectorAll(".video-tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      wrap.querySelector(".proj-video").src = tab.dataset.video;
+    });
 
     // Experience intro + timeline
     document.getElementById("experienceHeading").textContent = SITE_CONTENT.experienceIntro.heading;

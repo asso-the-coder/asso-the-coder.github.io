@@ -89,7 +89,9 @@ const SITE_CONTENT = {
       blurb: "Researched (and achieved!) improvements for the conversational system of the Geminoid HI-6 android",
       tags: ["RAG", "ElevenLabs", "TCP", "Azure TTS", "C#"],
       image: "assets/projects/HI6_chat.jpg",
-      github: "https://docs.google.com/presentation/d/1s0VNKLozoCnUK1JAVj0YUkKp7VNHPSir/edit?usp=sharing&ouid=110950224963111531859&rtpof=true&sd=true"     // replace with actual repo
+      github: "https://docs.google.com/presentation/d/1s0VNKLozoCnUK1JAVj0YUkKp7VNHPSir/edit?usp=sharing&ouid=110950224963111531859&rtpof=true&sd=true",     // replace with actual repo
+      beforeVideo: "https://www.youtube.com/embed/mZcfqajEHBA",
+      afterVideo: "https://drive.google.com/file/d/1VJuWPizd03zFIFKplr9wfLs4pd2lkQd-/preview"
     },
     {
       title: "Smart Home Security System (WIP)",
