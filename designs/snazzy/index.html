@@ -74,29 +74,10 @@
     .hero::before{
       content:"";
       position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(20,12,6,.35), rgba(20,12,6,.88));
-    }
-    .hero-inner{
-      position:relative; z-index:1;
-      max-width:1100px; margin:0 auto; padding: 54px 22px;
-      display:flex; align-items:center;
-    }
-    .hero h1{
-      margin:0;
-      font-size: clamp(15px, 3.4vw, 26px);
-      line-height:1.6;
-      letter-spacing: 1px;
-      color: var(--text);
-      background: rgba(43,28,18,.65);
-      border: 3px solid var(--bg-wood-light);
-      outline: 2px solid var(--a4);
-      outline-offset: 6px;
-      padding: 16px 20px;
-      box-shadow: var(--shadow-hard);
+      background: linear-gradient(180deg, transparent 65%, var(--bg-wood-dark) 100%);
     }
     @media (max-width: 700px){
       .hero{ min-height: 180px; }
-      .hero-inner{ padding: 34px 18px; }
     }
 
     /* NAV */
@@ -417,11 +398,7 @@
     </div>
   </div>
 
-  <div class="hero">
-    <div class="hero-inner">
-      <h1 class="pixel-font" id="heroBrand"></h1>
-    </div>
-  </div>
+  <div class="hero"></div>
 
   <div class="wrap">
 
@@ -516,8 +493,6 @@
   <script>
     document.title = SITE_CONTENT.meta.title;
     document.querySelector('meta[name="description"]').setAttribute("content", SITE_CONTENT.meta.description);
-
-    document.getElementById("heroBrand").textContent = SITE_CONTENT.nav.brand;
 
     // Nav
     const navlinks = document.getElementById("navlinks");
