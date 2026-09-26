@@ -17,4 +17,6 @@ Asser is an Engineering Science student at the University of Toronto, interested
 - **`index.html`** — the page markup and styling (pixel-art theme). Edit this for layout/visual changes.
 - **`assets/js/site-shared.js`** — small shared rendering helpers (escapeHtml, copy-email button, scroll-reveal). Rarely needs touching.
 - **`assets/hero-desk.png`** — the hero banner image.
-- There is no build step and no separate "design" folder — `index.html` at the root is the live file, always.
+- **`assets/js/analytics.js`** / **`google-apps-script.gs`** — opt-in visitor logging to a Google Sheet, with bot/scraper filtering. See the comment header in analytics.js for setup steps.
+- **`resume/jakes_resume.tex`** — LaTeX source for the resume (the "Jake's Resume" Overleaf template). Compile with MiKTeX (installed on this machine at `/mnt/c/Users/16132/AppData/Local/Programs/MiKTeX/miktex/bin/x64/pdflatex.exe`) from inside `resume/`, then copy the resulting `jakes_resume.pdf` to `assets/resume.pdf` — that's the canonical file the site's Resume links point to. Build artifacts (`.aux`/`.log`/`.out`/`.pdf`) in `resume/` are gitignored; only the `.tex` source and `assets/resume.pdf` are committed.
+- There is no build step for the website itself, and no separate "design" folder — `index.html` at the root is the live file, always.

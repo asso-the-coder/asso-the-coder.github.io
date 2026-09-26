@@ -1,0 +1,254 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{xcolor}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=0pt, parsep=0pt, topsep=2pt, partopsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Asser Abdelgawad} \\ \vspace{1pt}
+    \faRobot\ \href{https://asserabdelgawad.com}{\textcolor{blue}{Portfolio}} ~
+    \faGithub\ \href{https://github.com/asso-the-coder}{\textcolor{blue}{GitHub}} ~
+    \faLinkedin\ \href{https://www.linkedin.com/in/asser-abdelgawad-928359229/}{\textcolor{blue}{LinkedIn}} \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ 613-262-8200 ~ \href{mailto:asso.abdelgawad@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  {\textcolor{blue}{asso.abdelgawad@gmail.com}}}
+    \vspace{-8pt}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Toronto}{Grad Date: APRIL 2027}
+      {B.A.Sc. Engineering Science - Electrical and Computer Engineering major, AI minor}{Toronto, CA}
+  \resumeSubHeadingListEnd
+
+%------RELEVANT COURSEWORK-------
+% Omitted as there are no relevant coursework details
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Hiroshi Ishiguro Labs}{MAY 2026 -- AUG 2026}
+      {Humanoid Robotics Researcher - Voice and Conversation}{Osaka, JP}
+      \resumeItemListStart
+        \resumeItem{Built a non-invasive benchmarking framework using realtime traffic capture and voice activity detection.}
+        \resumeItem{Reduced response time by 44\% via voice synthesis redesign, LLM inference-stage tuning, and data pipeline optimization.}
+        \resumeItem{Trained voice models to improve the robot's perceived MOS naturalness by 31\%.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tesla Inc.}{SEP 2024 -- DEC 2024}
+      {Low Voltage Test \& Automation Intern}{Palo Alto, USA}
+      \resumeItemListStart
+        \resumeItem{Created C drivers for port-mapped I/O devices using bit manipulation and shared objects for integration to Python app}
+        \resumeItem{Built brake releaser mechanism using PCAN-Pro dongle and UDS APIs for CAN-FD routines.}
+        \resumeItem{Built CNN using ResNet and OpenCV to detect vehicle features with 99.01\% accuracy on production line.}
+        \resumeItem{Designed and conducted full bring-up on an analog front-end and high-side drive PCBA to be used with National Instruments DAQs, and built a matching custom library in Python using the NIDAQ-mx gRPC API.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tesla Inc.}{MAY 2024 -- AUG 2024}
+      {Electronics Design Engineering Intern}{Palo Alto, USA}
+      \resumeItemListStart
+        \resumeItem{Owned MCU signal flow architecture in main controller PCB for the next-gen, high-volume Supercharger program}
+        \resumeItem{Conducted signal integrity tests on 1000BASE-T1 PAM3 Ethernet by quantifying packet error rates on Linux SoC.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Kepler Communications Inc.}{SEP 2023 -- APR 2024}
+      {Power Systems Engineering Intern}{Toronto, CA}
+      \resumeItemListStart
+        \resumeItem{Verified Battery Management System's safety logic, control loops, UART buses, and cell voltage monitoring using hardware-in-the-loop test suite with a custom PCBA (design and layout in Altium) and a Raspberry Pi.}
+        \resumeItem{Designed a snubber on a transformer-based isolated flyback converter, DACs, EEPROMs, communication buses, etc.}
+        \resumeItem{Used multithreading for telemetry acquisition (with SMBus library for I\textsuperscript{2}C) and safety controls for a 1.6 kilowatt system.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Pulsenics Inc.}{JUN 2023 -- SEP 2023}
+      {Firmware QA Intern}{Toronto, CA}
+      \resumeItemListStart
+        \resumeItem{Developed a PID controller in C for a high-power system involving a power-factor correcting boost converter into a dual active-bridge converter (PFC/DAB) using Code Composer Studio, TI SysConfig, and ARM Cortex-M microcontrollers.}
+        \resumeItem{Verified data acquisition by writing Interrupt Service Routines in C for sensor qualification and ADC configuration.}
+        \resumeItem{Designed Power-over-Ethernet (PoE) switch for 1000BASE-T Ethernet packet communications.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/asso-the-coder/SIL-environment}{\textcolor{blue}{Custom Software-In-The-Loop Environment}}}}{ MAR 2025 -- MAR 2025}
+          \resumeItemListStart
+            \resumeItem{Built a SIL app for simulating signals to-and-from a temperature sensor over SPI to a bare-metal ARM-based system}
+            \resumeItem{Tested extensively using GTest framework for graceful exits, communication bus failures, and noise filtering solutions}
+          \resumeItemListEnd
+          \vspace{-13pt}
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/asso-the-coder/home-security-system-pynq-z2}{\textcolor{blue}{Smart Home Security System}}}}{ JAN 2025 -- FEB 2025}
+          \resumeItemListStart
+            \resumeItem{Used FreeRTOS to process inputs from doppler effect and ultrasonic radar sensors with a queue for inter-task communication, layered atop a custom hardware platform designed in Vivado for a Xilinx SoC.}
+          \resumeItemListEnd
+          \vspace{-13pt}
+      \resumeProjectHeading
+          {\textbf{\href{https://www.science.org/doi/10.1126/sciadv.adi1899}{\textcolor{blue}{Biomedical Imaging Software Research}}}}{ MAY 2022 -- AUG 2022}
+          \resumeItemListStart
+            \resumeItem{Programmed signal processing algorithms to deconvolve thermal images, published in 14.7 impact factor journal.}
+          \resumeItemListEnd
+          \vspace{-13pt}
+      \resumeProjectHeading
+            {\textbf{\href{https://drive.google.com/drive/folders/1Gp0THWEDytKAZaY5z9e0QTf7O2gkgbx3}{\textcolor{blue}{Controllers Lead - UofT Formula Racing}}}}{ SEP 2021 -- SEP 2023}
+          \resumeItemListStart
+            \resumeItem{Designed and manufactured electronic systems in a winning racecar, including system architecture, PCBAs, and firmware}
+          \resumeItemListEnd
+          \vspace{-13pt}
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/asso-the-coder/synonyms-finder}{\textcolor{blue}{Amazon Customer Review Analyzer - Daisy Hackathon Finalist}}}}{ JAN 2022 -- JAN 2022}
+          \resumeItemListStart
+            \resumeItem{Used Word2Vec machine learning model to analyze Amazon customer reviews for product performance.}
+          \resumeItemListEnd
+          \vspace{-13pt}
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/asso-the-coder/plastania-video-game}{\textcolor{blue}{Plastania Video Game}}}}{ NOV 2019 -- JAN 2020}
+          \resumeItemListStart
+            \resumeItem{Built an Angry Birds-esque video game in C++ using Allegro graphics package and object-oriented programming.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+\vspace{-15pt}
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    \textbf{Languages \& Developer Tools}{: C, C++, Assembly, Verilog, Python, CMake, MATLAB, Altium, Code Composer Studio} \\
+    \textbf{Protocols}{: CAN, CAN-FD, Quad SPI, I\textsuperscript{2}C, UART, Ethernet, RS-422, RS-485, BLE/UWB, gRPC, TCP/IP, UDP, SCPI} \\
+    \textbf{Frameworks \& Technologies}{: FreeRTOS, OpenCV, GTest, PyTest, electronic load, oscilloscope, spectrum analyzer, VNA} \\
+    }}
+\end{itemize}
+\vspace{-16pt}
+
+
+%-----------INVOLVEMENT---------------
+% Omitted as there are no leadership/extracurricular details
+
+
+\end{document}

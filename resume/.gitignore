@@ -1,0 +1,10 @@
+# LaTeX build artifacts — regenerate with:
+#   pdflatex jakes_resume.tex
+# then copy the resulting jakes_resume.pdf to ../assets/resume.pdf
+*.aux
+*.log
+*.out
+*.pdf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
