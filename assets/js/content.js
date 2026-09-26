@@ -87,7 +87,7 @@ const SITE_CONTENT = {
     {
       title: "Humanoid Robot Voice Research",
       blurb: "Researched (and achieved!) improvements for the conversational system of the Geminoid HI-6 android",
-      tags: ["RAG", "ElevenLabs", "GPT-5", "Azure TTS", "Python", "C#"],
+      tags: ["RAG", "ElevenLabs", "TCP", "Azure TTS", "C#"],
       image: "assets/projects/HI6_chat.jpg",
       github: "https://docs.google.com/presentation/d/1s0VNKLozoCnUK1JAVj0YUkKp7VNHPSir/edit?usp=sharing&ouid=110950224963111531859&rtpof=true&sd=true"     // replace with actual repo
     },
@@ -148,6 +148,7 @@ const SITE_CONTENT = {
       image: "assets/projects/files.jpg",
       github: "https://github.com/asso-the-coder/file-transfer-udp",
     },
+    /* Hidden for now — re-enable by uncommenting.
     {
       title: "WhatsUp Instant Messaging",
       blurb: "Server and client code for a WhatsApp-style multi-user text conferencing app over TCP sockets.",
@@ -155,6 +156,7 @@ const SITE_CONTENT = {
       image: "assets/projects/whatsup.jpg",
       github: "https://github.com/asso-the-coder/whatsup-conferencing",
     },
+    */
   ],
 
   experience: [
@@ -195,7 +197,7 @@ const SITE_CONTENT = {
       bullets: [
         "Verified BMS safety logic, control loops, UART buses, and cell monitoring in a HIL suite (TI MSP430).",
         "Built FRAM/EEPROM genealogy data saving framework for safety-critical systems.",
-        "Improved solar panel efficiency by optimizing MPPT scan rate; multithreading telemetry + safety controls."
+        "Improved solar panel efficiency by optimizing MPPT scan rate; multithreaded telemetry + safety controls."
       ]
     },
     {
