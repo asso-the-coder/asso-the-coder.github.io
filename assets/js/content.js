@@ -79,21 +79,21 @@ const SITE_CONTENT = {
   projects: [
     {
       title: "Plastania Video Game",
-      blurb: "Beta release of my original single-player video game built with custom graphics!",
+      blurb: "Beta release of an original single-player video game I built in high school",
       tags: ["C++", "Allegro"],
       image: "assets/projects/plastania.jpg",
       github: "https://github.com/asso-the-coder/plastania-video-game"
     },
     {
-      title: "Humanoid Robot Voice Improvement",
-      blurb: "Researched (and achieved!) improvements for the conversational system of Geminoid HI-6 android",
+      title: "Humanoid Robot Voice Research",
+      blurb: "Researched (and achieved!) improvements for the conversational system of the Geminoid HI-6 android",
       tags: ["RAG", "ElevenLabs", "GPT-5", "Azure TTS", "Python", "C#"],
       image: "assets/projects/HI6_chat.jpg",
       github: "https://docs.google.com/presentation/d/1s0VNKLozoCnUK1JAVj0YUkKp7VNHPSir/edit?usp=sharing&ouid=110950224963111531859&rtpof=true&sd=true"     // replace with actual repo
     },
     {
-      title: "Smart Home Security System",
-      blurb: "Distance and motion sensing system in FreeRTOS, layered atop custom Vivado platform on a Xilinx Pynq-Z2 SoC. Still in prototype stage; more features coming soon...",
+      title: "Smart Home Security System (WIP)",
+      blurb: "Distance and motion sensing system in FreeRTOS, layered atop custom Vivado platform on a Xilinx Pynq-Z2 SoC.",
       tags: ["C", "FreeRTOS", "Verilog", "TCL", "SPI", "CMake"],
       image: "assets/projects/pynq.jpg",
       github: "https://github.com/asso-the-coder/home-security-system-pynq-z2"     // replace with actual repo
@@ -114,7 +114,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Electric Racecar Circuits",
-      blurb: "Designed, physically built, and tested several critical PCBs end-to-end for my university's EV racing team.",
+      blurb: "Designed, physically built, and tested several critical PCBs end-to-end for my university's (winning!) EV racing team.",
       tags: ["Altium", "C++", "SPICE", "Teensy MCUs", "I2C", "UART", "CAN", "E-loads", "Oscilloscopes"],
       image: "assets/projects/RC.jpg",
       github: "https://drive.google.com/drive/folders/1Gp0THWEDytKAZaY5z9e0QTf7O2gkgbx3"
