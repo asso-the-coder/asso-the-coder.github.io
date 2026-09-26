@@ -195,9 +195,9 @@ const SITE_CONTENT = {
       date: "Sep 2023 — Apr 2024",
       role: "Power Systems Engineering Intern",
       bullets: [
-        "Verified BMS safety logic, control loops, UART buses, and cell monitoring in a HIL suite (TI MSP430).",
-        "Built FRAM/EEPROM genealogy data saving framework for safety-critical systems.",
-        "Improved solar panel efficiency by optimizing MPPT scan rate; multithreaded telemetry + safety controls."
+        "Verified Battery Management System's safety logic, control loops, UART buses, and cell voltage monitoring by building a hardware-in-the-loop test suite with a custom PCBA and Raspberry Pi.",
+        "Used multithreading for telemetry acquisition (with SMBus library for I2C) and safety controls for a 1.6 kiloWatt system.",
+        "Designed a snubbed, transformer-based isolated flyback converter, DACs, EEPROMs, communication buses, and more."
       ]
     },
     {
