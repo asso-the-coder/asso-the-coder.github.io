@@ -8,38 +8,50 @@
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon32x32.png">
-  <meta name="theme-color" content="#07070f">
+  <meta name="theme-color" content="#2b1c12">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#07070f;
-      --panel: rgba(255,255,255,.045);
-      --panel2: rgba(255,255,255,.028);
-      --text: rgba(255,255,255,.94);
-      --muted: rgba(255,255,255,.66);
-      --line: rgba(255,255,255,.12);
-      --shadow: 0 18px 55px rgba(0,0,0,.45);
-      --radius: 18px;
+      --bg-wood-dark:#2b1c12;
+      --bg-wood-mid:#3d2818;
+      --bg-wood-light:#5a3d24;
+      --text:#f3e6d0;
+      --muted:#c9b08a;
+      --line: rgba(255,200,140,.18);
+      --shadow-hard: 4px 4px 0 rgba(0,0,0,.55);
+      --radius: 0px;
 
-      /* more color */
-      --a1:#22d3ee; /* cyan */
-      --a2:#a78bfa; /* violet */
-      --a3:#34d399; /* green */
-      --a4:#fb7185; /* pink/red accent */
+      /* accents pulled from the reference desk scene */
+      --a1:#4fc3f7; /* robot blue */
+      --a2:#ffb347; /* robot chest amber */
+      --a3:#35d46a; /* terminal green */
+      --a4:#ff8a3d; /* lava lamp orange */
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       color:var(--text);
       background:
-        radial-gradient(950px 520px at 12% 0%, rgba(34,211,238,.18), transparent 56%),
-        radial-gradient(950px 520px at 88% 6%, rgba(167,139,250,.18), transparent 56%),
-        radial-gradient(1050px 560px at 60% 110%, rgba(52,211,153,.14), transparent 60%),
-        radial-gradient(900px 520px at 12% 120%, rgba(251,113,133,.12), transparent 60%),
-        linear-gradient(180deg, #05060b, var(--bg));
+        radial-gradient(700px 420px at 85% 10%, rgba(255,138,61,.16), transparent 60%),
+        radial-gradient(650px 380px at 15% 85%, rgba(79,195,247,.12), transparent 60%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.015) 0 2px, transparent 2px 6px),
+        linear-gradient(180deg, var(--bg-wood-dark), #241609);
+      position: relative;
+    }
+    body::after{
+      content:"";
+      position:fixed; inset:0;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.10) 0px, rgba(0,0,0,.10) 1px, transparent 2px, transparent 4px);
+      pointer-events:none;
+      z-index: 50;
+      opacity:.5;
     }
 
     a{ color:inherit; text-decoration:none; }
@@ -47,12 +59,32 @@
 
     .wrap{ max-width:1100px; margin:0 auto; padding: 22px; }
 
+    .pixel-font{ font-family:'Press Start 2P', ui-monospace, monospace; }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height: 260px;
+      background-image: url('/assets/snazzy/hero-desk.png');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 4px solid var(--bg-wood-light);
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 65%, var(--bg-wood-dark) 100%);
+    }
+    @media (max-width: 700px){
+      .hero{ min-height: 180px; }
+    }
+
     /* NAV */
     .nav{
       position: sticky; top: 0;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(7,7,15,.88), rgba(7,7,15,.55));
-      border-bottom: 1px solid var(--line);
+      background: rgba(43,28,18,.94);
+      border-bottom: 3px solid var(--bg-wood-light);
       z-index: 20;
     }
     .navin{
@@ -61,40 +93,48 @@
     }
     .brand{ display:flex; align-items:center; gap:10px; min-width:0; }
     .dot{
-      width:11px; height:11px; border-radius:999px;
-      background: linear-gradient(135deg, var(--a1), var(--a2), var(--a4));
-      box-shadow: 0 0 0 8px rgba(34,211,238,.10);
+      width:12px; height:12px; border-radius:2px;
+      background: var(--a4);
+      box-shadow: 0 0 0 4px rgba(255,138,61,.18);
       flex: 0 0 auto;
     }
-    .brand strong{ letter-spacing:-.35px; }
+    .brand strong{ letter-spacing:.5px; font-size: 12px; }
     .brand span{ color:var(--muted); font-size:12.5px; margin-left:8px; }
 
     .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      font-size: 13px;
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      border-radius: 2px;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-mid);
+      color: var(--text);
+      font-size: 12.5px;
+      box-shadow: var(--shadow-hard);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
     .pill:hover{
-      transform: translateY(-1px);
-      border-color: rgba(34,211,238,.45);
-      box-shadow: 0 0 0 7px rgba(34,211,238,.10);
+      transform: translate(-2px,-2px);
+      border-color: var(--a1);
+      box-shadow: 6px 6px 0 rgba(0,0,0,.55);
+    }
+    .pill:active{
+      transform: translate(2px,2px);
+      box-shadow: none;
     }
     .pill.primary{
-      border-color: rgba(34,211,238,.50);
-      background: linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.12), rgba(251,113,133,.10));
+      border-color: var(--a4);
+      background: var(--a4);
+      color: var(--bg-wood-dark);
+      font-weight: bold;
     }
 
     /* CARDS / SECTIONS */
     .card{
-      border: 1px solid var(--line);
+      border: 2px solid var(--bg-wood-light);
       border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: var(--shadow);
+      background: var(--bg-wood-mid);
+      box-shadow: var(--shadow-hard);
       overflow:hidden;
       position:relative;
     }
@@ -103,14 +143,16 @@
     .section-title{
       display:flex; align-items: baseline; justify-content: space-between;
       gap: 12px;
-      margin: 22px 0 12px;
+      margin: 26px 0 14px;
+      border-bottom: 3px dashed var(--a3);
+      padding-bottom: 10px;
     }
     .section-title h2{
       margin:0;
       font-size: 13px;
-      letter-spacing: .22px;
+      letter-spacing: .5px;
       text-transform: uppercase;
-      color: rgba(255,255,255,.86);
+      color: var(--a3);
     }
     .section-title small{ color: var(--muted); font-size: 12.5px; }
 
@@ -129,6 +171,9 @@
     .about ul {
       margin: 0;
       padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
     }
 
     .about li {
@@ -138,34 +183,27 @@
     .chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:8px; }
     .chip{
       padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 999px;
-      background: rgba(0,0,0,.12);
-      color: rgba(255,255,255,.75);
+      border: 2px solid var(--bg-wood-light);
+      border-radius: 2px;
+      background: var(--bg-wood-dark);
+      color: var(--muted);
       font-size: 12.5px;
     }
-    .chip.c1{ border-color: rgba(34,211,238,.30); }
-    .chip.c2{ border-color: rgba(167,139,250,.30); }
-    .chip.c3{ border-color: rgba(52,211,153,.30); }
-    .chip.c4{ border-color: rgba(251,113,133,.30); }
+    .chip.c1{ border-color: var(--a1); }
+    .chip.c2{ border-color: var(--a2); }
+    .chip.c3{ border-color: var(--a3); }
+    .chip.c4{ border-color: var(--a4); }
 
     .statgrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     .stat{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.025);
+      border-radius: 0;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-dark);
       padding: 12px;
       position:relative;
       overflow:hidden;
     }
-    .stat:before{
-      content:"";
-      position:absolute; inset:-40px;
-      background: radial-gradient(circle, rgba(34,211,238,.20), transparent 55%);
-      opacity:.35;
-      pointer-events:none;
-    }
-    .stat b{ display:block; font-size: 12.5px; color: rgba(255,255,255,.88); position:relative; }
+    .stat b{ display:block; font-size: 12.5px; color: var(--text); position:relative; }
     .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; position:relative; }
 
     /* PROJECTS */
@@ -180,53 +218,52 @@
 
     .proj{
       grid-column: span 6;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      background: rgba(255,255,255,.03);
+      border: 2px solid var(--bg-wood-light);
+      border-radius: 0;
+      background: var(--bg-wood-dark);
       overflow:hidden;
-      box-shadow: var(--shadow);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      box-shadow: var(--shadow-hard);
+      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
       position:relative;
       cursor:pointer;
     }
     .proj:hover{
-      transform: translateY(-3px);
-      border-color: rgba(34,211,238,.40);
-      box-shadow: 0 22px 60px rgba(0,0,0,.55);
+      transform: translate(-3px,-3px);
+      border-color: var(--a1);
+      box-shadow: 8px 8px 0 rgba(0,0,0,.55);
     }
     @media (max-width: 920px){ .proj{ grid-column: span 12; } }
 
     .proj-media{
       height: 180px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
+      border-bottom: 2px solid var(--bg-wood-light);
       position:relative;
       overflow:hidden;
       background:
-        radial-gradient(520px 260px at 30% 30%, rgba(34,211,238,.22), transparent 58%),
-        radial-gradient(520px 260px at 80% 40%, rgba(167,139,250,.18), transparent 62%),
-        radial-gradient(520px 260px at 30% 80%, rgba(251,113,133,.14), transparent 65%),
-        rgba(255,255,255,.02);
+        repeating-linear-gradient(45deg, rgba(255,179,71,.07) 0 2px, transparent 2px 10px),
+        var(--bg-wood-mid);
     }
     .proj-media img{
       width:100%; height:100%; object-fit:cover;
-      opacity: .93;
-      transform: scale(1.02);
+      opacity: .92;
+      transform: scale(1.0);
       transition: transform .25s ease, opacity .25s ease;
     }
-    .proj:hover .proj-media img{ transform: scale(1.06); opacity: .98; }
+    .proj:hover .proj-media img{ transform: scale(1.05); opacity: .98; }
 
     .proj-body{ padding: 14px; }
-    .proj h3{ margin: 0 0 8px; font-size: 16px; letter-spacing:-.25px; }
-    .proj p{ margin: 0 0 10px; color: rgba(255,255,255,.74); font-size: 13.5px; line-height: 1.5; }
+    .proj h3{ margin: 0 0 8px; font-size: 15px; letter-spacing:-.1px; color: var(--text); }
+    .proj p{ margin: 0 0 10px; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
 
     .tags{ display:flex; gap:7px; flex-wrap:wrap; }
     .tag{
       font-size: 12px;
-      color: rgba(255,255,255,.74);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.14);
+      color: var(--muted);
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-mid);
       padding: 6px 8px;
-      border-radius: 999px;
+      border-radius: 2px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
     }
     .proj-links{
       margin-top: 10px;
@@ -234,34 +271,25 @@
     }
     .ghost{
       display:inline-flex; align-items:center; gap:8px;
-      padding: 9px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.02);
+      padding: 8px 10px;
+      border-radius: 2px;
+      border: 2px dashed var(--a3);
+      background: transparent;
       font-size: 12.5px;
-      color: rgba(255,255,255,.86);
+      color: var(--a3);
     }
-    .ghost:hover{ border-color: rgba(251,113,133,.42); box-shadow: 0 0 0 7px rgba(251,113,133,.10); }
+    .ghost:hover{ background: rgba(53,212,106,.10); }
 
     /* EXPERIENCE */
     .timeline{ grid-column: span 12; padding: 14px; }
     .tl{ display:grid; gap:10px; }
     .item{
       padding: 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.02);
+      border-radius: 0;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-dark);
       position:relative;
       overflow:hidden;
-    }
-    .item:before{
-      content:"";
-      position:absolute; inset:-55px;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(167,139,250,.16), transparent 56%),
-        radial-gradient(circle at 80% 20%, rgba(34,211,238,.14), transparent 56%);
-      opacity:.35;
-      pointer-events:none;
     }
     .item .head{
       display:flex; align-items:baseline; justify-content:space-between; gap:12px;
@@ -270,8 +298,8 @@
       font-size: 12.5px;
       position:relative;
     }
-    .item b{ color: rgba(255,255,255,.92); font-size: 14px; letter-spacing:-.2px; }
-    .item .role{ margin-top: 6px; color: rgba(255,255,255,.82); font-size: 13.5px; position:relative; }
+    .item b{ color: var(--text); font-size: 14px; letter-spacing:0; }
+    .item .role{ margin-top: 6px; color: var(--a2); font-size: 13.5px; position:relative; }
     .item ul{
       margin: 10px 0 0; padding-left: 18px;
       color: var(--muted); font-size: 13px; line-height: 1.55;
@@ -288,37 +316,29 @@
     .skillgrid{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
     .skill{
       padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.02);
-      color: rgba(255,255,255,.78);
+      border-radius: 2px;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-dark);
+      color: var(--muted);
       font-size: 12.5px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
     }
 
     .contactbox{
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
+      border-radius: 0;
+      border: 2px solid var(--bg-wood-light);
+      background: rgba(0,0,0,.25);
       padding: 14px;
       margin-top: 10px;
       position:relative;
       overflow:hidden;
-    }
-    .contactbox:before{
-      content:"";
-      position:absolute; inset:-60px;
-      background:
-        radial-gradient(circle at 25% 20%, rgba(34,211,238,.18), transparent 55%),
-        radial-gradient(circle at 70% 40%, rgba(251,113,133,.14), transparent 55%);
-      opacity:.40;
-      pointer-events:none;
     }
 
     .row{
       display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
       color: var(--muted); font-size: 13px;
       padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,.10);
+      border-bottom: 1px dashed var(--line);
       position:relative;
     }
     .row:last-child{ border-bottom:0; }
@@ -327,14 +347,14 @@
     footer{
       margin-top: 30px;
       padding: 18px 0;
-      border-top: 1px solid var(--line);
+      border-top: 2px dashed var(--bg-wood-light);
       color: var(--muted);
       font-size: 12.5px;
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
 
     /* subtle reveal */
-    .reveal{ opacity: 0; transform: translateY(10px); transition: opacity .50s ease, transform .50s ease; }
+    .reveal{ opacity: 0; transform: translateY(10px); transition: opacity .5s steps(6, end), transform .5s ease; }
     .reveal.on{ opacity: 1; transform: translateY(0); }
 
     /* pfp */
@@ -342,7 +362,10 @@
       width: 180px;
       height: auto;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 0;
+      border: 3px solid var(--bg-wood-light);
+      outline: 2px solid var(--a1);
+      outline-offset: 4px;
     }
 
     .about-layout {
@@ -368,48 +391,29 @@
       <div class="brand">
         <span class="dot"></span>
         <div style="min-width:0">
-          <strong>Asser Abdelgawad</strong>
+          <strong class="pixel-font">Asser Abdelgawad</strong>
         </div>
       </div>
-      <div class="navlinks">
-        <a class="pill" href="#about">About</a>
-        <a class="pill" href="#projects">Projects</a>
-        <a class="pill" href="#experience">Experience</a>
-        <a class="pill" href="#skills">Skills</a>
-        <a class="pill" href="#contact">Contact</a>
-        <a class="pill primary" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
+      <div class="navlinks" id="navlinks"></div>
     </div>
   </div>
+
+  <div class="hero"></div>
 
   <div class="wrap">
 
     <!-- ABOUT (start here) -->
     <section id="about">
       <div class="section-title">
-        <h2>About</h2>
+        <h2 class="pixel-font">About</h2>
 
       </div>
 
       <div class="grid">
         <div class="card about reveal">
           <div class="about-layout">
-            <img src="assets/profile.jpg" alt="Asser Abdelgawad" class="profile-pic">
-            <ul>
-              <li>
-                Engineering Science student at University of Toronto
-                <ul>
-                  <li>Majoring in Electrical and Computer Engineering</li>
-                  <li>Minoring in Artificial Intelligence</li>
-                </ul>
-              </li>
-
-              <li>Likes basketball, likes cats</li>
-              <li>Loves writing software that makes hardware visibly do stuff</li>
-              <li>Interested in embedded systems and machine learning applications</li>
-              <li>Currently finishing my senior year on exchange in Taiwan</li>
-              <li>Previously @ Hiroshi Ishiguro Labs, Tesla, Kepler Communications, Pulsenics, CADIPT, uOttawa Heart Institute</li>
-            </ul>
+            <img src="/assets/profile.jpg" alt="Asser Abdelgawad" class="profile-pic">
+            <ul id="aboutBullets"></ul>
           </div>
         </div>
       </div>
@@ -419,16 +423,15 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="section-title">
-        <h2>Projects</h2>
-        <small>Click any project to check out the source files!</small>
+        <h2 class="pixel-font" id="projectsHeading"></h2>
+        <small id="projectsSubtitle"></small>
       </div>
 
       <div class="grid">
         <div class="card proj-feature reveal">
           <div class="proj-wrap">
             <div class="proj-grid" id="projGrid"></div>
-            <div style="margin-top:12px; color:var(--muted); font-size:12.5px;">
-              Project blog coming soon...
+            <div style="margin-top:12px; color:var(--muted); font-size:12.5px;" id="projectsFootnote">
             </div>
           </div>
         </div>
@@ -438,8 +441,8 @@
     <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-title">
-        <h2>Experience</h2>
-        <small>Internships & engineering roles</small>
+        <h2 class="pixel-font" id="experienceHeading"></h2>
+        <small id="experienceSubtitle"></small>
       </div>
 
       <div class="grid">
@@ -452,33 +455,27 @@
     <!-- SKILLS + CONTACT -->
     <section id="skills">
       <div class="section-title">
-        <h2>Skills</h2>
+        <h2 class="pixel-font" id="skillsHeading"></h2>
       </div>
 
       <div class="grid">
         <div class="card skills reveal">
-          <div class="mono" style="color:rgba(255,255,255,.88); font-size:13px;">Core languages and tools</div>
+          <div class="mono" style="color:var(--text); font-size:13px;" id="skillsCoreLabel"></div>
           <div class="skillgrid" id="skillgrid"></div>
 
-          <div style="margin-top:12px" class="mono">Notes</div>
-          <div style="color:var(--muted); font-size:13px; line-height:1.6; margin-top:8px">
-            I am most well-versed in C, C++, and Python, and am constantly learning new things every day.
+          <div style="margin-top:12px" class="mono" id="skillsNotesLabel"></div>
+          <div style="color:var(--muted); font-size:13px; line-height:1.6; margin-top:8px" id="skillsNotesText">
           </div>
         </div>
 
         <div class="card contact reveal" id="contact">
-          <div class="mono" style="color:rgba(255,255,255,.88); font-size:13px;">Contact</div>
+          <div class="mono" style="color:var(--text); font-size:13px;" id="contactHeading"></div>
           <div class="contactbox">
-            <div class="row"><span>Email</span><span class="mono" id="email">asser.abdelgawad@mail.utoronto.ca</span></div>
-            <div class="row"><span>GitHub</span><span class="mono">asso-the-coder</span></div>
-            <div class="row"><span>LinkedIn</span><span class="mono">/in/asser-abdelgawad-928359229</span></div>
+            <div class="row"><span>Email</span><span class="mono" id="email"></span></div>
+            <div class="row"><span>GitHub</span><span class="mono" id="githubHandle"></span></div>
+            <div class="row"><span>LinkedIn</span><span class="mono" id="linkedinHandle"></span></div>
 
-            <div class="btnrow">
-              <button class="pill primary" id="copyEmail" type="button">Copy email</button>
-              <a class="pill" href="https://github.com/asso-the-coder" target="_blank" rel="noopener">GitHub</a>
-              <a class="pill" href="https://www.linkedin.com/in/asser-abdelgawad-928359229/" target="_blank" rel="noopener">LinkedIn</a>
-              <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
-              <a class="pill" href="mailto:asser.abdelgawad@mail.utoronto.ca">Email me</a>
+            <div class="btnrow" id="contactButtons">
             </div>
             </div>
           </div>
@@ -487,194 +484,40 @@
     </section>
 
     <footer>
-      <div>© <span id="y"></span> <span class="mono">Asser Abdelgawad</span></div>
+      <div>© <span id="y"></span> <span class="mono" id="footerName"></span></div>
     </footer>
   </div>
 
+  <script src="/assets/js/content.js"></script>
+  <script src="/assets/js/site-shared.js"></script>
   <script>
-    // ====== EDIT HERE: Projects (image slots + GitHub links) ======
-    // Put images under: assets/projects/<image>
-    // Entire card clicks through to `github`.
-    const projects = [
-      {
-        title: "Plastania Video Game",
-        blurb: "Beta release of my original single-player video game built with custom graphics!",
-        tags: ["C++", "Allegro"],
-        image: "assets/projects/plastania.jpg",
-        github: "https://github.com/asso-the-coder/plastania-video-game"
-      },
-      {
-        title: "Humanoid Robot Voice Improvement",
-        blurb: "Reduced response time by 44%, increased perceived naturalness by 31%, and vastly improved voice cloning for Geminoid HI-6 robot",
-        tags: ["RAG", "ElevenLabs", "GPT-5", "Azure TTS", "Python", "C#"],
-        image: "assets/projects/HI6_chat.jpg",
-        github: "https://docs.google.com/presentation/d/1s0VNKLozoCnUK1JAVj0YUkKp7VNHPSir/edit?usp=sharing&ouid=110950224963111531859&rtpof=true&sd=true"     // replace with actual repo
-      },
-      {
-        title: "Smart Home Security System",
-        blurb: "Distance and motion sensing system in FreeRTOS, layered atop custom Vivado platform on a Xilinx Pynq-Z2 SoC. Still in prototype stage; more features coming soon...",
-        tags: ["C", "FreeRTOS", "Verilog", "TCL", "SPI", "CMake"],
-        image: "assets/projects/pynq.jpg",
-        github: "https://github.com/asso-the-coder/home-security-system-pynq-z2"     // replace with actual repo
-      },
-      {
-        title: "Custom Software-In-The-Loop (SIL) Environment",
-        blurb: "General-purpose SIL enviroment for automotive sensor validation; tested by simuating a SPI temperature sensor for a bare-metal ARM system.",
-        tags: ["C", "GTest", "CMake", "SPI"],
-        image: "assets/projects/sil.jpg",
-        github: "https://github.com/asso-the-coder/SIL-environment"     // replace with actual repo
-      },
-      {
-        title: "Biomedical Imaging Software Research",
-        blurb: "Published research on signal processing algorithms to deconvolve thermal images alongside CADIPT team.",
-        tags: ["MATLAB"],
-        image: "assets/projects/imaging.jpg",
-        github: "https://www.science.org/doi/10.1126/sciadv.adi1899"
-      },
-      {
-        title: "Electric Racecar Circuits",
-        blurb: "Designed, physically built, and tested several critical PCBs end-to-end for my university's EV racing team.",
-        tags: ["Altium", "C++", "SPICE", "Teensy MCUs", "I2C", "UART", "CAN", "E-loads", "Oscilloscopes"],
-        image: "assets/projects/RC.jpg",
-        github: "https://drive.google.com/drive/folders/1Gp0THWEDytKAZaY5z9e0QTf7O2gkgbx3"
-      },
-      {
-        title: "Assembly Games",
-        blurb: "Designed several games in RISC-V Assembly for university course using low-level computing concepts, tested on Altera DE1-SoC.",
-        tags: ["RISC-V Assembly", "C"],
-        image: "assets/projects/simon.jpg",
-        github: "https://github.com/asso-the-coder/memory-game",
-        github: "https://github.com/asso-the-coder/space-invaders"
-      },
-      {
-        title: "Amazon Customer Review Analyzer Hackathon Project",
-        blurb: "Reached Daisy Hackathon finals using this Word2Vec-based pipeline to extract product satisfaction info from Amazon reviews. Created with two friends.",
-        tags: ["ML", "NLP", "Word2Vec", "Python"],
-        image: "assets/projects/reviews.jpg",
-        github: "https://github.com/asso-the-coder/synonyms-finder"
-      },
-      {
-        title: "Gomuku Bot",
-        blurb: "Single or dual player Gomuku (a Japanese board game) terminal game. Created with a partner for a university programming course.",
-        tags: ["Python"],
-        image: "assets/projects/gomoku.jpg",
-        github: "https://github.com/asso-the-coder/gomoku-bot",
-      },
-      {
-        title: "File Transfer App",
-        blurb: "Server and client code for a general file transfer app over UDP sockets with ACKs and timeouts.",
-        tags: ["C", "UDP"],
-        image: "assets/projects/files.jpg",
-        github: "https://github.com/asso-the-coder/file-transfer-udp",
-      },
-      {
-        title: "WhatsUp Instant Messaging",
-        blurb: "Server and client code for a WhatsApp-style multi-user text conferencing app over TCP sockets.",
-        tags: ["C", "TCP"],
-        image: "assets/projects/whatsup.jpg",
-        github: "https://github.com/asso-the-coder/whatsup-conferencing",
-      },
-    ];
+    document.title = SITE_CONTENT.meta.title;
+    document.querySelector('meta[name="description"]').setAttribute("content", SITE_CONTENT.meta.description);
 
-    const experience = [
-      {
-        org: "Hiroshi Ishiguro Labs",
-        date: "May 2026 — Aug 2026",
-        role: "Robotics Researcher",
-        bullets: [
-          "Built a non-invasive benchmarking framework using realtime traffic capture and voice activity detection",
-          "Decreased system response time by 44% through voice synthesis redesign, LLM inference-stage tuning, and data pipeline optimization",
-          "Trained voice models to improve the robot's perceived MOS naturalness by 31%"
-        ]
-      },
-      {
-        org: "Tesla",
-        date: "Sep 2024 — Dec 2024",
-        role: "Low Voltage Test & Automation Intern",
-        bullets: [
-          "Created C drivers for port-mapped I/O devices and integrated into a Python app via shared objects.",
-          "Built CAN-FD routines using PCAN-Pro and UDS APIs; designed and brought up AFE + high-side drive PCBA with NI DAQs.",
-          "Built a ResNet/OpenCV model to detect vehicle features (99.01% accuracy) for production line checks."
-        ]
-      },
-      {
-        org: "Tesla",
-        date: "May 2024 — Aug 2024",
-        role: "Electronics Design Engineering Intern",
-        bullets: [
-          "Owned MCU signal flow architecture for a next-gen Supercharger main controller PCB.",
-          "Designed logic in Altium and a high-voltage interrupt loop with timing analysis.",
-          "Ran 1000BASE-T1 PAM3 Ethernet signal integrity tests by quantifying packet error rates on a Linux SoC."
-        ]
-      },
-      {
-        org: "Kepler Communications",
-        date: "Sep 2023 — Apr 2024",
-        role: "Power Systems Engineering Intern",
-        bullets: [
-          "Verified BMS safety logic, control loops, UART buses, and cell monitoring in a HIL suite (TI MSP430).",
-          "Built FRAM/EEPROM genealogy data saving framework for safety-critical systems.",
-          "Improved solar panel efficiency by optimizing MPPT scan rate; multithreading telemetry + safety controls."
-        ]
-      },
-      {
-        org: "Pulsenics",
-        date: "Jun 2023 — Sep 2023",
-        role: "Firmware QA Intern",
-        bullets: [
-          "Developed a PID controller in C for a PFC/DAB power system using TI tooling and Cortex-M MCUs.",
-          "Wrote ISRs in C for sensor qualification and ADC configuration.",
-          "Designed a PoE switch for 1000BASE-T Ethernet communications."
-        ]
-      },
-      {
-        org: "University of Toronto Formula Racing",
-        date: "Sep 2021 — Sep 2023",
-        role: "Controllers Lead",
-        bullets: [
-          "Designed several custom PCBs with Altium Designer for powertrain integration, including differential I2C and CAN bus communications to an isolated 600V accumulator, and internal power distribution using SMPS, LDOs, and eFuses.",
-          "Implemented communication across major embedded protocols including CAN, I2C, SPI, and UART.",
-          "Debugged integrated circuits and PCBs with oscilloscopes, logic analyzers, e-loads, digital multimeters, and function generators in preparation for highly successful racing competitions in Germany and the USA.",
-          "Integrated sensors including thermistors, pressure transducers, tachometers, and Hall-effect wheel speed sensors.",
-          "Programmed Teensy 4.1 microcontrollers for 1-Mbps CAN communication using the FlexCAN library, and used PCAN Explorer for debugging.",
-          "Created project management workflows, helped orchestrate key vehicle architecture decisions, and secured over $90,000 of in-kind sponsorships.",
-          "Mentored junior members on electrical engineering principles, Altium Designer through a lecture series, and Arduino IDE development."
-        ]
-},
-{
-        org: "Center for Advanced Diffusion-Wave and Photoacoustic Technologies",
-        date: "May 2022 — Aug 2022",
-        role: "Biomedical Imaging Software Researcher",
-        bullets: [
-          "Co-authored a paper on MATLAB-based image processing algorithms I developed for analyzing biological tissues using a novel thermophotonic biomedical imaging technique, eTC-PCT, published in a 14.1 impact factor journal."
-        ]
-},
-    ];
+    // Nav
+    const navlinks = document.getElementById("navlinks");
+    navlinks.innerHTML = SITE_CONTENT.nav.links.map(l =>
+      `<a class="pill" href="${l.href}">${escapeHtml(l.label)}</a>`
+    ).join("") + `<a class="pill primary" href="${SITE_CONTENT.nav.resume.href}" target="_blank" rel="noopener">${escapeHtml(SITE_CONTENT.nav.resume.label)}</a>`;
 
-    const skills = [
-      "C", "C++", "Python", "Verilog", "Assembly",
-      "FreeRTOS", "GTest", "OpenCV", "PyTorch", "ROS2",
-      "CAN / CAN-FD", "SPI / Quad SPI", "I2C / SMBus", "UART", "Ethernet",
-      "Linux", "CMake", "Git", "Altium", "MATLAB"
-    ];
-    // ==========================================================
-
-    const grid = document.getElementById("projGrid");
-    function escapeHtml(s){
-      return String(s)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+    // About
+    function renderBullet(b) {
+      const sub = b.sub ? `<ul>${b.sub.map(s => `<li>${escapeHtml(s)}</li>`).join("")}</ul>` : "";
+      return `<li>${escapeHtml(b.text)}${sub}</li>`;
     }
+    document.getElementById("aboutBullets").innerHTML = SITE_CONTENT.about.bullets.map(renderBullet).join("");
+
+    // Projects intro
+    document.getElementById("projectsHeading").textContent = SITE_CONTENT.projectsIntro.heading;
+    document.getElementById("projectsSubtitle").textContent = SITE_CONTENT.projectsIntro.subtitle;
+    document.getElementById("projectsFootnote").textContent = SITE_CONTENT.projectsIntro.footnote;
 
     function projectCard(p){
       const tech = p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
       return `
         <a class="proj" href="${p.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)} on GitHub">
           <div class="proj-media">
-            <img src="${p.image}" alt="" onerror="this.style.display='none'">
+            <img src="/${p.image}" alt="" onerror="this.style.display='none'">
           </div>
           <div class="proj-body">
             <h3>${escapeHtml(p.title)}</h3>
@@ -687,11 +530,13 @@
         </a>
       `;
     }
+    document.getElementById("projGrid").innerHTML = SITE_CONTENT.projects.map(projectCard).join("");
 
-    grid.innerHTML = projects.map(projectCard).join("");
+    // Experience intro + timeline
+    document.getElementById("experienceHeading").textContent = SITE_CONTENT.experienceIntro.heading;
+    document.getElementById("experienceSubtitle").textContent = SITE_CONTENT.experienceIntro.subtitle;
 
-    const tl = document.getElementById("timeline");
-    tl.innerHTML = experience.map(x => `
+    document.getElementById("timeline").innerHTML = SITE_CONTENT.experience.map(x => `
       <div class="item">
         <div class="head"><b>${escapeHtml(x.org)}</b><span class="mono">${escapeHtml(x.date)}</span></div>
         <div class="role">${escapeHtml(x.role)}</div>
@@ -699,45 +544,34 @@
       </div>
     `).join("");
 
-    const sg = document.getElementById("skillgrid");
-    sg.innerHTML = skills.map(s => `<span class="skill">${escapeHtml(s)}</span>`).join("");
+    // Skills
+    document.getElementById("skillsHeading").textContent = SITE_CONTENT.skillsIntro.heading;
+    document.getElementById("skillsCoreLabel").textContent = SITE_CONTENT.skillsIntro.coreLabel;
+    document.getElementById("skillsNotesLabel").textContent = SITE_CONTENT.skillsIntro.notesLabel;
+    document.getElementById("skillsNotesText").textContent = SITE_CONTENT.skillsIntro.notesText;
+    document.getElementById("skillgrid").innerHTML = SITE_CONTENT.skills.map(s => `<span class="skill">${escapeHtml(s)}</span>`).join("");
 
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // Contact
+    const c = SITE_CONTENT.contact;
+    document.getElementById("contactHeading").textContent = c.heading;
+    document.getElementById("email").textContent = c.email;
+    document.getElementById("githubHandle").textContent = c.github.handle;
+    document.getElementById("linkedinHandle").textContent = c.linkedin.handle;
+    document.getElementById("contactButtons").innerHTML = `
+      <button class="pill primary" id="copyEmail" type="button">${escapeHtml(c.copyButtonLabel)}</button>
+      <a class="pill" href="${c.github.url}" target="_blank" rel="noopener">${escapeHtml(c.github.label)}</a>
+      <a class="pill" href="${c.linkedin.url}" target="_blank" rel="noopener">${escapeHtml(c.linkedin.label)}</a>
+      <a class="pill" href="${c.resumeHref}" target="_blank" rel="noopener">${escapeHtml(c.resumeLabel)}</a>
+      <a class="pill" href="${c.emailMeHref}">${escapeHtml(c.emailMeLabel)}</a>
+    `;
 
-    document.getElementById("copyEmail").addEventListener("click", async () => {
-      const email = document.getElementById("email").textContent.trim();
-      try{
-        await navigator.clipboard.writeText(email);
-        toast("Copied email ✔");
-      } catch {
-        toast("Copy failed — you can select it manually.");
-      }
-    });
+    // Footer
+    document.getElementById("footerName").textContent = SITE_CONTENT.footer.name;
 
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("on"); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
-
-    function toast(msg){
-      const t = document.createElement("div");
-      t.textContent = msg;
-      t.style.position = "fixed";
-      t.style.left = "50%";
-      t.style.bottom = "18px";
-      t.style.transform = "translateX(-50%)";
-      t.style.padding = "10px 12px";
-      t.style.borderRadius = "999px";
-      t.style.border = "1px solid rgba(255,255,255,.14)";
-      t.style.background = "rgba(0,0,0,.62)";
-      t.style.backdropFilter = "blur(10px)";
-      t.style.color = "rgba(255,255,255,.92)";
-      t.style.fontSize = "13px";
-      t.style.zIndex = "999";
-      document.body.appendChild(t);
-      setTimeout(()=>t.remove(), 1600);
-    }
+    // Shared behaviors
+    initFooterYear("y");
+    initCopyEmailButton("copyEmail", "email", { toastCopied: c.toastCopied, toastFailed: c.toastFailed });
+    initScrollReveal();
   </script>
 </body>
 </html>
-
