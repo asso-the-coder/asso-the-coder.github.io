@@ -31,7 +31,7 @@ const SITE_CONTENT = {
           "Minoring in Artificial Intelligence"
         ]
       },
-      { text: "Likes basketball, likes cats" },
+      { text: "Likes basketball and cats" },
       { text: "Loves writing software that makes hardware visibly do stuff" },
       { text: "Interested in embedded systems and machine learning applications" },
       { text: "Currently finishing my senior year on exchange in Taiwan" },
