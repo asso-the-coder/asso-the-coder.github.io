@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asser Abdelgawad</title>
+  <meta name="description" content="Embedded systems portfolio • projects, experience, and contact" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon32x32.png">
+  <meta name="theme-color" content="#2b1c12">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-wood-dark:#2b1c12;
+      --bg-wood-mid:#3d2818;
+      --bg-wood-light:#5a3d24;
+      --text:#f3e6d0;
+      --muted:#c9b08a;
+      --line: rgba(255,200,140,.18);
+      --shadow-hard: 4px 4px 0 rgba(0,0,0,.55);
+      --radius: 0px;
+
+      /* accents pulled from the reference desk scene */
+      --a1:#4fc3f7; /* robot blue */
+      --a2:#ffb347; /* robot chest amber */
+      --a3:#35d46a; /* terminal green */
+      --a4:#ff8a3d; /* lava lamp orange */
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color:var(--text);
+      background:
+        radial-gradient(700px 420px at 85% 10%, rgba(255,138,61,.16), transparent 60%),
+        radial-gradient(650px 380px at 15% 85%, rgba(79,195,247,.12), transparent 60%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.015) 0 2px, transparent 2px 6px),
+        linear-gradient(180deg, var(--bg-wood-dark), #241609);
+      position: relative;
+    }
+    body::after{
+      content:"";
+      position:fixed; inset:0;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.10) 0px, rgba(0,0,0,.10) 1px, transparent 2px, transparent 4px);
+      pointer-events:none;
+      z-index: 50;
+      opacity:.5;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding: 22px; }
+
+    .pixel-font{ font-family:'Press Start 2P', ui-monospace, monospace; }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height: 260px;
+      background-image: url('/assets/snazzy/hero-desk.png');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 4px solid var(--bg-wood-light);
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(20,12,6,.35), rgba(20,12,6,.88));
+    }
+    .hero-inner{
+      position:relative; z-index:1;
+      max-width:1100px; margin:0 auto; padding: 54px 22px;
+      display:flex; align-items:center;
+    }
+    .hero h1{
+      margin:0;
+      font-size: clamp(15px, 3.4vw, 26px);
+      line-height:1.6;
+      letter-spacing: 1px;
+      color: var(--text);
+      background: rgba(43,28,18,.65);
+      border: 3px solid var(--bg-wood-light);
+      outline: 2px solid var(--a4);
+      outline-offset: 6px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-hard);
+    }
+    @media (max-width: 700px){
+      .hero{ min-height: 180px; }
+      .hero-inner{ padding: 34px 18px; }
+    }
+
+    /* NAV */
+    .nav{
+      position: sticky; top: 0;
+      background: rgba(43,28,18,.94);
+      border-bottom: 3px solid var(--bg-wood-light);
+      z-index: 20;
+    }
+    .navin{
+      max-width:1100px; margin:0 auto; padding: 14px 22px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{ display:flex; align-items:center; gap:10px; min-width:0; }
+    .dot{
+      width:12px; height:12px; border-radius:2px;
+      background: var(--a4);
+      box-shadow: 0 0 0 4px rgba(255,138,61,.18);
+      flex: 0 0 auto;
+    }
+    .brand strong{ letter-spacing:.5px; font-size: 12px; }
+    .brand span{ color:var(--muted); font-size:12.5px; margin-left:8px; }
+
+    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 12px;
+      border-radius: 2px;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-mid);
+      color: var(--text);
+      font-size: 12.5px;
+      box-shadow: var(--shadow-hard);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .pill:hover{
+      transform: translate(-2px,-2px);
+      border-color: var(--a1);
+      box-shadow: 6px 6px 0 rgba(0,0,0,.55);
+    }
+    .pill:active{
+      transform: translate(2px,2px);
+      box-shadow: none;
+    }
+    .pill.primary{
+      border-color: var(--a4);
+      background: var(--a4);
+      color: var(--bg-wood-dark);
+      font-weight: bold;
+    }
+
+    /* CARDS / SECTIONS */
+    .card{
+      border: 2px solid var(--bg-wood-light);
+      border-radius: var(--radius);
+      background: var(--bg-wood-mid);
+      box-shadow: var(--shadow-hard);
+      overflow:hidden;
+      position:relative;
+    }
+
+    section{ margin-top: 18px; }
+    .section-title{
+      display:flex; align-items: baseline; justify-content: space-between;
+      gap: 12px;
+      margin: 26px 0 14px;
+      border-bottom: 3px dashed var(--a3);
+      padding-bottom: 10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 13px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--a3);
+    }
+    .section-title small{ color: var(--muted); font-size: 12.5px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    /* ABOUT */
+    .about{ grid-column: span 12; padding: 22px; }
+    .about p{ margin: 0; color: var(--muted); line-height: 1.65; font-size: 14.5px; }
+    .stats{ grid-column: span 5; padding: 16px; }
+    @media (max-width: 920px){ .about, .stats{ grid-column: span 12; } }
+
+    .about ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .about li {
+      margin: 6px 0;
+    }
+
+    .chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:8px; }
+    .chip{
+      padding: 7px 10px;
+      border: 2px solid var(--bg-wood-light);
+      border-radius: 2px;
+      background: var(--bg-wood-dark);
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .chip.c1{ border-color: var(--a1); }
+    .chip.c2{ border-color: var(--a2); }
+    .chip.c3{ border-color: var(--a3); }
+    .chip.c4{ border-color: var(--a4); }
+
+    .statgrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .stat{
+      border-radius: 0;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-dark);
+      padding: 12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .stat b{ display:block; font-size: 12.5px; color: var(--text); position:relative; }
+    .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; position:relative; }
+
+    /* PROJECTS */
+    .proj-feature{ grid-column: span 12; }
+    .proj-wrap{ padding: 14px; }
+
+    .proj-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    .proj{
+      grid-column: span 6;
+      border: 2px solid var(--bg-wood-light);
+      border-radius: 0;
+      background: var(--bg-wood-dark);
+      overflow:hidden;
+      box-shadow: var(--shadow-hard);
+      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+      position:relative;
+      cursor:pointer;
+    }
+    .proj:hover{
+      transform: translate(-3px,-3px);
+      border-color: var(--a1);
+      box-shadow: 8px 8px 0 rgba(0,0,0,.55);
+    }
+    @media (max-width: 920px){ .proj{ grid-column: span 12; } }
+
+    .proj-media{
+      height: 180px;
+      border-bottom: 2px solid var(--bg-wood-light);
+      position:relative;
+      overflow:hidden;
+      background:
+        repeating-linear-gradient(45deg, rgba(255,179,71,.07) 0 2px, transparent 2px 10px),
+        var(--bg-wood-mid);
+    }
+    .proj-media img{
+      width:100%; height:100%; object-fit:cover;
+      opacity: .92;
+      transform: scale(1.0);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .proj:hover .proj-media img{ transform: scale(1.05); opacity: .98; }
+
+    .proj-body{ padding: 14px; }
+    .proj h3{ margin: 0 0 8px; font-size: 15px; letter-spacing:-.1px; color: var(--text); }
+    .proj p{ margin: 0 0 10px; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+
+    .tags{ display:flex; gap:7px; flex-wrap:wrap; }
+    .tag{
+      font-size: 12px;
+      color: var(--muted);
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-mid);
+      padding: 6px 8px;
+      border-radius: 2px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .proj-links{
+      margin-top: 10px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .ghost{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 2px;
+      border: 2px dashed var(--a3);
+      background: transparent;
+      font-size: 12.5px;
+      color: var(--a3);
+    }
+    .ghost:hover{ background: rgba(53,212,106,.10); }
+
+    /* EXPERIENCE */
+    .timeline{ grid-column: span 12; padding: 14px; }
+    .tl{ display:grid; gap:10px; }
+    .item{
+      padding: 14px;
+      border-radius: 0;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-dark);
+      position:relative;
+      overflow:hidden;
+    }
+    .item .head{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 12.5px;
+      position:relative;
+    }
+    .item b{ color: var(--text); font-size: 14px; letter-spacing:0; }
+    .item .role{ margin-top: 6px; color: var(--a2); font-size: 13.5px; position:relative; }
+    .item ul{
+      margin: 10px 0 0; padding-left: 18px;
+      color: var(--muted); font-size: 13px; line-height: 1.55;
+      position:relative;
+    }
+    .item li{ margin: 4px 0; }
+
+    /* SKILLS + CONTACT */
+    .skills{ grid-column: span 7; padding: 14px; }
+    .contact{ grid-column: span 5; padding: 14px; }
+    @media (max-width: 920px){ .skills, .contact{ grid-column: span 12; } }
+
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
+    .skillgrid{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .skill{
+      padding: 8px 10px;
+      border-radius: 2px;
+      border: 2px solid var(--bg-wood-light);
+      background: var(--bg-wood-dark);
+      color: var(--muted);
+      font-size: 12.5px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .contactbox{
+      border-radius: 0;
+      border: 2px solid var(--bg-wood-light);
+      background: rgba(0,0,0,.25);
+      padding: 14px;
+      margin-top: 10px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .row{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color: var(--muted); font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line);
+      position:relative;
+    }
+    .row:last-child{ border-bottom:0; }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; position:relative; }
+
+    footer{
+      margin-top: 30px;
+      padding: 18px 0;
+      border-top: 2px dashed var(--bg-wood-light);
+      color: var(--muted);
+      font-size: 12.5px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+
+    /* subtle reveal */
+    .reveal{ opacity: 0; transform: translateY(10px); transition: opacity .5s steps(6, end), transform .5s ease; }
+    .reveal.on{ opacity: 1; transform: translateY(0); }
+
+    /* pfp */
+    .profile-pic {
+      width: 180px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0;
+      border: 3px solid var(--bg-wood-light);
+      outline: 2px solid var(--a1);
+      outline-offset: 4px;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="navin">
+      <div class="brand">
+        <span class="dot"></span>
+        <div style="min-width:0">
+          <strong class="pixel-font">Asser Abdelgawad</strong>
+        </div>
+      </div>
+      <div class="navlinks" id="navlinks"></div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1 class="pixel-font" id="heroBrand"></h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ABOUT (start here) -->
+    <section id="about">
+      <div class="section-title">
+        <h2 class="pixel-font">About</h2>
+
+      </div>
+
+      <div class="grid">
+        <div class="card about reveal">
+          <div class="about-layout">
+            <img src="/assets/profile.jpg" alt="Asser Abdelgawad" class="profile-pic">
+            <ul id="aboutBullets"></ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">
+        <h2 class="pixel-font" id="projectsHeading"></h2>
+        <small id="projectsSubtitle"></small>
+      </div>
+
+      <div class="grid">
+        <div class="card proj-feature reveal">
+          <div class="proj-wrap">
+            <div class="proj-grid" id="projGrid"></div>
+            <div style="margin-top:12px; color:var(--muted); font-size:12.5px;" id="projectsFootnote">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-title">
+        <h2 class="pixel-font" id="experienceHeading"></h2>
+        <small id="experienceSubtitle"></small>
+      </div>
+
+      <div class="grid">
+        <div class="card timeline reveal">
+          <div class="tl" id="timeline"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS + CONTACT -->
+    <section id="skills">
+      <div class="section-title">
+        <h2 class="pixel-font" id="skillsHeading"></h2>
+      </div>
+
+      <div class="grid">
+        <div class="card skills reveal">
+          <div class="mono" style="color:var(--text); font-size:13px;" id="skillsCoreLabel"></div>
+          <div class="skillgrid" id="skillgrid"></div>
+
+          <div style="margin-top:12px" class="mono" id="skillsNotesLabel"></div>
+          <div style="color:var(--muted); font-size:13px; line-height:1.6; margin-top:8px" id="skillsNotesText">
+          </div>
+        </div>
+
+        <div class="card contact reveal" id="contact">
+          <div class="mono" style="color:var(--text); font-size:13px;" id="contactHeading"></div>
+          <div class="contactbox">
+            <div class="row"><span>Email</span><span class="mono" id="email"></span></div>
+            <div class="row"><span>GitHub</span><span class="mono" id="githubHandle"></span></div>
+            <div class="row"><span>LinkedIn</span><span class="mono" id="linkedinHandle"></span></div>
+
+            <div class="btnrow" id="contactButtons">
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> <span class="mono" id="footerName"></span></div>
+    </footer>
+  </div>
+
+  <script src="/assets/js/content.js"></script>
+  <script src="/assets/js/site-shared.js"></script>
+  <script>
+    document.title = SITE_CONTENT.meta.title;
+    document.querySelector('meta[name="description"]').setAttribute("content", SITE_CONTENT.meta.description);
+
+    document.getElementById("heroBrand").textContent = SITE_CONTENT.nav.brand;
+
+    // Nav
+    const navlinks = document.getElementById("navlinks");
+    navlinks.innerHTML = SITE_CONTENT.nav.links.map(l =>
+      `<a class="pill" href="${l.href}">${escapeHtml(l.label)}</a>`
+    ).join("") + `<a class="pill primary" href="${SITE_CONTENT.nav.resume.href}" target="_blank" rel="noopener">${escapeHtml(SITE_CONTENT.nav.resume.label)}</a>`;
+
+    // About
+    function renderBullet(b) {
+      const sub = b.sub ? `<ul>${b.sub.map(s => `<li>${escapeHtml(s)}</li>`).join("")}</ul>` : "";
+      return `<li>${escapeHtml(b.text)}${sub}</li>`;
+    }
+    document.getElementById("aboutBullets").innerHTML = SITE_CONTENT.about.bullets.map(renderBullet).join("");
+
+    // Projects intro
+    document.getElementById("projectsHeading").textContent = SITE_CONTENT.projectsIntro.heading;
+    document.getElementById("projectsSubtitle").textContent = SITE_CONTENT.projectsIntro.subtitle;
+    document.getElementById("projectsFootnote").textContent = SITE_CONTENT.projectsIntro.footnote;
+
+    function projectCard(p){
+      const tech = p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+      return `
+        <a class="proj" href="${p.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)} on GitHub">
+          <div class="proj-media">
+            <img src="/${p.image}" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="proj-body">
+            <h3>${escapeHtml(p.title)}</h3>
+            <p>${escapeHtml(p.blurb)}</p>
+            <div class="tags">${tech}</div>
+            <div class="proj-links">
+              <span class="ghost">Open on GitHub →</span>
+            </div>
+          </div>
+        </a>
+      `;
+    }
+    document.getElementById("projGrid").innerHTML = SITE_CONTENT.projects.map(projectCard).join("");
+
+    // Experience intro + timeline
+    document.getElementById("experienceHeading").textContent = SITE_CONTENT.experienceIntro.heading;
+    document.getElementById("experienceSubtitle").textContent = SITE_CONTENT.experienceIntro.subtitle;
+
+    document.getElementById("timeline").innerHTML = SITE_CONTENT.experience.map(x => `
+      <div class="item">
+        <div class="head"><b>${escapeHtml(x.org)}</b><span class="mono">${escapeHtml(x.date)}</span></div>
+        <div class="role">${escapeHtml(x.role)}</div>
+        <ul>${x.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}</ul>
+      </div>
+    `).join("");
+
+    // Skills
+    document.getElementById("skillsHeading").textContent = SITE_CONTENT.skillsIntro.heading;
+    document.getElementById("skillsCoreLabel").textContent = SITE_CONTENT.skillsIntro.coreLabel;
+    document.getElementById("skillsNotesLabel").textContent = SITE_CONTENT.skillsIntro.notesLabel;
+    document.getElementById("skillsNotesText").textContent = SITE_CONTENT.skillsIntro.notesText;
+    document.getElementById("skillgrid").innerHTML = SITE_CONTENT.skills.map(s => `<span class="skill">${escapeHtml(s)}</span>`).join("");
+
+    // Contact
+    const c = SITE_CONTENT.contact;
+    document.getElementById("contactHeading").textContent = c.heading;
+    document.getElementById("email").textContent = c.email;
+    document.getElementById("githubHandle").textContent = c.github.handle;
+    document.getElementById("linkedinHandle").textContent = c.linkedin.handle;
+    document.getElementById("contactButtons").innerHTML = `
+      <button class="pill primary" id="copyEmail" type="button">${escapeHtml(c.copyButtonLabel)}</button>
+      <a class="pill" href="${c.github.url}" target="_blank" rel="noopener">${escapeHtml(c.github.label)}</a>
+      <a class="pill" href="${c.linkedin.url}" target="_blank" rel="noopener">${escapeHtml(c.linkedin.label)}</a>
+      <a class="pill" href="${c.resumeHref}" target="_blank" rel="noopener">${escapeHtml(c.resumeLabel)}</a>
+      <a class="pill" href="${c.emailMeHref}">${escapeHtml(c.emailMeLabel)}</a>
+    `;
+
+    // Footer
+    document.getElementById("footerName").textContent = SITE_CONTENT.footer.name;
+
+    // Shared behaviors
+    initFooterYear("y");
+    initCopyEmailButton("copyEmail", "email", { toastCopied: c.toastCopied, toastFailed: c.toastFailed });
+    initScrollReveal();
+  </script>
+</body>
+</html>

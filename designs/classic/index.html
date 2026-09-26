@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asser Abdelgawad</title>
+  <meta name="description" content="Embedded systems portfolio • projects, experience, and contact" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon32x32.png">
+  <meta name="theme-color" content="#07070f">
+
+  <style>
+    :root{
+      --bg:#07070f;
+      --panel: rgba(255,255,255,.045);
+      --panel2: rgba(255,255,255,.028);
+      --text: rgba(255,255,255,.94);
+      --muted: rgba(255,255,255,.66);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 18px;
+
+      /* more color */
+      --a1:#22d3ee; /* cyan */
+      --a2:#a78bfa; /* violet */
+      --a3:#34d399; /* green */
+      --a4:#fb7185; /* pink/red accent */
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(950px 520px at 12% 0%, rgba(34,211,238,.18), transparent 56%),
+        radial-gradient(950px 520px at 88% 6%, rgba(167,139,250,.18), transparent 56%),
+        radial-gradient(1050px 560px at 60% 110%, rgba(52,211,153,.14), transparent 60%),
+        radial-gradient(900px 520px at 12% 120%, rgba(251,113,133,.12), transparent 60%),
+        linear-gradient(180deg, #05060b, var(--bg));
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding: 22px; }
+
+    /* NAV */
+    .nav{
+      position: sticky; top: 0;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7,7,15,.88), rgba(7,7,15,.55));
+      border-bottom: 1px solid var(--line);
+      z-index: 20;
+    }
+    .navin{
+      max-width:1100px; margin:0 auto; padding: 14px 22px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{ display:flex; align-items:center; gap:10px; min-width:0; }
+    .dot{
+      width:11px; height:11px; border-radius:999px;
+      background: linear-gradient(135deg, var(--a1), var(--a2), var(--a4));
+      box-shadow: 0 0 0 8px rgba(34,211,238,.10);
+      flex: 0 0 auto;
+    }
+    .brand strong{ letter-spacing:-.35px; }
+    .brand span{ color:var(--muted); font-size:12.5px; margin-left:8px; }
+
+    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size: 13px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(34,211,238,.45);
+      box-shadow: 0 0 0 7px rgba(34,211,238,.10);
+    }
+    .pill.primary{
+      border-color: rgba(34,211,238,.50);
+      background: linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.12), rgba(251,113,133,.10));
+    }
+
+    /* CARDS / SECTIONS */
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    section{ margin-top: 18px; }
+    .section-title{
+      display:flex; align-items: baseline; justify-content: space-between;
+      gap: 12px;
+      margin: 22px 0 12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 13px;
+      letter-spacing: .22px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.86);
+    }
+    .section-title small{ color: var(--muted); font-size: 12.5px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    /* ABOUT */
+    .about{ grid-column: span 12; padding: 22px; }
+    .about p{ margin: 0; color: var(--muted); line-height: 1.65; font-size: 14.5px; }
+    .stats{ grid-column: span 5; padding: 16px; }
+    @media (max-width: 920px){ .about, .stats{ grid-column: span 12; } }
+
+    .about ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .about li {
+      margin: 6px 0;
+    }
+
+    .chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:8px; }
+    .chip{
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(0,0,0,.12);
+      color: rgba(255,255,255,.75);
+      font-size: 12.5px;
+    }
+    .chip.c1{ border-color: rgba(34,211,238,.30); }
+    .chip.c2{ border-color: rgba(167,139,250,.30); }
+    .chip.c3{ border-color: rgba(52,211,153,.30); }
+    .chip.c4{ border-color: rgba(251,113,133,.30); }
+
+    .statgrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .stat{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.025);
+      padding: 12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .stat:before{
+      content:"";
+      position:absolute; inset:-40px;
+      background: radial-gradient(circle, rgba(34,211,238,.20), transparent 55%);
+      opacity:.35;
+      pointer-events:none;
+    }
+    .stat b{ display:block; font-size: 12.5px; color: rgba(255,255,255,.88); position:relative; }
+    .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; position:relative; }
+
+    /* PROJECTS */
+    .proj-feature{ grid-column: span 12; }
+    .proj-wrap{ padding: 14px; }
+
+    .proj-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    .proj{
+      grid-column: span 6;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      position:relative;
+      cursor:pointer;
+    }
+    .proj:hover{
+      transform: translateY(-3px);
+      border-color: rgba(34,211,238,.40);
+      box-shadow: 0 22px 60px rgba(0,0,0,.55);
+    }
+    @media (max-width: 920px){ .proj{ grid-column: span 12; } }
+
+    .proj-media{
+      height: 180px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(520px 260px at 30% 30%, rgba(34,211,238,.22), transparent 58%),
+        radial-gradient(520px 260px at 80% 40%, rgba(167,139,250,.18), transparent 62%),
+        radial-gradient(520px 260px at 30% 80%, rgba(251,113,133,.14), transparent 65%),
+        rgba(255,255,255,.02);
+    }
+    .proj-media img{
+      width:100%; height:100%; object-fit:cover;
+      opacity: .93;
+      transform: scale(1.02);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .proj:hover .proj-media img{ transform: scale(1.06); opacity: .98; }
+
+    .proj-body{ padding: 14px; }
+    .proj h3{ margin: 0 0 8px; font-size: 16px; letter-spacing:-.25px; }
+    .proj p{ margin: 0 0 10px; color: rgba(255,255,255,.74); font-size: 13.5px; line-height: 1.5; }
+
+    .tags{ display:flex; gap:7px; flex-wrap:wrap; }
+    .tag{
+      font-size: 12px;
+      color: rgba(255,255,255,.74);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
+      padding: 6px 8px;
+      border-radius: 999px;
+    }
+    .proj-links{
+      margin-top: 10px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .ghost{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      font-size: 12.5px;
+      color: rgba(255,255,255,.86);
+    }
+    .ghost:hover{ border-color: rgba(251,113,133,.42); box-shadow: 0 0 0 7px rgba(251,113,133,.10); }
+
+    /* EXPERIENCE */
+    .timeline{ grid-column: span 12; padding: 14px; }
+    .tl{ display:grid; gap:10px; }
+    .item{
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      position:relative;
+      overflow:hidden;
+    }
+    .item:before{
+      content:"";
+      position:absolute; inset:-55px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(167,139,250,.16), transparent 56%),
+        radial-gradient(circle at 80% 20%, rgba(34,211,238,.14), transparent 56%);
+      opacity:.35;
+      pointer-events:none;
+    }
+    .item .head{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 12.5px;
+      position:relative;
+    }
+    .item b{ color: rgba(255,255,255,.92); font-size: 14px; letter-spacing:-.2px; }
+    .item .role{ margin-top: 6px; color: rgba(255,255,255,.82); font-size: 13.5px; position:relative; }
+    .item ul{
+      margin: 10px 0 0; padding-left: 18px;
+      color: var(--muted); font-size: 13px; line-height: 1.55;
+      position:relative;
+    }
+    .item li{ margin: 4px 0; }
+
+    /* SKILLS + CONTACT */
+    .skills{ grid-column: span 7; padding: 14px; }
+    .contact{ grid-column: span 5; padding: 14px; }
+    @media (max-width: 920px){ .skills, .contact{ grid-column: span 12; } }
+
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
+    .skillgrid{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .skill{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: rgba(255,255,255,.78);
+      font-size: 12.5px;
+    }
+
+    .contactbox{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      padding: 14px;
+      margin-top: 10px;
+      position:relative;
+      overflow:hidden;
+    }
+    .contactbox:before{
+      content:"";
+      position:absolute; inset:-60px;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(circle at 70% 40%, rgba(251,113,133,.14), transparent 55%);
+      opacity:.40;
+      pointer-events:none;
+    }
+
+    .row{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color: var(--muted); font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      position:relative;
+    }
+    .row:last-child{ border-bottom:0; }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; position:relative; }
+
+    footer{
+      margin-top: 30px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12.5px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+
+    /* subtle reveal */
+    .reveal{ opacity: 0; transform: translateY(10px); transition: opacity .50s ease, transform .50s ease; }
+    .reveal.on{ opacity: 1; transform: translateY(0); }
+
+    /* pfp */
+    .profile-pic {
+      width: 180px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="navin">
+      <div class="brand">
+        <span class="dot"></span>
+        <div style="min-width:0">
+          <strong>Asser Abdelgawad</strong>
+        </div>
+      </div>
+      <div class="navlinks" id="navlinks"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ABOUT (start here) -->
+    <section id="about">
+      <div class="section-title">
+        <h2>About</h2>
+
+      </div>
+
+      <div class="grid">
+        <div class="card about reveal">
+          <div class="about-layout">
+            <img src="/assets/profile.jpg" alt="Asser Abdelgawad" class="profile-pic">
+            <ul id="aboutBullets"></ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">
+        <h2 id="projectsHeading"></h2>
+        <small id="projectsSubtitle"></small>
+      </div>
+
+      <div class="grid">
+        <div class="card proj-feature reveal">
+          <div class="proj-wrap">
+            <div class="proj-grid" id="projGrid"></div>
+            <div style="margin-top:12px; color:var(--muted); font-size:12.5px;" id="projectsFootnote">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-title">
+        <h2 id="experienceHeading"></h2>
+        <small id="experienceSubtitle"></small>
+      </div>
+
+      <div class="grid">
+        <div class="card timeline reveal">
+          <div class="tl" id="timeline"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS + CONTACT -->
+    <section id="skills">
+      <div class="section-title">
+        <h2 id="skillsHeading"></h2>
+      </div>
+
+      <div class="grid">
+        <div class="card skills reveal">
+          <div class="mono" style="color:rgba(255,255,255,.88); font-size:13px;" id="skillsCoreLabel"></div>
+          <div class="skillgrid" id="skillgrid"></div>
+
+          <div style="margin-top:12px" class="mono" id="skillsNotesLabel"></div>
+          <div style="color:var(--muted); font-size:13px; line-height:1.6; margin-top:8px" id="skillsNotesText">
+          </div>
+        </div>
+
+        <div class="card contact reveal" id="contact">
+          <div class="mono" style="color:rgba(255,255,255,.88); font-size:13px;" id="contactHeading"></div>
+          <div class="contactbox">
+            <div class="row"><span>Email</span><span class="mono" id="email"></span></div>
+            <div class="row"><span>GitHub</span><span class="mono" id="githubHandle"></span></div>
+            <div class="row"><span>LinkedIn</span><span class="mono" id="linkedinHandle"></span></div>
+
+            <div class="btnrow" id="contactButtons">
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> <span class="mono" id="footerName"></span></div>
+    </footer>
+  </div>
+
+  <script src="/assets/js/content.js"></script>
+  <script src="/assets/js/site-shared.js"></script>
+  <script>
+    document.title = SITE_CONTENT.meta.title;
+    document.querySelector('meta[name="description"]').setAttribute("content", SITE_CONTENT.meta.description);
+
+    // Nav
+    const navlinks = document.getElementById("navlinks");
+    navlinks.innerHTML = SITE_CONTENT.nav.links.map(l =>
+      `<a class="pill" href="${l.href}">${escapeHtml(l.label)}</a>`
+    ).join("") + `<a class="pill primary" href="${SITE_CONTENT.nav.resume.href}" target="_blank" rel="noopener">${escapeHtml(SITE_CONTENT.nav.resume.label)}</a>`;
+
+    // About
+    function renderBullet(b) {
+      const sub = b.sub ? `<ul>${b.sub.map(s => `<li>${escapeHtml(s)}</li>`).join("")}</ul>` : "";
+      return `<li>${escapeHtml(b.text)}${sub}</li>`;
+    }
+    document.getElementById("aboutBullets").innerHTML = SITE_CONTENT.about.bullets.map(renderBullet).join("");
+
+    // Projects intro
+    document.getElementById("projectsHeading").textContent = SITE_CONTENT.projectsIntro.heading;
+    document.getElementById("projectsSubtitle").textContent = SITE_CONTENT.projectsIntro.subtitle;
+    document.getElementById("projectsFootnote").textContent = SITE_CONTENT.projectsIntro.footnote;
+
+    function projectCard(p){
+      const tech = p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+      return `
+        <a class="proj" href="${p.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(p.title)} on GitHub">
+          <div class="proj-media">
+            <img src="/${p.image}" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="proj-body">
+            <h3>${escapeHtml(p.title)}</h3>
+            <p>${escapeHtml(p.blurb)}</p>
+            <div class="tags">${tech}</div>
+            <div class="proj-links">
+              <span class="ghost">Open on GitHub →</span>
+            </div>
+          </div>
+        </a>
+      `;
+    }
+    document.getElementById("projGrid").innerHTML = SITE_CONTENT.projects.map(projectCard).join("");
+
+    // Experience intro + timeline
+    document.getElementById("experienceHeading").textContent = SITE_CONTENT.experienceIntro.heading;
+    document.getElementById("experienceSubtitle").textContent = SITE_CONTENT.experienceIntro.subtitle;
+
+    document.getElementById("timeline").innerHTML = SITE_CONTENT.experience.map(x => `
+      <div class="item">
+        <div class="head"><b>${escapeHtml(x.org)}</b><span class="mono">${escapeHtml(x.date)}</span></div>
+        <div class="role">${escapeHtml(x.role)}</div>
+        <ul>${x.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}</ul>
+      </div>
+    `).join("");
+
+    // Skills
+    document.getElementById("skillsHeading").textContent = SITE_CONTENT.skillsIntro.heading;
+    document.getElementById("skillsCoreLabel").textContent = SITE_CONTENT.skillsIntro.coreLabel;
+    document.getElementById("skillsNotesLabel").textContent = SITE_CONTENT.skillsIntro.notesLabel;
+    document.getElementById("skillsNotesText").textContent = SITE_CONTENT.skillsIntro.notesText;
+    document.getElementById("skillgrid").innerHTML = SITE_CONTENT.skills.map(s => `<span class="skill">${escapeHtml(s)}</span>`).join("");
+
+    // Contact
+    const c = SITE_CONTENT.contact;
+    document.getElementById("contactHeading").textContent = c.heading;
+    document.getElementById("email").textContent = c.email;
+    document.getElementById("githubHandle").textContent = c.github.handle;
+    document.getElementById("linkedinHandle").textContent = c.linkedin.handle;
+    document.getElementById("contactButtons").innerHTML = `
+      <button class="pill primary" id="copyEmail" type="button">${escapeHtml(c.copyButtonLabel)}</button>
+      <a class="pill" href="${c.github.url}" target="_blank" rel="noopener">${escapeHtml(c.github.label)}</a>
+      <a class="pill" href="${c.linkedin.url}" target="_blank" rel="noopener">${escapeHtml(c.linkedin.label)}</a>
+      <a class="pill" href="${c.resumeHref}" target="_blank" rel="noopener">${escapeHtml(c.resumeLabel)}</a>
+      <a class="pill" href="${c.emailMeHref}">${escapeHtml(c.emailMeLabel)}</a>
+    `;
+
+    // Footer
+    document.getElementById("footerName").textContent = SITE_CONTENT.footer.name;
+
+    // Shared behaviors
+    initFooterYear("y");
+    initCopyEmailButton("copyEmail", "email", { toastCopied: c.toastCopied, toastFailed: c.toastFailed });
+    initScrollReveal();
+  </script>
+</body>
+</html>
