@@ -26,7 +26,14 @@
     "digitalocean", "digital ocean", "ovh", "hetzner", "linode", "vultr",
     "oracle cloud", "alibaba", "tencent", "cloudflare", "fastly",
     "scraper", "crawler", "crawl", "bot", "hosting", "datacenter",
-    "data center", "colo", "server", "leaseweb", "choopa", "contabo"
+    "data center", "colo", "server", "leaseweb", "choopa", "contabo",
+    "the constant company", "quadranet", "colocrossing", "psychz",
+    "unified layer", "datacamp", "m247", "hivelocity", "servers.com",
+    "zenlayer", "hurricane electric", "he.net", "psinet", "webnx",
+    "ionos", "scaleway", "hostwinds", "inap", "cogent", "equinix",
+    "oracle corporation", "microsoft corporation", "amazon technologies",
+    "amazon.com", "akamai", "limelight", "fdcservers", "steadfast",
+    "cloudsigma", "kamatera"
   ];
 
   function looksLikeBotOrg(org) {
