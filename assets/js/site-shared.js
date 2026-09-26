@@ -17,9 +17,8 @@ function initFooterYear(elementId) {
   document.getElementById(elementId).textContent = new Date().getFullYear();
 }
 
-function initCopyEmailButton(buttonId, emailId, messages) {
+function initCopyEmailButton(buttonId, email, messages) {
   document.getElementById(buttonId).addEventListener("click", async () => {
-    const email = document.getElementById(emailId).textContent.trim();
     try {
       await navigator.clipboard.writeText(email);
       toast(messages.toastCopied);

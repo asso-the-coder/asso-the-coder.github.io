@@ -65,8 +65,6 @@ const SITE_CONTENT = {
     resumeLabel: "Resume",
     resumeHref: "assets/resume.pdf",
     copyButtonLabel: "Copy email",
-    emailMeLabel: "Email me",
-    emailMeHref: "mailto:asser.abdelgawad@mail.utoronto.ca",
     toastCopied: "Copied email ✔",
     toastFailed: "Copy failed — you can select it manually."
   },
@@ -88,7 +86,7 @@ const SITE_CONTENT = {
     },
     {
       title: "Humanoid Robot Voice Improvement",
-      blurb: "Reduced response time by 44%, increased perceived naturalness by 31%, and vastly improved voice cloning for Geminoid HI-6 robot",
+      blurb: "Researched (and achieved!) improvements for the conversational system of Geminoid HI-6 android",
       tags: ["RAG", "ElevenLabs", "GPT-5", "Azure TTS", "Python", "C#"],
       image: "assets/projects/HI6_chat.jpg",
       github: "https://docs.google.com/presentation/d/1s0VNKLozoCnUK1JAVj0YUkKp7VNHPSir/edit?usp=sharing&ouid=110950224963111531859&rtpof=true&sd=true"     // replace with actual repo
@@ -238,6 +236,7 @@ const SITE_CONTENT = {
     "C", "C++", "Python", "Verilog", "Assembly",
     "FreeRTOS", "GTest", "OpenCV", "PyTorch", "ROS2",
     "CAN / CAN-FD", "SPI / Quad SPI", "I2C / SMBus", "UART", "Ethernet",
-    "Linux", "CMake", "Git", "Altium", "MATLAB"
+    "Linux", "CMake", "Git", "Altium", "MATLAB",
+    "C#", ".NET 8", "PyAudio", "ElevenLabs", "GPT", "Azure", "RAG"
   ]
 };
