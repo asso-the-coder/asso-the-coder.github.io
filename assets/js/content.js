@@ -25,10 +25,11 @@ const SITE_CONTENT = {
     profileImage: { src: "assets/profile.jpg", alt: "Asser Abdelgawad" },
     bullets: [
       {
-        text: "Engineering Science student at University of Toronto",
+        text: "Engineering Science student at the University of Toronto",
         sub: [
           "Majoring in Electrical and Computer Engineering",
-          "Minoring in Artificial Intelligence"
+          "Minoring in Artificial Intelligence",
+          "Currently finishing my senior year on exchange in Taiwan"
         ]
       },
       { text: "Likes basketball and cats" },
@@ -86,7 +87,7 @@ const SITE_CONTENT = {
     {
       title: "Humanoid Robot Voice Research",
       blurb: "Researched (and achieved!) improvements for the conversational system of the Geminoid HI-6 android",
-      tags: ["RAG", "ElevenLabs", "TCP", "Azure TTS", "C#"],
+      tags: ["RAG", "ElevenLabs", "TCP", "TTS", "C#"],
       image: "assets/projects/HI6_chat.jpg",
       github: "https://docs.google.com/presentation/d/1s0VNKLozoCnUK1JAVj0YUkKp7VNHPSir/edit?usp=sharing&ouid=110950224963111531859&rtpof=true&sd=true",     // replace with actual repo
       beforeVideo: "https://www.youtube.com/embed/mZcfqajEHBA",
