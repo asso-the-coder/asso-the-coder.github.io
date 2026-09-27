@@ -33,8 +33,11 @@ const SITE_CONTENT = {
         ]
       },
       { text: "Likes basketball and cats" },
-      { text: "Loves writing software that makes hardware visibly do stuff" },
-      { text: "Interested in embedded systems and machine learning applications" },
+      { text: "Loves writing software that makes hardware visibly do stuff",
+        sub: [
+          "Interested in embedded systems and machine learning applications" 
+        ]
+      },
       { text: "Previously @ Hiroshi Ishiguro Labs, Tesla, Kepler Comms, Pulsenics, uOttawa Heart Institute" }
     ]
   },
