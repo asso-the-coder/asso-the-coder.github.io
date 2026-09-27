@@ -237,7 +237,7 @@ const SITE_CONTENT = {
   ],
 
   skills: [
-    "C", "C++", "Python", "Verilog", "Assembly",
+    "C", "C++", "Python", "Verilog", "RISC-V Assembly",
     "FreeRTOS", "GTest", "OpenCV", "PyTorch", "ROS2",
     "CAN / CAN-FD", "SPI / Quad SPI", "I2C / SMBus", "UART", "Ethernet",
     "Linux", "CMake", "Git", "Altium", "MATLAB",
