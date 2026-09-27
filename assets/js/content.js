@@ -243,7 +243,7 @@ const SITE_CONTENT = {
     "C", "C++", "Python", "Verilog", "RISC-V Assembly",
     "FreeRTOS", "GTest", "OpenCV", "PyTorch", "ROS2",
     "CAN / CAN-FD", "SPI / Quad SPI", "I2C / SMBus", "UART", "Ethernet",
-    "Linux", "CMake", "Git", "Altium", "MATLAB",
+    "Linux", "CMake", "PlatformIO", "Vivado", "Altium", "MATLAB",
     "C#", ".NET 8", "PyAudio", "ElevenLabs", "GPT", "Azure", "RAG"
   ]
 };
